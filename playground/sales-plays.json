@@ -1,0 +1,29 @@
+{
+	"plays": [{
+		"name": "Upgrade CE to EE",
+		"summary": "Upgrade CE Users to EE tied to at least one of the other seven (7) sales plays to deliver value based outcomes not achievable with just CE. Sales play leverages Pentaho Data Integration and Pentaho Business Analytics."
+	}, {
+		"name": "Data Discovery Observability & Reliability",
+		"summary": "Monitor data, content, assets, devices and processes for insights to build trust in ownership data quality, lineage and validate a single version of truth. Sales play leverages Lumada Data Catalog."
+	}, {
+		"name": "Automation & Decisioning",
+		"summary": "Automated analytics for insights, predictions and recommendations across data content. assets, devices and processes. Sales play leverages analytics."
+	}, {
+		"name": "Unified Data Integration",
+		"summary": "Connect, integrate, transform and enrich IT & OT data across structured, unstructured data - for data at rest and in motion. Sales play leverages Pentaho Data Integration and Pentaho Business Analytics."
+	}, {
+		"name": "Migration for Hybrid Cloud",
+		"summary": "Intelligent data migration and data tiering from edge-to-prem-to public and private cloud. Sales play leverages Pentaho Data Integration and Lumada Data Catalog."
+	}, {
+		"name": "Cost Optimization & Sustainability",
+		"summary": "Ensure Cost & Sustainability are optimized and attributable to data consumption across all data content, assets, devices and processes. Sales play leverages Pentaho Data Integration and analytics."
+	}, {
+		"name": "Data Availability, Search & Self-Service",
+		"summary": "Ensure copies of metadata, data and master data are available to automate operations and to run analvtical workload. Sales play leverages Pentaho Data Integration and Pentaho Business Analytics and Lumada Data Catalog and analytics."
+	}, {
+		"name": "Stewardship & Resiliency",
+		"summary": "Apply policies to data to achieve compliance with privacy, retention, security, archive, protection, sustainability and data deletion. Sales play leverages Pentaho Data Integration and Pentaho Business Analytics and Lumada Data Catalog and analytics."
+	}
+
+]
+}

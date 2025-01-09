@@ -1,0 +1,2641 @@
+<job>
+  <name>claims_process</name>
+  <description />
+  <extended_description />
+  <job_version />
+  <directory>/public/BBM ETL - DEV</directory>
+  <created_user />
+  <created_date>2020/05/01 11:23:23.695</created_date>
+  <modified_user>marcie</modified_user>
+  <modified_date>2020/04/13 17:52:02.803</modified_date>
+  <parameters>
+    </parameters>
+  <connection>
+    <name>GENERIC REDSHIFT CONNECTION</name>
+    <server>${V_host_name}</server>
+    <type>GENERIC</type>
+    <access>Native</access>
+    <database>${V_database_name}</database>
+    <port>5439</port>
+    <username />
+    <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>CUSTOM_DRIVER_CLASS</code>
+        <attribute>com.amazon.redshift.jdbc4.Driver</attribute>
+      </attribute>
+      <attribute>
+        <code>CUSTOM_URL</code>
+        <attribute>jdbc:redshift:iam://${V_host_name}:5439/${V_database_name}</attribute>
+      </attribute>
+      <attribute>
+        <code>DATABASE_DIALECT_ID</code>
+        <attribute>Generic database</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_GENERIC.DbUser</code>
+        <attribute>pentaho_integration_user</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_GENERIC.ssl</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>5439</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <slaveservers>
+    <slaveserver>
+      <name>ClusterMaster</name>
+      <hostname>localhost</hostname>
+      <port>8080</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>DEV_8</name>
+      <hostname>pentaho-dev2.avercloud.com</hostname>
+      <port>8443</port>
+      <webAppName>pentaho</webAppName>
+      <username>remote_job_runner</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>Master</name>
+      <hostname>localhost</hostname>
+      <port>8081</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>NOPHI_8</name>
+      <hostname>pentaho-nophi.avercloud.com</hostname>
+      <port>8443</port>
+      <webAppName>pentaho</webAppName>
+      <username>remote_job_runner</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>PROD_8</name>
+      <hostname>pentaho-prod2.avercloud.com</hostname>
+      <port>8443</port>
+      <webAppName>pentaho</webAppName>
+      <username>remote_job_runner</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>Slave 2 (100.39)</name>
+      <hostname>192.168.100.39</hostname>
+      <port>9080</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>Slave 3 (100.40)</name>
+      <hostname>192.168.100.40</hostname>
+      <port>9080</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>Slave1</name>
+      <hostname>localhost</hostname>
+      <port>8082</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>Slave2</name>
+      <hostname>localhost</hostname>
+      <port>8083</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>Slave3</name>
+      <hostname>localhost</hostname>
+      <port>8084</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>cm-metricsapp01</name>
+      <hostname>cm-metricsapp01</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>cm-metricsdb01</name>
+      <hostname>cm-metricsdb01</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>cm-metricsdb02</name>
+      <hostname>cm-metricsdb02</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>cm-metricsdb03</name>
+      <hostname>cm-metricsdb03</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>cm-metricsetl01</name>
+      <hostname>cm-metricsetl01</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>etl01</name>
+      <hostname>cm-metricsetl01</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>local1</name>
+      <hostname>localhost</hostname>
+      <port>40001</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>local2</name>
+      <hostname>localhost</hostname>
+      <port>40002</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>tmp01</name>
+      <hostname>cm-metricstmp01</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>tmp02</name>
+      <hostname>cm-metricstmp02</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>tmp03</name>
+      <hostname>cm-metricstmp03</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>tmp04</name>
+      <hostname>cm-metricstmp04</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>vmDumas</name>
+      <hostname>vmDumas</hostname>
+      <port>9080</port>
+      <webAppName>pentaho-di</webAppName>
+      <username>csheen</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+  </slaveservers>
+  <job-log-table>
+    <connection />
+    <schema />
+    <table />
+    <size_limit_lines />
+    <interval />
+    <timeout_days />
+    <field>
+      <id>ID_JOB</id>
+      <enabled>Y</enabled>
+      <name>ID_JOB</name>
+    </field>
+    <field>
+      <id>CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>CHANNEL_ID</name>
+    </field>
+    <field>
+      <id>JOBNAME</id>
+      <enabled>Y</enabled>
+      <name>JOBNAME</name>
+    </field>
+    <field>
+      <id>STATUS</id>
+      <enabled>Y</enabled>
+      <name>STATUS</name>
+    </field>
+    <field>
+      <id>LINES_READ</id>
+      <enabled>Y</enabled>
+      <name>LINES_READ</name>
+    </field>
+    <field>
+      <id>LINES_WRITTEN</id>
+      <enabled>Y</enabled>
+      <name>LINES_WRITTEN</name>
+    </field>
+    <field>
+      <id>LINES_UPDATED</id>
+      <enabled>Y</enabled>
+      <name>LINES_UPDATED</name>
+    </field>
+    <field>
+      <id>LINES_INPUT</id>
+      <enabled>Y</enabled>
+      <name>LINES_INPUT</name>
+    </field>
+    <field>
+      <id>LINES_OUTPUT</id>
+      <enabled>Y</enabled>
+      <name>LINES_OUTPUT</name>
+    </field>
+    <field>
+      <id>LINES_REJECTED</id>
+      <enabled>Y</enabled>
+      <name>LINES_REJECTED</name>
+    </field>
+    <field>
+      <id>ERRORS</id>
+      <enabled>Y</enabled>
+      <name>ERRORS</name>
+    </field>
+    <field>
+      <id>STARTDATE</id>
+      <enabled>Y</enabled>
+      <name>STARTDATE</name>
+    </field>
+    <field>
+      <id>ENDDATE</id>
+      <enabled>Y</enabled>
+      <name>ENDDATE</name>
+    </field>
+    <field>
+      <id>LOGDATE</id>
+      <enabled>Y</enabled>
+      <name>LOGDATE</name>
+    </field>
+    <field>
+      <id>DEPDATE</id>
+      <enabled>Y</enabled>
+      <name>DEPDATE</name>
+    </field>
+    <field>
+      <id>REPLAYDATE</id>
+      <enabled>Y</enabled>
+      <name>REPLAYDATE</name>
+    </field>
+    <field>
+      <id>LOG_FIELD</id>
+      <enabled>Y</enabled>
+      <name>LOG_FIELD</name>
+    </field>
+    <field>
+      <id>EXECUTING_SERVER</id>
+      <enabled>N</enabled>
+      <name>EXECUTING_SERVER</name>
+    </field>
+    <field>
+      <id>EXECUTING_USER</id>
+      <enabled>N</enabled>
+      <name>EXECUTING_USER</name>
+    </field>
+    <field>
+      <id>START_JOB_ENTRY</id>
+      <enabled>N</enabled>
+      <name>START_JOB_ENTRY</name>
+    </field>
+    <field>
+      <id>CLIENT</id>
+      <enabled>N</enabled>
+      <name>CLIENT</name>
+    </field>
+  </job-log-table>
+  <jobentry-log-table>
+    <connection />
+    <schema />
+    <table />
+    <timeout_days />
+    <field>
+      <id>ID_BATCH</id>
+      <enabled>Y</enabled>
+      <name>ID_BATCH</name>
+    </field>
+    <field>
+      <id>CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>CHANNEL_ID</name>
+    </field>
+    <field>
+      <id>LOG_DATE</id>
+      <enabled>Y</enabled>
+      <name>LOG_DATE</name>
+    </field>
+    <field>
+      <id>JOBNAME</id>
+      <enabled>Y</enabled>
+      <name>TRANSNAME</name>
+    </field>
+    <field>
+      <id>JOBENTRYNAME</id>
+      <enabled>Y</enabled>
+      <name>STEPNAME</name>
+    </field>
+    <field>
+      <id>LINES_READ</id>
+      <enabled>Y</enabled>
+      <name>LINES_READ</name>
+    </field>
+    <field>
+      <id>LINES_WRITTEN</id>
+      <enabled>Y</enabled>
+      <name>LINES_WRITTEN</name>
+    </field>
+    <field>
+      <id>LINES_UPDATED</id>
+      <enabled>Y</enabled>
+      <name>LINES_UPDATED</name>
+    </field>
+    <field>
+      <id>LINES_INPUT</id>
+      <enabled>Y</enabled>
+      <name>LINES_INPUT</name>
+    </field>
+    <field>
+      <id>LINES_OUTPUT</id>
+      <enabled>Y</enabled>
+      <name>LINES_OUTPUT</name>
+    </field>
+    <field>
+      <id>LINES_REJECTED</id>
+      <enabled>Y</enabled>
+      <name>LINES_REJECTED</name>
+    </field>
+    <field>
+      <id>ERRORS</id>
+      <enabled>Y</enabled>
+      <name>ERRORS</name>
+    </field>
+    <field>
+      <id>RESULT</id>
+      <enabled>Y</enabled>
+      <name>RESULT</name>
+    </field>
+    <field>
+      <id>NR_RESULT_ROWS</id>
+      <enabled>Y</enabled>
+      <name>NR_RESULT_ROWS</name>
+    </field>
+    <field>
+      <id>NR_RESULT_FILES</id>
+      <enabled>Y</enabled>
+      <name>NR_RESULT_FILES</name>
+    </field>
+    <field>
+      <id>LOG_FIELD</id>
+      <enabled>N</enabled>
+      <name>LOG_FIELD</name>
+    </field>
+    <field>
+      <id>COPY_NR</id>
+      <enabled>N</enabled>
+      <name>COPY_NR</name>
+    </field>
+  </jobentry-log-table>
+  <channel-log-table>
+    <connection />
+    <schema />
+    <table />
+    <timeout_days />
+    <field>
+      <id>ID_BATCH</id>
+      <enabled>Y</enabled>
+      <name>ID_BATCH</name>
+    </field>
+    <field>
+      <id>CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>CHANNEL_ID</name>
+    </field>
+    <field>
+      <id>LOG_DATE</id>
+      <enabled>Y</enabled>
+      <name>LOG_DATE</name>
+    </field>
+    <field>
+      <id>LOGGING_OBJECT_TYPE</id>
+      <enabled>Y</enabled>
+      <name>LOGGING_OBJECT_TYPE</name>
+    </field>
+    <field>
+      <id>OBJECT_NAME</id>
+      <enabled>Y</enabled>
+      <name>OBJECT_NAME</name>
+    </field>
+    <field>
+      <id>OBJECT_COPY</id>
+      <enabled>Y</enabled>
+      <name>OBJECT_COPY</name>
+    </field>
+    <field>
+      <id>REPOSITORY_DIRECTORY</id>
+      <enabled>Y</enabled>
+      <name>REPOSITORY_DIRECTORY</name>
+    </field>
+    <field>
+      <id>FILENAME</id>
+      <enabled>Y</enabled>
+      <name>FILENAME</name>
+    </field>
+    <field>
+      <id>OBJECT_ID</id>
+      <enabled>Y</enabled>
+      <name>OBJECT_ID</name>
+    </field>
+    <field>
+      <id>OBJECT_REVISION</id>
+      <enabled>Y</enabled>
+      <name>OBJECT_REVISION</name>
+    </field>
+    <field>
+      <id>PARENT_CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>PARENT_CHANNEL_ID</name>
+    </field>
+    <field>
+      <id>ROOT_CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>ROOT_CHANNEL_ID</name>
+    </field>
+  </channel-log-table>
+  <checkpoint-log-table>
+    <connection />
+    <schema />
+    <table />
+    <timeout_days />
+    <max_nr_retries />
+    <run_retry_period />
+    <namespace_parameter />
+    <save_parameters>Y</save_parameters>
+    <save_result_rows>Y</save_result_rows>
+    <save_result_files>Y</save_result_files>
+    <field>
+      <id>ID_JOB_RUN</id>
+      <enabled>Y</enabled>
+      <name>ID_JOB_RUN</name>
+    </field>
+    <field>
+      <id>ID_JOB</id>
+      <enabled>Y</enabled>
+      <name>ID_JOB</name>
+    </field>
+    <field>
+      <id>JOBNAME</id>
+      <enabled>Y</enabled>
+      <name>JOBNAME</name>
+    </field>
+    <field>
+      <id>NAMESPACE</id>
+      <enabled>Y</enabled>
+      <name>NAMESPACE</name>
+    </field>
+    <field>
+      <id>CHECKPOINT_NAME</id>
+      <enabled>Y</enabled>
+      <name>CHECKPOINT_NAME</name>
+    </field>
+    <field>
+      <id>CHECKPOINT_COPYNR</id>
+      <enabled>Y</enabled>
+      <name>CHECKPOINT_COPYNR</name>
+    </field>
+    <field>
+      <id>ATTEMPT_NR</id>
+      <enabled>Y</enabled>
+      <name>ATTEMPT_NR</name>
+    </field>
+    <field>
+      <id>JOB_RUN_START_DATE</id>
+      <enabled>Y</enabled>
+      <name>JOB_RUN_START_DATE</name>
+    </field>
+    <field>
+      <id>LOGDATE</id>
+      <enabled>Y</enabled>
+      <name>LOGDATE</name>
+    </field>
+    <field>
+      <id>RESULT_XML</id>
+      <enabled>Y</enabled>
+      <name>RESULT_XML</name>
+    </field>
+    <field>
+      <id>PARAMETER_XML</id>
+      <enabled>Y</enabled>
+      <name>PARAMETER_XML</name>
+    </field>
+  </checkpoint-log-table>
+  <pass_batchid>N</pass_batchid>
+  <shared_objects_file />
+  <entries>
+    <entry>
+      <name>Start</name>
+      <description />
+      <type>SPECIAL</type>
+      <attributes />
+      <start>Y</start>
+      <dummy>N</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>96</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Header Validation</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>claim_file_header_validation - original format</transname>
+      <directory>${Internal.Entry.Current.Directory}/Claims/validations/rejects</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>400</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Check if File Was Valid</name>
+      <description />
+      <type>EVAL_TABLE_CONTENT</type>
+      <attributes />
+      <connection>GENERIC REDSHIFT CONNECTION</connection>
+      <schemaname />
+      <tablename />
+      <success_condition>rows_count_equal</success_condition>
+      <limit>0</limit>
+      <is_custom_sql>Y</is_custom_sql>
+      <is_usevars>Y</is_usevars>
+      <custom_sql>SELECT *
+FROM ${V_schema_name}.errors_and_rejects_headers
+WHERE interchange_control_number = '${V_icn}'</custom_sql>
+      <add_rows_result>N</add_rows_result>
+      <clear_result_rows>Y</clear_result_rows>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>544</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Claim Detail Validations</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>paid_claim_file_validation - NULL checks</transname>
+      <directory>${Internal.Entry.Current.Directory}/Claims/validations/rejects</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>800</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Lookups</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>common_lookups</transname>
+      <directory>${Internal.Entry.Current.Directory}/Claims/validations/rejects</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1008</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Post-Lookup Validations</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>post_lookup_validations</transname>
+      <directory>${Internal.Entry.Current.Directory}/Claims/validations/errors</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1248</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Dummy</name>
+      <description />
+      <type>SPECIAL</type>
+      <attributes />
+      <start>N</start>
+      <dummy>Y</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>480</xloc>
+      <yloc>656</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Move Files to S3</name>
+      <description />
+      <type>SHELL</type>
+      <attributes />
+      <filename />
+      <work_directory>/pentaho-workspace/data/${V_pentaho_folder_name}/setl_staging/</work_directory>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <set_append_logfile>N</set_append_logfile>
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <insertScript>Y</insertScript>
+      <script>#!/bin/bash
+
+aws s3 cp ${V_data_key}_medical_claim_header_staging_${V_icn}.csv s3://aver-client-${V_data_key}/integration/etl/staging/${V_data_key}_medical_claim_header_staging_${V_icn}.csv
+aws s3 cp ${V_data_key}_medical_claim_line_staging_${V_icn}.csv s3://aver-client-${V_data_key}/integration/etl/staging/${V_data_key}_medical_claim_line_staging_${V_icn}.csv
+aws s3 cp ${V_data_key}_procedure_staging_${V_icn}.csv s3://aver-client-${V_data_key}/integration/etl/staging/${V_data_key}_procedure_staging_${V_icn}.csv
+aws s3 cp ${V_data_key}_diagnosis_staging_${V_icn}.csv s3://aver-client-${V_data_key}/integration/etl/staging/${V_data_key}_diagnosis_staging_${V_icn}.csv</script>
+      <loglevel>Basic</loglevel>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1408</xloc>
+      <yloc>448</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Update Redshift</name>
+      <description />
+      <type>SQL</type>
+      <attributes />
+      <sql>COPY ${V_schema_name}.medical_claim_header
+(attending_provider_id,referring_provider_id,claim_type,id,member_id,enrollment_id,admit_date,allowed_amount,authorization_number,claim_status_code,billed_amount,claim_adjustment_indicator,claim_id,claim_member_id,cob_amount,coinsurance_amount,copay_amount,deductible_amount,discharge_date,first_date_of_service,last_date_of_service,load_timestamp,noncovered_amount,other_insurance_indicator,paid_amount,paid_date,previous_claim_id,source_document_control_number,source_file_type,load_date,billing_provider_id,type_of_bill_code,admit_source_code,admit_type_code,discharge_status_code,admit_diagnosis_code,icd_version,principal_procedure_date,received_date,principal_procedure_code,operating_provider_id,servicing_location_id,ms_drg_code,apr_drg_code,ap_drg_code,claim_type_code,internal_claim_id,home_host_indicator,paid_in_network_indicator,primary_paid_amount,severity_of_illness_code,cms_certification_number,admit_region_code,outpatient_priority_code,claim_service_type_code,day_utilization_type_code,medicare_nonpayment_reason_code)
+FROM 's3://aver-client-${V_data_key}/integration/etl/staging/${V_data_key}_medical_claim_header_staging_${V_icn}.csv' 
+iam_role 'arn:aws:iam::781803879514:role/redshift-pentaho-role'
+EMPTYASNULL
+CSV;
+
+COPY ${V_schema_name}.medical_claim_line
+(adjustment_code,adjustment_indicator,adjustment_number,allowed_amount,billed_amount,cob_amount,coinsurance_amount,copay_amount,cpt_hcpcs_code,cpt_hcpcs_modifier1,cpt_hcpcs_modifier2,cpt_hcpcs_modifier3,cpt_hcpcs_modifier4,cpt_hcpcs_modifier5,cpt_hcpcs_modifier6,deductible_amount,denial_code,id,line_number,load_date,load_timestamp,medical_claim_header_id,member_id,noncovered_amount,paid_amount,paid_date,payment_status,place_of_service_code,principal_diagnosis_code,principal_diagnosis_icd_version,principal_diagnosis_poa_code,procedure_code_type,rendering_provider_id,revenue_code,service_end_date,service_start_date,service_units,source_document_control_number,source_file_type,ordering_provider_id,last_adjusted_indicator,catastrophic_amount,internal_line_number,financial_group_code,financial_subgroup_code,other_insurance_allowed_amount,primary_paid_amount,primary_payer_code,type_of_service_code,processing_indicator_code)
+FROM 's3://aver-client-${V_data_key}/integration/etl/staging/${V_data_key}_medical_claim_line_staging_${V_icn}.csv' 
+iam_role 'arn:aws:iam::781803879514:role/redshift-pentaho-role'
+EMPTYASNULL
+CSV;
+
+COPY ${V_schema_name}.procedure
+(id,load_timestamp,source_document_control_number,member_id,medical_claim_header_id,icd_version,source_file_type,sequence,load_date,code,service_date)
+FROM 's3://aver-client-${V_data_key}/integration/etl/staging/${V_data_key}_procedure_staging_${V_icn}.csv' 
+iam_role 'arn:aws:iam::781803879514:role/redshift-pentaho-role'
+EMPTYASNULL
+CSV;
+
+COPY ${V_schema_name}.diagnosis
+(id,load_timestamp,source_document_control_number,member_id,medical_claim_line_id,icd_version,sequence,source_file_type,load_date,code,present_on_admission_code)
+FROM 's3://aver-client-${V_data_key}/integration/etl/staging/${V_data_key}_diagnosis_staging_${V_icn}.csv' 
+iam_role 'arn:aws:iam::781803879514:role/redshift-pentaho-role'
+EMPTYASNULL
+CSV;
+
+
+--UPDATE MAXIMUM_DATA_DATE IN MEMBER-----------------------------------------------
+--update ${V_schema_name}.member
+--set maximum_data_date = 
+
+--UPDATE ENROLLMENT_ID IN MCH------------------------------------------------------
+update ${V_schema_name}.medical_claim_header
+set enrollment_id = e.id
+from ${V_schema_name}.enrollment e
+where medical_claim_header.member_id = e.member_id
+and (medical_claim_header.first_date_of_service >= e.effective_date
+and medical_claim_header.first_date_of_service &lt;= e.termination_date)
+--and e.benefit_type_code = 'MED' 
+and medical_claim_header.source_document_control_number = '${V_icn}'
+;
+
+
+
+
+--BILLING_PROVIDER_BY_MEMBER------------------------------------------------------------------
+insert into ${V_schema_name}.billing_provider_by_member (member_id,id,address_line_1,address_line_2,affiliation,city,client_specialty_type,contract_effective_date,contract_expiration_date,first_name,full_name,last_name,load_timestamp,middle_name,npi,organization_id,organization_name,organization_npi,organization_state,organization_zip_code,preferred_network_indicator,provider_id,provider_type,source_document_control_number,specialty_type_code,state,tax_id,taxonomy_code,zip_code,load_date)
+(
+select 
+distinct h.member_id,
+h.billing_provider_id as id,
+p.address_line_1,
+p.address_line_2,
+p.affiliation_id as affiliation,
+p.city,
+p.client_specialty_type,
+p.effective_date as contract_effective_date,
+p.termination_date as contract_expiration_date,
+p.first_name,
+p.full_name,
+p.last_name_or_organization_name as last_name,
+h.load_timestamp,
+p.middle_name,
+p.npi,
+p.organization_id,
+p.organization_name,
+p.organization_npi,
+p.organization_state,
+p.organization_zip_code,
+p.preferred_network_indicator,
+h.billing_provider_id as provider_id,
+p.provider_type,
+h.source_document_control_number,
+p.specialty_type_code,
+p.state,
+p.tax_id,
+p.taxonomy_code,
+p.zip_code,
+h.load_date
+from ${V_schema_name}.medical_claim_header h
+left join ${V_schema_name}.provider_roster p on p.provider_id = h.billing_provider_id
+where h.source_document_control_number = '${V_icn}'
+);
+
+
+--ATTENDING_PROVIDER_BY_MEMBER------------------------------------------------------------------
+insert into ${V_schema_name}.attending_provider_by_member (member_id,id,address_line_1,address_line_2,city,first_name,full_name,last_name,load_timestamp,npi,provider_id,provider_type,source_document_control_number,specialty_type_code,state,tax_id,taxonomy_code,zip_code,load_date)
+(
+select 
+distinct h.member_id,
+h.attending_provider_id as id,
+p.address_line_1,
+p.address_line_2,
+p.city,
+p.first_name,
+p.full_name,
+p.last_name_or_organization_name as last_name,
+h.load_timestamp,
+p.npi,
+h.attending_provider_id as provider_id,
+p.provider_type,
+h.source_document_control_number,
+p.specialty_type_code,
+p.state,
+p.tax_id,
+p.taxonomy_code,
+p.zip_code,
+h.load_date
+from ${V_schema_name}.medical_claim_header h
+left join ${V_schema_name}.provider_roster p on p.provider_id = h.attending_provider_id
+where h.source_document_control_number = '${V_icn}'
+);
+
+
+--RENDERING_PROVIDER_BY_MEMBER------------------------------------------------------------------
+insert into ${V_schema_name}.rendering_provider_by_member (member_id,id,address_line_1,address_line_2,affiliation,city,client_provider_type,client_specialty_type,contract_effective_date,contract_expiration_date,first_name,full_name,last_name,load_timestamp,npi,organization_id,organization_name,organization_npi,preferred_network_indicator,provider_id,provider_type,source_document_control_number,specialty_type_code,state,tax_id,taxonomy_code,load_date,zip_code)
+(
+select 
+distinct l.member_id,
+l.rendering_provider_id as id,
+p.address_line_1,
+p.address_line_2,
+p.affiliation_id as affiliation,
+p.city,
+p.client_provider_type,
+p.client_specialty_type,
+p.effective_date as contract_effective_date,
+p.termination_date as contract_expiration_date,
+p.first_name,
+p.full_name,
+p.last_name_or_organization_name as last_name,
+l.load_timestamp,
+p.npi,
+p.organization_id,
+p.organization_name,
+p.organization_npi,
+p.preferred_network_indicator,
+l.rendering_provider_id as provider_id,
+p.provider_type,
+l.source_document_control_number,
+p.specialty_type_code,
+p.state,
+p.tax_id,
+p.taxonomy_code,
+l.load_date,
+p.zip_code
+from ${V_schema_name}.medical_claim_line l
+left join ${V_schema_name}.provider_roster p on p.provider_id = l.rendering_provider_id
+where l.source_document_control_number = '${V_icn}'
+);
+
+
+--REFERRING_PROVIDER_BY_MEMBER------------------------------------------------------------------
+insert into ${V_schema_name}.referring_provider_by_member (member_id,id,first_name,full_name,last_name,load_timestamp,npi,provider_id,provider_type,source_document_control_number,specialty_type_code,tax_id,load_date,taxonomy_code)
+(
+select 
+distinct h.member_id,
+h.referring_provider_id as id,
+p.first_name,
+p.full_name,
+p.last_name_or_organization_name as last_name,
+h.load_timestamp,
+p.npi,
+h.referring_provider_id as provider_id,
+p.provider_type,
+h.source_document_control_number,
+p.specialty_type_code,
+p.tax_id,
+h.load_date,
+p.taxonomy_code
+from ${V_schema_name}.medical_claim_header h
+left join ${V_schema_name}.provider_roster p on p.provider_id = h.referring_provider_id
+where h.source_document_control_number = '${V_icn}'
+);
+
+--OPERATING_PROVIDER_BY_MEMBER------------------------------------------------------------------
+insert into ${V_schema_name}.operating_provider_by_member (member_id,id,address_line_1,address_line_2,city,first_name,full_name,last_name,npi,provider_id,provider_type,specialty_type_code,state,taxonomy_code,zip_code,source_document_control_number,load_date,load_timestamp)
+(
+select 
+distinct h.member_id,
+h.operating_provider_id as id,
+p.address_line_1,
+p.address_line_2,
+p.city,
+p.first_name,
+p.full_name,
+p.last_name_or_organization_name as last_name,
+p.npi,
+h.operating_provider_id as provider_id,
+p.provider_type,
+p.specialty_type_code,
+p.state,
+p.taxonomy_code,
+p.zip_code,
+h.source_document_control_number,
+h.load_date,
+h.load_timestamp
+from ${V_schema_name}.medical_claim_header h
+left join ${V_schema_name}.provider_roster p on p.provider_id = h.operating_provider_id
+where h.source_document_control_number = '${V_icn}'
+);
+
+--ORDERING_PROVIDER_BY_MEMBER------------------------------------------------------------------
+insert into ${V_schema_name}.ordering_provider_by_member (member_id,id,address_line_1,address_line_2,city,first_name,full_name,last_name,npi,provider_id,provider_type,specialty_type_code,state,taxonomy_code,zip_code,source_document_control_number,load_date,load_timestamp)
+(
+select 
+distinct l.member_id,
+l.ordering_provider_id as id,
+p.address_line_1,
+p.address_line_2,
+p.city,
+p.first_name,
+p.full_name,
+p.last_name_or_organization_name as last_name,
+p.npi,
+l.ordering_provider_id as provider_id,
+p.provider_type,
+p.specialty_type_code,
+p.state,
+p.taxonomy_code,
+p.zip_code,
+l.source_document_control_number,
+l.load_date,
+l.load_timestamp
+from ${V_schema_name}.medical_claim_line l
+left join ${V_schema_name}.provider_roster p on p.provider_id = l.ordering_provider_id
+where l.source_document_control_number = '${V_icn}'
+);
+
+--SERVICING_LOCATION_BY_MEMBER------------------------------------------------------------------
+insert into ${V_schema_name}.servicing_location_by_member (member_id,id,address_line_1,address_line_2,city,client_specialty_type,first_name,full_name,last_name,location_id,npi,organization_id,organization_name,provider_type,specialty_type_code,state,tax_id,taxonomy_code,zip_code,source_document_control_number,load_date,load_timestamp)
+(
+select 
+distinct h.member_id,
+h.servicing_location_id as id,
+p.address_line_1,
+p.address_line_2,
+p.city,
+p.client_specialty_type,
+p.first_name,
+p.full_name,
+p.last_name_or_organization_name as last_name,
+h.servicing_location_id as location_id,
+p.npi,
+p.organization_id,
+p.organization_name,
+p.provider_type,
+p.specialty_type_code,
+p.state,
+p.tax_id,
+p.taxonomy_code,
+p.zip_code,
+h.source_document_control_number,
+h.load_date,
+h.load_timestamp
+from ${V_schema_name}.medical_claim_header h
+left join ${V_schema_name}.provider_roster p on p.provider_id = h.servicing_location_id
+where h.source_document_control_number = '${V_icn}'
+);
+
+--RISK_SCORE------------------------------------------------------------------------
+BEGIN; truncate table ${V_schema_name}.risk_score;
+insert into ${V_schema_name}.risk_score (
+id,
+member_id,
+risk_model_code,
+risk_score,
+source_document_control_number,
+load_timestamp,
+load_date
+)
+select
+distinct h.member_id  || '|' || 'UNAVAILABLE' as id,
+h.member_id,
+'UNAVAILABLE' as risk_model_code,
+NULL as risk_score,
+h.source_document_control_number,
+NULL::timestamp as load_timestamp,
+h.load_date
+from ${V_schema_name}.member h
+;
+
+
+--UPDATE_ENROLLMENT_FROM_MCH-------------------------------------------------------
+
+INSERT INTO ${V_schema_name}.enrollment (id,member_id,effective_date,termination_date,account_id,corporate_entity_code,benefit_type_code,division,dual_status_code,employer_id,employer_name,enrollment_member_id,family_id,group_id,health_plan_member_id,health_plan_state,internal_member_id,last_change_date,line_of_business,load_timestamp,major_customer_segment,medicaid_id,medicare_entitlement_code,medicare_id,medicare_orec_code,medicare_status_code,mhsa_coverage_indicator,multi_coverage_indicator,pcp_indicator,plan_code,policy_number,relationship,source_document_control_number,subscriber_id,coverage_type,group_name,health_plan_product_name,load_date,product,program,source_file_type)
+select
+distinct h.enrollment_id as id,
+h.member_id,
+NULL::date as effective_date,
+NULL::date as termination_date,
+NULL as account_id,
+NULL as corporate_entity_code,
+'MED' as benefit_type_code,
+NULL as division,
+NULL as dual_status_code,
+NULL as employer_id,
+NULL as employer_name,
+NULL as enrollment_member_id,
+NULL as family_id,
+NULL as group_id,
+h.member_id as health_plan_member_id,
+NULL as health_plan_state,
+NULL as internal_member_id,
+h.load_date as last_change_date,
+NULL as line_of_business,
+h.load_timestamp,
+NULL as major_customer_segment,
+NULL as medicaid_id,
+NULL as medicare_entitlement_code,
+NULL as medicare_id,
+NULL as medicare_orec_code,
+NULL as medicare_status_code,
+NULL::boolean as mhsa_coverage_indicator,
+NULL::boolean as multi_coverage_indicator,
+'f'::boolean as pcp_indicator,
+NULL as plan_code,
+NULL as policy_number,
+'18' as relationship,
+h.source_document_control_number,
+NULL as subscriber_id,
+NULL as coverage_type,
+NULL as group_name,
+NULL as health_plan_product_name,
+h.load_date,
+NULL as product,
+NULL as program,
+h.source_file_type
+from ${V_schema_name}.medical_claim_header h
+where enrollment_id NOT IN (
+		select id from ${V_schema_name}.enrollment
+)
+--and h.source_document_control_number = '${V_icn}'
+;
+
+</sql>
+      <useVariableSubstitution>T</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename />
+      <sendOneStatement>F</sendOneStatement>
+      <connection>GENERIC REDSHIFT CONNECTION</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1408</xloc>
+      <yloc>560</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Claims Transformations</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>claims_transformation</transname>
+      <directory>${Internal.Entry.Current.Directory}/Claims</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1408</xloc>
+      <yloc>336</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Get Claims Member Counts</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>get_member_counts</transname>
+      <directory>${Internal.Entry.Current.Directory}/Claims</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1408</xloc>
+      <yloc>672</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Set variables</name>
+      <description />
+      <type>SET_VARIABLES</type>
+      <attributes />
+      <replacevars>Y</replacevars>
+      <filename />
+      <file_variable_type>ROOT_JOB</file_variable_type>
+      <fields>
+        <field>
+          <variable_name>V_payer_reference_qualifier</variable_name>
+          <variable_value>04</variable_value>
+          <variable_type>ROOT_JOB</variable_type>
+        </field>
+        <field>
+          <variable_name>V_payer_reference_id_field</variable_name>
+          <variable_value>Claim ID</variable_value>
+          <variable_type>ROOT_JOB</variable_type>
+        </field>
+        <field>
+          <variable_name>V_header_errors</variable_name>
+          <variable_value>NO</variable_value>
+          <variable_type>ROOT_JOB</variable_type>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>672</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Set Reject Variables</name>
+      <description />
+      <type>SET_VARIABLES</type>
+      <attributes />
+      <replacevars>Y</replacevars>
+      <filename />
+      <file_variable_type>ROOT_JOB</file_variable_type>
+      <fields>
+        <field>
+          <variable_name>V_transaction_processing_status_reject</variable_name>
+          <variable_value>R</variable_value>
+          <variable_type>ROOT_JOB</variable_type>
+        </field>
+        <field>
+          <variable_name>V_payer_reference_qualifier</variable_name>
+          <variable_value>02</variable_value>
+          <variable_type>ROOT_JOB</variable_type>
+        </field>
+        <field>
+          <variable_name>V_transaction_processing_status_error</variable_name>
+          <variable_value>E</variable_value>
+          <variable_type>ROOT_JOB</variable_type>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>256</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Set Header Error Var = YES</name>
+      <description />
+      <type>SET_VARIABLES</type>
+      <attributes />
+      <replacevars>Y</replacevars>
+      <filename />
+      <file_variable_type>JVM</file_variable_type>
+      <fields>
+        <field>
+          <variable_name>V_header_errors</variable_name>
+          <variable_value>YES</variable_value>
+          <variable_type>ROOT_JOB</variable_type>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>640</xloc>
+      <yloc>368</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>File exists</name>
+      <description />
+      <type>FILE_EXISTS</type>
+      <attributes />
+      <filename>/pentaho-workspace/data/${V_pentaho_folder_name}/setl_staging/${V_icn}_detail_validations</filename>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Success</name>
+      <description />
+      <type>SUCCESS</type>
+      <attributes />
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1136</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>lookup file exists</name>
+      <description />
+      <type>FILE_EXISTS</type>
+      <attributes />
+      <filename>/pentaho-workspace/data/${V_pentaho_folder_name}/setl_staging/${V_icn}_lookups</filename>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1104</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>post-lookup file exists</name>
+      <description />
+      <type>FILE_EXISTS</type>
+      <attributes />
+      <filename>/pentaho-workspace/data/${V_pentaho_folder_name}/setl_staging/${V_icn}_post_lookups</filename>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1408</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output MCH</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>medical_claim_header</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>medical_claim_header</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1408</xloc>
+      <yloc>848</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output MCL</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>medical_claim_line</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>medical_claim_line</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1408</xloc>
+      <yloc>928</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output Diag</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>diagnosis</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>diagnosis</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1408</xloc>
+      <yloc>1008</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output Proc</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>procedure</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>procedure</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1408</xloc>
+      <yloc>1088</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output Bill Prov</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>billing_provider</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>billing_provider_by_member</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1312</xloc>
+      <yloc>1088</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output Att Prov</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>attending_provider</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>attending_provider_by_member</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1200</xloc>
+      <yloc>1088</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output Rend Prov</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>rendering_provider</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>rendering_provider_by_member</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1072</xloc>
+      <yloc>1088</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output Enrollment</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>enrollment</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>enrollment</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>1088</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Set staging output dir</name>
+      <description />
+      <type>SET_VARIABLES</type>
+      <attributes />
+      <replacevars>Y</replacevars>
+      <filename />
+      <file_variable_type>ROOT_JOB</file_variable_type>
+      <fields>
+        <field>
+          <variable_name>V_staging_output_dir</variable_name>
+          <variable_value>/pentaho-workspace/data/${V_pentaho_folder_name}/staging_output/${V_icn}/</variable_value>
+          <variable_type>ROOT_JOB</variable_type>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1408</xloc>
+      <yloc>752</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Reject Related Records</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>reject_related_records</transname>
+      <directory>${Internal.Entry.Current.Directory}/Claims</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1408</xloc>
+      <yloc>144</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>clean file exists</name>
+      <description />
+      <type>FILE_EXISTS</type>
+      <attributes />
+      <filename>/pentaho-workspace/data/${V_pentaho_folder_name}/setl_staging/${V_icn}_clean</filename>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1408</xloc>
+      <yloc>240</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output Ref Prov</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>referring_provider</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>referring_provider_by_member</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>816</xloc>
+      <yloc>1088</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output Op Prov</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>operating_provider</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>operating_provider_by_member</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>704</xloc>
+      <yloc>1088</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output Ord Prov</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>ordering_provider</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>ordering_provider_by_member</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>592</xloc>
+      <yloc>1088</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output Serv Loc</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>servicing_location</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>servicing_location_by_member</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>592</xloc>
+      <yloc>992</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Output Risk Score</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Metadata Inject Output JSON</transname>
+      <directory>${Internal.Entry.Current.Directory}/Staging Output</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>V_table_name</name>
+          <stream_name />
+          <value>risk_score</value>
+        </parameter>
+        <parameter>
+          <name>V_redshift_table_name</name>
+          <stream_name />
+          <value>risk_score</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>592</xloc>
+      <yloc>912</yloc>
+      <attributes_kjc />
+    </entry>
+  </entries>
+  <hops>
+    <hop>
+      <from>Header Validation</from>
+      <to>Check if File Was Valid</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Claims Transformations</from>
+      <to>Move Files to S3</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Move Files to S3</from>
+      <to>Update Redshift</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Update Redshift</from>
+      <to>Get Claims Member Counts</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Check if File Was Valid</from>
+      <to>Set variables</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Set variables</from>
+      <to>Claim Detail Validations</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Start</from>
+      <to>Set Reject Variables</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Set Reject Variables</from>
+      <to>Header Validation</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Check if File Was Valid</from>
+      <to>Set Header Error Var = YES</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Set Header Error Var = YES</from>
+      <to>Dummy</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Claim Detail Validations</from>
+      <to>File exists</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>File exists</from>
+      <to>Lookups</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>File exists</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Lookups</from>
+      <to>lookup file exists</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>lookup file exists</from>
+      <to>Post-Lookup Validations</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>lookup file exists</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Post-Lookup Validations</from>
+      <to>post-lookup file exists</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>post-lookup file exists</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Get Claims Member Counts</from>
+      <to>Set staging output dir</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Set staging output dir</from>
+      <to>Output MCH</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output MCH</from>
+      <to>Output MCL</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output MCL</from>
+      <to>Output Diag</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output Diag</from>
+      <to>Output Proc</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output Proc</from>
+      <to>Output Bill Prov</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output Bill Prov</from>
+      <to>Output Att Prov</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output Att Prov</from>
+      <to>Output Rend Prov</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output Rend Prov</from>
+      <to>Output Enrollment</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Success</from>
+      <to>Dummy</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>post-lookup file exists</from>
+      <to>Reject Related Records</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Reject Related Records</from>
+      <to>clean file exists</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>clean file exists</from>
+      <to>Claims Transformations</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>clean file exists</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output Enrollment</from>
+      <to>Output Ref Prov</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output Ref Prov</from>
+      <to>Output Op Prov</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output Op Prov</from>
+      <to>Output Ord Prov</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output Ord Prov</from>
+      <to>Output Serv Loc</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output Serv Loc</from>
+      <to>Output Risk Score</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Output Risk Score</from>
+      <to>Dummy</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>lookup file exists</from>
+      <to>Reject Related Records</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Set variables</from>
+      <to>Claims Transformations</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+  </hops>
+  <notepads>
+  </notepads>
+  <attributes>
+    <group>
+      <name>METASTORE.pentaho</name>
+      <attribute>
+        <key>Default Run Configuration</key>
+        <value>{"namespace":"pentaho","id":"Default Run Configuration","name":"Default Run Configuration","description":"Defines a default run configuration","metaStoreName":null}</value>
+      </attribute>
+    </group>
+    <group>
+      <name>{"_":"Embedded MetaStore Elements","namespace":"pentaho","type":"Default Run Configuration"}</name>
+      <attribute>
+        <key>Pentaho local</key>
+        <value>{"children":[{"children":[],"id":"server","value":null},{"children":[],"id":"clustered","value":"N"},{"children":[],"id":"name","value":"Pentaho local"},{"children":[],"id":"description","value":null},{"children":[],"id":"pentaho","value":"N"},{"children":[],"id":"readOnly","value":"Y"},{"children":[],"id":"sendResources","value":"N"},{"children":[],"id":"logRemoteExecutionLocally","value":"N"},{"children":[],"id":"remote","value":"N"},{"children":[],"id":"local","value":"Y"},{"children":[],"id":"showTransformations","value":"N"}],"id":"Pentaho local","value":null,"name":"Pentaho local","owner":null,"ownerPermissionsList":[]}</value>
+      </attribute>
+    </group>
+  </attributes>
+</job>

@@ -1,0 +1,5 @@
+openai api fine_tunes.create -t "ldc73doc01_prepared.jsonl" -m davinci
+
+openai api fine_tunes.follow -i ft-HsXT1r7imQsHRMhJ9AhObz19
+
+openai api completions.create -m curie:ft-personal-2023-01-13-20-57-00 -p <YOUR_PROMPT>

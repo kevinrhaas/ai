@@ -1,0 +1,1654 @@
+<job>
+  <name>Generate Response File for ICN</name>
+  <description />
+  <extended_description />
+  <job_version />
+  <directory>/public/BBM ETL - DEV/Generate Reponse File</directory>
+  <created_user />
+  <created_date>2020/05/01 11:23:24.078</created_date>
+  <modified_user>marcie</modified_user>
+  <modified_date>2020/04/17 13:52:12.996</modified_date>
+  <parameters>
+    </parameters>
+  <connection>
+    <name>GENERIC REDSHIFT CONNECTION</name>
+    <server>${V_host_name}</server>
+    <type>GENERIC</type>
+    <access>Native</access>
+    <database>${V_database_name}</database>
+    <port>5439</port>
+    <username />
+    <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>CUSTOM_DRIVER_CLASS</code>
+        <attribute>com.amazon.redshift.jdbc4.Driver</attribute>
+      </attribute>
+      <attribute>
+        <code>CUSTOM_URL</code>
+        <attribute>jdbc:redshift:iam://${V_host_name}:5439/${V_database_name}</attribute>
+      </attribute>
+      <attribute>
+        <code>DATABASE_DIALECT_ID</code>
+        <attribute>Generic database</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_GENERIC.DbUser</code>
+        <attribute>pentaho_integration_user</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_GENERIC.ssl</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>5439</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <slaveservers>
+    <slaveserver>
+      <name>ClusterMaster</name>
+      <hostname>localhost</hostname>
+      <port>8080</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>DEV_8</name>
+      <hostname>pentaho-dev2.avercloud.com</hostname>
+      <port>8443</port>
+      <webAppName>pentaho</webAppName>
+      <username>remote_job_runner</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>Master</name>
+      <hostname>localhost</hostname>
+      <port>8081</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>NOPHI_8</name>
+      <hostname>pentaho-nophi.avercloud.com</hostname>
+      <port>8443</port>
+      <webAppName>pentaho</webAppName>
+      <username>remote_job_runner</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>PROD_8</name>
+      <hostname>pentaho-prod2.avercloud.com</hostname>
+      <port>8443</port>
+      <webAppName>pentaho</webAppName>
+      <username>remote_job_runner</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>Slave 2 (100.39)</name>
+      <hostname>192.168.100.39</hostname>
+      <port>9080</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>Slave 3 (100.40)</name>
+      <hostname>192.168.100.40</hostname>
+      <port>9080</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>Slave1</name>
+      <hostname>localhost</hostname>
+      <port>8082</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>Slave2</name>
+      <hostname>localhost</hostname>
+      <port>8083</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>Slave3</name>
+      <hostname>localhost</hostname>
+      <port>8084</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>cm-metricsapp01</name>
+      <hostname>cm-metricsapp01</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>cm-metricsdb01</name>
+      <hostname>cm-metricsdb01</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>cm-metricsdb02</name>
+      <hostname>cm-metricsdb02</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>cm-metricsdb03</name>
+      <hostname>cm-metricsdb03</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>cm-metricsetl01</name>
+      <hostname>cm-metricsetl01</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>etl01</name>
+      <hostname>cm-metricsetl01</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>local1</name>
+      <hostname>localhost</hostname>
+      <port>40001</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>local2</name>
+      <hostname>localhost</hostname>
+      <port>40002</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>tmp01</name>
+      <hostname>cm-metricstmp01</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>tmp02</name>
+      <hostname>cm-metricstmp02</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>tmp03</name>
+      <hostname>cm-metricstmp03</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>tmp04</name>
+      <hostname>cm-metricstmp04</hostname>
+      <port>40000</port>
+      <webAppName />
+      <username>cluster</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>N</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+    <slaveserver>
+      <name>vmDumas</name>
+      <hostname>vmDumas</hostname>
+      <port>9080</port>
+      <webAppName>pentaho-di</webAppName>
+      <username>csheen</username>
+      <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+      <proxy_hostname />
+      <proxy_port />
+      <non_proxy_hosts />
+      <master>Y</master>
+      <sslMode>N</sslMode>
+    </slaveserver>
+  </slaveservers>
+  <job-log-table>
+    <connection />
+    <schema />
+    <table />
+    <size_limit_lines />
+    <interval />
+    <timeout_days />
+    <field>
+      <id>ID_JOB</id>
+      <enabled>Y</enabled>
+      <name>ID_JOB</name>
+    </field>
+    <field>
+      <id>CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>CHANNEL_ID</name>
+    </field>
+    <field>
+      <id>JOBNAME</id>
+      <enabled>Y</enabled>
+      <name>JOBNAME</name>
+    </field>
+    <field>
+      <id>STATUS</id>
+      <enabled>Y</enabled>
+      <name>STATUS</name>
+    </field>
+    <field>
+      <id>LINES_READ</id>
+      <enabled>Y</enabled>
+      <name>LINES_READ</name>
+    </field>
+    <field>
+      <id>LINES_WRITTEN</id>
+      <enabled>Y</enabled>
+      <name>LINES_WRITTEN</name>
+    </field>
+    <field>
+      <id>LINES_UPDATED</id>
+      <enabled>Y</enabled>
+      <name>LINES_UPDATED</name>
+    </field>
+    <field>
+      <id>LINES_INPUT</id>
+      <enabled>Y</enabled>
+      <name>LINES_INPUT</name>
+    </field>
+    <field>
+      <id>LINES_OUTPUT</id>
+      <enabled>Y</enabled>
+      <name>LINES_OUTPUT</name>
+    </field>
+    <field>
+      <id>LINES_REJECTED</id>
+      <enabled>Y</enabled>
+      <name>LINES_REJECTED</name>
+    </field>
+    <field>
+      <id>ERRORS</id>
+      <enabled>Y</enabled>
+      <name>ERRORS</name>
+    </field>
+    <field>
+      <id>STARTDATE</id>
+      <enabled>Y</enabled>
+      <name>STARTDATE</name>
+    </field>
+    <field>
+      <id>ENDDATE</id>
+      <enabled>Y</enabled>
+      <name>ENDDATE</name>
+    </field>
+    <field>
+      <id>LOGDATE</id>
+      <enabled>Y</enabled>
+      <name>LOGDATE</name>
+    </field>
+    <field>
+      <id>DEPDATE</id>
+      <enabled>Y</enabled>
+      <name>DEPDATE</name>
+    </field>
+    <field>
+      <id>REPLAYDATE</id>
+      <enabled>Y</enabled>
+      <name>REPLAYDATE</name>
+    </field>
+    <field>
+      <id>LOG_FIELD</id>
+      <enabled>Y</enabled>
+      <name>LOG_FIELD</name>
+    </field>
+    <field>
+      <id>EXECUTING_SERVER</id>
+      <enabled>N</enabled>
+      <name>EXECUTING_SERVER</name>
+    </field>
+    <field>
+      <id>EXECUTING_USER</id>
+      <enabled>N</enabled>
+      <name>EXECUTING_USER</name>
+    </field>
+    <field>
+      <id>START_JOB_ENTRY</id>
+      <enabled>N</enabled>
+      <name>START_JOB_ENTRY</name>
+    </field>
+    <field>
+      <id>CLIENT</id>
+      <enabled>N</enabled>
+      <name>CLIENT</name>
+    </field>
+  </job-log-table>
+  <jobentry-log-table>
+    <connection />
+    <schema />
+    <table />
+    <timeout_days />
+    <field>
+      <id>ID_BATCH</id>
+      <enabled>Y</enabled>
+      <name>ID_BATCH</name>
+    </field>
+    <field>
+      <id>CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>CHANNEL_ID</name>
+    </field>
+    <field>
+      <id>LOG_DATE</id>
+      <enabled>Y</enabled>
+      <name>LOG_DATE</name>
+    </field>
+    <field>
+      <id>JOBNAME</id>
+      <enabled>Y</enabled>
+      <name>TRANSNAME</name>
+    </field>
+    <field>
+      <id>JOBENTRYNAME</id>
+      <enabled>Y</enabled>
+      <name>STEPNAME</name>
+    </field>
+    <field>
+      <id>LINES_READ</id>
+      <enabled>Y</enabled>
+      <name>LINES_READ</name>
+    </field>
+    <field>
+      <id>LINES_WRITTEN</id>
+      <enabled>Y</enabled>
+      <name>LINES_WRITTEN</name>
+    </field>
+    <field>
+      <id>LINES_UPDATED</id>
+      <enabled>Y</enabled>
+      <name>LINES_UPDATED</name>
+    </field>
+    <field>
+      <id>LINES_INPUT</id>
+      <enabled>Y</enabled>
+      <name>LINES_INPUT</name>
+    </field>
+    <field>
+      <id>LINES_OUTPUT</id>
+      <enabled>Y</enabled>
+      <name>LINES_OUTPUT</name>
+    </field>
+    <field>
+      <id>LINES_REJECTED</id>
+      <enabled>Y</enabled>
+      <name>LINES_REJECTED</name>
+    </field>
+    <field>
+      <id>ERRORS</id>
+      <enabled>Y</enabled>
+      <name>ERRORS</name>
+    </field>
+    <field>
+      <id>RESULT</id>
+      <enabled>Y</enabled>
+      <name>RESULT</name>
+    </field>
+    <field>
+      <id>NR_RESULT_ROWS</id>
+      <enabled>Y</enabled>
+      <name>NR_RESULT_ROWS</name>
+    </field>
+    <field>
+      <id>NR_RESULT_FILES</id>
+      <enabled>Y</enabled>
+      <name>NR_RESULT_FILES</name>
+    </field>
+    <field>
+      <id>LOG_FIELD</id>
+      <enabled>N</enabled>
+      <name>LOG_FIELD</name>
+    </field>
+    <field>
+      <id>COPY_NR</id>
+      <enabled>N</enabled>
+      <name>COPY_NR</name>
+    </field>
+  </jobentry-log-table>
+  <channel-log-table>
+    <connection />
+    <schema />
+    <table />
+    <timeout_days />
+    <field>
+      <id>ID_BATCH</id>
+      <enabled>Y</enabled>
+      <name>ID_BATCH</name>
+    </field>
+    <field>
+      <id>CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>CHANNEL_ID</name>
+    </field>
+    <field>
+      <id>LOG_DATE</id>
+      <enabled>Y</enabled>
+      <name>LOG_DATE</name>
+    </field>
+    <field>
+      <id>LOGGING_OBJECT_TYPE</id>
+      <enabled>Y</enabled>
+      <name>LOGGING_OBJECT_TYPE</name>
+    </field>
+    <field>
+      <id>OBJECT_NAME</id>
+      <enabled>Y</enabled>
+      <name>OBJECT_NAME</name>
+    </field>
+    <field>
+      <id>OBJECT_COPY</id>
+      <enabled>Y</enabled>
+      <name>OBJECT_COPY</name>
+    </field>
+    <field>
+      <id>REPOSITORY_DIRECTORY</id>
+      <enabled>Y</enabled>
+      <name>REPOSITORY_DIRECTORY</name>
+    </field>
+    <field>
+      <id>FILENAME</id>
+      <enabled>Y</enabled>
+      <name>FILENAME</name>
+    </field>
+    <field>
+      <id>OBJECT_ID</id>
+      <enabled>Y</enabled>
+      <name>OBJECT_ID</name>
+    </field>
+    <field>
+      <id>OBJECT_REVISION</id>
+      <enabled>Y</enabled>
+      <name>OBJECT_REVISION</name>
+    </field>
+    <field>
+      <id>PARENT_CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>PARENT_CHANNEL_ID</name>
+    </field>
+    <field>
+      <id>ROOT_CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>ROOT_CHANNEL_ID</name>
+    </field>
+  </channel-log-table>
+  <checkpoint-log-table>
+    <connection />
+    <schema />
+    <table />
+    <timeout_days />
+    <max_nr_retries />
+    <run_retry_period />
+    <namespace_parameter />
+    <save_parameters>Y</save_parameters>
+    <save_result_rows>Y</save_result_rows>
+    <save_result_files>Y</save_result_files>
+    <field>
+      <id>ID_JOB_RUN</id>
+      <enabled>Y</enabled>
+      <name>ID_JOB_RUN</name>
+    </field>
+    <field>
+      <id>ID_JOB</id>
+      <enabled>Y</enabled>
+      <name>ID_JOB</name>
+    </field>
+    <field>
+      <id>JOBNAME</id>
+      <enabled>Y</enabled>
+      <name>JOBNAME</name>
+    </field>
+    <field>
+      <id>NAMESPACE</id>
+      <enabled>Y</enabled>
+      <name>NAMESPACE</name>
+    </field>
+    <field>
+      <id>CHECKPOINT_NAME</id>
+      <enabled>Y</enabled>
+      <name>CHECKPOINT_NAME</name>
+    </field>
+    <field>
+      <id>CHECKPOINT_COPYNR</id>
+      <enabled>Y</enabled>
+      <name>CHECKPOINT_COPYNR</name>
+    </field>
+    <field>
+      <id>ATTEMPT_NR</id>
+      <enabled>Y</enabled>
+      <name>ATTEMPT_NR</name>
+    </field>
+    <field>
+      <id>JOB_RUN_START_DATE</id>
+      <enabled>Y</enabled>
+      <name>JOB_RUN_START_DATE</name>
+    </field>
+    <field>
+      <id>LOGDATE</id>
+      <enabled>Y</enabled>
+      <name>LOGDATE</name>
+    </field>
+    <field>
+      <id>RESULT_XML</id>
+      <enabled>Y</enabled>
+      <name>RESULT_XML</name>
+    </field>
+    <field>
+      <id>PARAMETER_XML</id>
+      <enabled>Y</enabled>
+      <name>PARAMETER_XML</name>
+    </field>
+  </checkpoint-log-table>
+  <pass_batchid>N</pass_batchid>
+  <shared_objects_file />
+  <entries>
+    <entry>
+      <name>Start</name>
+      <description />
+      <type>SPECIAL</type>
+      <attributes />
+      <start>Y</start>
+      <dummy>N</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>16</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Add Header to File</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Add Header to File - Marcie</transname>
+      <directory>${Internal.Entry.Current.Directory}/Sub Transformations</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>2576</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Add Details to File</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Add Details to File - Marcie</transname>
+      <directory>${Internal.Entry.Current.Directory}/Sub Transformations</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>2736</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Response Header Fail</name>
+      <description />
+      <type>ABORT</type>
+      <attributes />
+      <message>Failed to create response file header</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>2576</xloc>
+      <yloc>416</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Response Detail Fail</name>
+      <description />
+      <type>ABORT</type>
+      <attributes />
+      <message>Failed to generate response file detail lines</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>2736</xloc>
+      <yloc>416</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Update Master File List Counts</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Update Master File List Counts</transname>
+      <directory>${Internal.Entry.Current.Directory}/Sub Transformations</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1056</xloc>
+      <yloc>352</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>File Rejected?</name>
+      <description />
+      <type>EVAL_TABLE_CONTENT</type>
+      <attributes />
+      <connection>GENERIC REDSHIFT CONNECTION</connection>
+      <schemaname>${V_schema_name}</schemaname>
+      <tablename>errors_and_rejects_headers</tablename>
+      <success_condition>rows_count_greater</success_condition>
+      <limit>0</limit>
+      <is_custom_sql>Y</is_custom_sql>
+      <is_usevars>Y</is_usevars>
+      <custom_sql>SELECT *
+FROM ${V_schema_name}.errors_and_rejects_headers
+WHERE interchange_control_number = '${V_icn}'
+</custom_sql>
+      <add_rows_result>N</add_rows_result>
+      <clear_result_rows>Y</clear_result_rows>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>896</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Set File Rejection Status</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Set File Rejection Status</transname>
+      <directory>${Internal.Entry.Current.Directory}/Sub Transformations</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1056</xloc>
+      <yloc>272</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Create Outbound File Name For CSV</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Create Response Short Filename - csv</transname>
+      <directory>${Internal.Entry.Current.Directory}/Sub Transformations</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1760</xloc>
+      <yloc>240</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Checks if standard errors and rejects files exist</name>
+      <description />
+      <type>FILES_EXIST</type>
+      <attributes />
+      <filename />
+      <fields>
+        <field>
+          <name>/pentaho-workspace/data/${V_pentaho_folder_name}/errors_and_rejects/${V_icn}_errors_and_rejects.csv</name>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>432</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Dummy</name>
+      <description />
+      <type>SPECIAL</type>
+      <attributes />
+      <start>N</start>
+      <dummy>Y</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>688</xloc>
+      <yloc>352</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Move Errors and Reject Files to S3</name>
+      <description />
+      <type>SHELL</type>
+      <attributes />
+      <filename />
+      <work_directory>/pentaho-workspace/data/${V_pentaho_folder_name}/errors_and_rejects/</work_directory>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <set_append_logfile>N</set_append_logfile>
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <insertScript>Y</insertScript>
+      <script>#!/bin/bash
+
+aws s3 mv ${V_icn}_errors_and_rejects.csv s3://aver-client-${V_data_key}/integration/etl/staging/${V_icn}_errors_and_rejects.csv
+
+rm *${V_icn}_errors_and_rejects.csv</script>
+      <loglevel>Basic</loglevel>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>592</xloc>
+      <yloc>256</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Insert Errors and Rejects</name>
+      <description />
+      <type>SQL</type>
+      <attributes />
+      <sql>COPY ${V_schema_name}.errors_and_rejects_details
+(payer_reference_id,file_type,interchange_control_number,interchange_date,interchange_time,sender_id,receiver_id,sequence,number_of_errors,error_field,error_code,error_description,etl_date,etl_time,payer_reference_qualifier,transaction_processing_status)
+FROM 's3://aver-client-${V_data_key}/integration/etl/staging/${V_icn}_errors_and_rejects.csv' 
+iam_role 'arn:aws:iam::781803879514:role/redshift-pentaho-role'
+CSV;</sql>
+      <useVariableSubstitution>T</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename />
+      <sendOneStatement>F</sendOneStatement>
+      <connection>GENERIC REDSHIFT CONNECTION</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>784</xloc>
+      <yloc>256</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Combine Error and Reject Files</name>
+      <description />
+      <type>SHELL</type>
+      <attributes />
+      <filename />
+      <work_directory>/pentaho-workspace/data/${V_pentaho_folder_name}/errors_and_rejects/</work_directory>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <set_append_logfile>N</set_append_logfile>
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <insertScript>Y</insertScript>
+      <script>#!/bin/bash
+
+if ls *${V_icn}_errors_and_rejects.csv 1> /dev/null 2>&amp;1
+then
+    cat *${V_icn}_errors_and_rejects.csv >> ${V_icn}_errors_and_rejects.csv
+fi</script>
+      <loglevel>Basic</loglevel>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>160</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Move response files to from_aver</name>
+      <description />
+      <type>SHELL</type>
+      <attributes />
+      <filename />
+      <work_directory>/pentaho-workspace/data/${V_pentaho_folder_name}/outbound/</work_directory>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <set_append_logfile>N</set_append_logfile>
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <insertScript>Y</insertScript>
+      <script>#!/bin/bash
+
+set -eo pipefail
+
+V_bucket_name="aver-client-${V_data_key}"
+
+if [[ ${V_bucket_name} == *bbmdev* ]]
+then
+    ROLE_INFO=`aws sts assume-role --duration-seconds "3600" --role-arn "arn:aws:iam::708693331984:role/bbmdev-admin" --role-session-name "pentaho-$PENTAHO_ENV"`
+    export AWS_ACCESS_KEY_ID=`echo $ROLE_INFO | jq -r '.Credentials.AccessKeyId'`
+    export AWS_SECRET_ACCESS_KEY=`echo $ROLE_INFO | jq -r '.Credentials.SecretAccessKey'`
+    export AWS_SESSION_TOKEN=`echo $ROLE_INFO | jq -r '.Credentials.SessionToken'`
+    echo "assumed bbmdev-admin role"
+fi
+
+if [ -z "$AWS_DEFAULT_REGION" ]; then export AWS_DEFAULT_REGION='us-east-1'; fi
+
+#aws s3 mv ${V_response_short_filename} s3://${V_bucket_name}/sftp/${V_environment}/from_aver/
+#aws s3 mv ${V_response_short_filename} s3://${V_bucket_name}/integration/response_files/
+#if [[ ${V_filetype} == *NOTIF* ]]
+#then
+#  aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/etl_response/notification_response/
+
+#file="${V_response_short_filename}"
+#if [ ${V_filetype} == "NOTIF" ] &amp;&amp; 
+#if [[ ${V_filetype} == *NOTIF* ]]
+#then
+#  aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/etl_response/notification_response/
+
+echo "filetype is ${V_filetype}"
+echo "response file is ${V_response_short_filename}"
+echo "file status is ${V_file_processing_status}"
+
+if [ ${V_filetype} == "NOTIF" ] &amp;&amp;  [ ${V_response_short_filename: -5} == ".json" ]
+then
+    aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/DEV/notification_response/
+elif [ ${V_filetype} == "NOTIF" ] &amp;&amp; [ ${V_response_short_filename: -4} == ".csv" ]
+then
+    aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/DEV/notification_response/
+elif [[ ${V_filetype} == *ROSTER* ]]
+then    
+    aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/DEV/episode_roster_response/
+elif [[ ${V_filetype} == *ELIGCHG* ]]
+then
+    aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/DEV/member_eligibility_change/
+elif [[ ${V_filetype} == *ELIGAUDIT* ]]
+then
+    aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/DEV/member_eligibility_replacement/
+elif [[ ${V_filetype} == *ELIGREPLACE* ]]
+then
+    aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/DEV/member_eligibility_audit_response/
+elif [[ ${V_filetype} == *ELIGFULL* ]]
+then
+    aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/DEV/member_eligibility_audit_response/
+elif [[ ${V_filetype} == *CLMP* ]]
+then
+    aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/DEV/paid_medical_claims_response/
+elif [[ ${V_filetype} == *CLMPP* ]]
+then
+    aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/DEV/prepaid_medical_claim_response/
+elif [[ ${V_filetype} == *CLMB* ]]
+then
+    aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/DEV/all_medical_claims_batch_response/
+elif [[ ${V_filetype} == *PROV* ]]
+then
+    aws s3 mv ${V_response_short_filename} s3://${V_int_from_aver}/DEV/provider_roster_response/
+else
+    echo $'\n\n\n\n\n\n\n\n\n\n Response File Move Failed'
+    exit 1 
+fi
+</script>
+      <loglevel>Basic</loglevel>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>3152</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>update errors_and_rejects_details__response_file_transaction_processing_status</name>
+      <description />
+      <type>SQL</type>
+      <attributes />
+      <sql>delete from ${V_schema_name}.reject_count where interchange_control_number = '${V_icn}';
+
+insert into ${V_schema_name}.reject_count
+(select 
+'${V_icn}' as interchange_control_number,
+(select count(*) from ${V_schema_name}.errors_and_rejects_details where interchange_control_number = '${V_icn}' and transaction_processing_status = 'R') as reject_count
+);
+
+update ${V_schema_name}.errors_and_rejects_details
+set response_file_transaction_processing_status = case
+	when l.reject_count > 0 then  'R' else 'E' end
+from ${V_schema_name}.reject_count l
+where errors_and_rejects_details.interchange_control_number = l.interchange_control_number
+;
+
+delete from ${V_schema_name}.reject_count where interchange_control_number = '${V_icn}';</sql>
+      <useVariableSubstitution>T</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename />
+      <sendOneStatement>F</sendOneStatement>
+      <connection>GENERIC REDSHIFT CONNECTION</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>2192</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Csv to Json Response File job</name>
+      <description />
+      <type>JOB</type>
+      <attributes />
+      <specification_method>filename</specification_method>
+      <job_object_id />
+      <filename>${Internal.Entry.Current.Directory}/Csv to Json Response File job.kjb</filename>
+      <jobname>Csv to Json Response File job</jobname>
+      <directory>${Internal.Entry.Current.Directory}</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <slave_server_name />
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <expand_remote_job>N</expand_remote_job>
+      <create_parent_folder>N</create_parent_folder>
+      <pass_export>N</pass_export>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>2928</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Csv to Json Response File Fail</name>
+      <description />
+      <type>ABORT</type>
+      <attributes />
+      <message>Failed to generate response file detail lines</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>2928</xloc>
+      <yloc>416</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Create Outbound File Name For JSON</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>Create Response Short Filename - json</transname>
+      <directory>${Internal.Entry.Current.Directory}/Sub Transformations</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1760</xloc>
+      <yloc>352</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>CSV or JSON</name>
+      <description />
+      <type>SIMPLE_EVAL</type>
+      <attributes />
+      <valuetype>variable</valuetype>
+      <fieldname />
+      <variablename>${short_filename}</variablename>
+      <fieldtype>string</fieldtype>
+      <mask />
+      <comparevalue>.csv</comparevalue>
+      <minvalue />
+      <maxvalue />
+      <successcondition>endswith</successcondition>
+      <successnumbercondition>equal</successnumbercondition>
+      <successbooleancondition>false</successbooleancondition>
+      <successwhenvarset>N</successwhenvarset>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1456</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>get system info for response file</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>get response file system info variables</transname>
+      <directory>${Internal.Entry.Current.Directory}</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1296</xloc>
+      <yloc>304</yloc>
+      <attributes_kjc />
+    </entry>
+  </entries>
+  <hops>
+    <hop>
+      <from>Add Header to File</from>
+      <to>Add Details to File</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Add Header to File</from>
+      <to>Response Header Fail</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Add Details to File</from>
+      <to>Response Detail Fail</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>File Rejected?</from>
+      <to>Update Master File List Counts</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>File Rejected?</from>
+      <to>Set File Rejection Status</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Checks if standard errors and rejects files exist</from>
+      <to>Dummy</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Move Errors and Reject Files to S3</from>
+      <to>Insert Errors and Rejects</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Dummy</from>
+      <to>File Rejected?</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Checks if standard errors and rejects files exist</from>
+      <to>Move Errors and Reject Files to S3</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Insert Errors and Rejects</from>
+      <to>File Rejected?</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Start</from>
+      <to>Combine Error and Reject Files</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Combine Error and Reject Files</from>
+      <to>Checks if standard errors and rejects files exist</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Create Outbound File Name For CSV</from>
+      <to>update errors_and_rejects_details__response_file_transaction_processing_status</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>update errors_and_rejects_details__response_file_transaction_processing_status</from>
+      <to>Add Header to File</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Add Details to File</from>
+      <to>Csv to Json Response File job</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Csv to Json Response File job</from>
+      <to>Csv to Json Response File Fail</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>CSV or JSON</from>
+      <to>Create Outbound File Name For CSV</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>CSV or JSON</from>
+      <to>Create Outbound File Name For JSON</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Create Outbound File Name For JSON</from>
+      <to>update errors_and_rejects_details__response_file_transaction_processing_status</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Update Master File List Counts</from>
+      <to>get system info for response file</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>get system info for response file</from>
+      <to>CSV or JSON</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Set File Rejection Status</from>
+      <to>get system info for response file</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Csv to Json Response File job</from>
+      <to>Move response files to from_aver</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+  </hops>
+  <notepads>
+    <notepad>
+      <note>This job is intended to, based on the following variables, gather the appropriate error information in 
+the defined response file format and place it in an outbound directory to be moved to the SFTP server.  
+This movement to the outbound SFTP server may become part of this process in the future.
+
+Required variables:
+
+-V_icn : document interchange control number (a.k.a. source_document_control_number)
+-V_schema_name : Redshift schema containing error information tables (errors_and_rejects_details 
+and errors_and_rejects_headers tables)
+-short_filename : this job will create a response file with the name ${short_filename}_response.csv
+-V_pentaho_folder_name : This job will place the response file in the following directory: 
+/pentaho-workspace/data/${V_pentaho_folder_name}/outbound</note>
+      <xloc>32</xloc>
+      <yloc>16</yloc>
+      <width>643</width>
+      <heigth>202</heigth>
+      <fontname>.SF NS Text</fontname>
+      <fontsize>13</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+  </notepads>
+  <attributes>
+    <group>
+      <name>METASTORE.pentaho</name>
+      <attribute>
+        <key>Default Run Configuration</key>
+        <value>{"namespace":"pentaho","id":"Default Run Configuration","name":"Default Run Configuration","description":"Defines a default run configuration","metaStoreName":null}</value>
+      </attribute>
+    </group>
+    <group>
+      <name>{"_":"Embedded MetaStore Elements","namespace":"pentaho","type":"Default Run Configuration"}</name>
+      <attribute>
+        <key>Pentaho local</key>
+        <value>{"children":[{"children":[],"id":"server","value":null},{"children":[],"id":"clustered","value":"N"},{"children":[],"id":"name","value":"Pentaho local"},{"children":[],"id":"description","value":null},{"children":[],"id":"pentaho","value":"N"},{"children":[],"id":"readOnly","value":"Y"},{"children":[],"id":"sendResources","value":"N"},{"children":[],"id":"logRemoteExecutionLocally","value":"N"},{"children":[],"id":"remote","value":"N"},{"children":[],"id":"local","value":"Y"},{"children":[],"id":"showTransformations","value":"N"}],"id":"Pentaho local","value":null,"name":"Pentaho local","owner":null,"ownerPermissionsList":[]}</value>
+      </attribute>
+    </group>
+  </attributes>
+</job>

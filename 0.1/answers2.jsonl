@@ -1,0 +1,124 @@
+{"text": "Support", "metadata": "none"}
+{"text": "Knowledge", "metadata": "none"}
+{"text": "Learning", "metadata": "none"}
+{"text": "Documentation", "metadata": "none"}
+{"text": "Lumada", "metadata": "none"}
+{"text": "Pentaho", "metadata": "none"}
+{"text": "Version 9.2", "metadata": "none"}
+{"text": "Version 9.1", "metadata": "none"}
+{"text": "Version 9.0", "metadata": "none"}
+{"text": "Version 8.3", "metadata": "none"}
+{"text": "Version 8.2", "metadata": "none"}
+{"text": "Version 8.1", "metadata": "none"}
+{"text": "Version 8.0", "metadata": "none"}
+{"text": "Version 7.1", "metadata": "none"}
+{"text": "Version 7.0", "metadata": "none"}
+{"text": "Version 6.1", "metadata": "none"}
+{"text": "Version 6.0", "metadata": "none"}
+{"text": "Version 5.4", "metadata": "none"}
+{"text": "Version 5.3", "metadata": "none"}
+{"text": "Version 5.2", "metadata": "none"}
+{"text": "Version 5.1", "metadata": "none"}
+{"text": "Older Versions", "metadata": "none"}
+{"text": "Search site Search Search Go back to previous article ", "metadata": "none"}
+{"text": " Username Password Sign in Sign in Sign in Registration Forgot password ", "metadata": "none"}
+{"text": " Username Password Sign in ", "metadata": "none"}
+{"text": " Sign in Sign in Registration Forgot password ", "metadata": "none"}
+{"text": " Sign in ", "metadata": "none"}
+{"text": " Registration ", "metadata": "none"}
+{"text": " Forgot password ", "metadata": "none"}
+{"text": " Home ", "metadata": "none"}
+{"text": " Documentation ", "metadata": "none"}
+{"text": " Lumada ", "metadata": "none"}
+{"text": " Lumada Data Catalog ", "metadata": "none"}
+{"text": " Last updated ", "metadata": "none"}
+{"text": " Save as PDF ", "metadata": "none"}
+{"text": "", "metadata": "none"}
+{"text": "This article walks you through the installation of Lumada Data Catalog , including pre-installation and post-installation tasks.", "metadata": "none"}
+{"text": "Review these prerequisites before you start the installation. ", "metadata": "none"}
+{"text": "This guide assumes that you have:", "metadata": "none"}
+{"text": "Read through the entire installation documentation prior to performing the installation instructions on your system. You need to decide on your installation options prior to performing these procedures to ensure that your selected installation method is the best method for you.", "metadata": "none"}
+{"text": "Checked the System Requirements to ensure that your edge node, Hadoop distribution, and web browser meet LDC's requirements for this version of the software.", "metadata": "none"}
+{"text": "Uninstalled any evaluation version of Lumada Data Catalog.", "metadata": "none"}
+{"text": "You should understand the following concepts about the Data Catalog installation before starting the process:", "metadata": "none"}
+{"text": "AudienceIT administrators who know where the data sources are stored, how to connect to them, details about the computing environment, and how to use the command line to issue commands for Linux. You should also know how to install a database and a web application server.", "metadata": "none"}
+{"text": "Audience", "metadata": "none"}
+{"text": "IT administrators who know where the data sources are stored, how to connect to them, details about the computing environment, and how to use the command line to issue commands for Linux. You should also know how to install a database and a web application server.", "metadata": "none"}
+{"text": "ToolsYou must supply an environment that meets the hardware and software requirements indicated in the System Requirements, as well as a supported operating system and JDK. The Data Catalog stores transactional metadata in a repository, which is housed on PostgresSQL. You must supply, install, and configure PostgresSQL yourself. ", "metadata": "none"}
+{"text": "Tools", "metadata": "none"}
+{"text": "You must supply an environment that meets the hardware and software requirements indicated in the System Requirements, as well as a supported operating system and JDK. The Data Catalog stores transactional metadata in a repository, which is housed on PostgresSQL. You must supply, install, and configure PostgresSQL yourself. ", "metadata": "none"}
+{"text": "Login CredentialsTo begin the installation process, you will need a service user account which has administrative privileges to perform the tasks in these sections. Linux users need to use the root access for some tasks. You will need the Solr and Postgres usernames and passwords to connect with the Solr and Postrgres.", "metadata": "none"}
+{"text": "Login Credentials", "metadata": "none"}
+{"text": "To begin the installation process, you will need a service user account which has administrative privileges to perform the tasks in these sections. Linux users need to use the root access for some tasks. You will need the Solr and Postgres usernames and passwords to connect with the Solr and Postrgres.", "metadata": "none"}
+{"text": "RequirementsThe installation requires these items and expertise:RequirementsDescriptionYou SupplyEach of the following items must meet or exceed the requirements in the System Requirements:Computer with a supported operating system and hardware configuration.Oracle Java Runtime Environment (JRE) or Oracle Java Development Kit (JDK).PostgresSQL repository database and its JDBC driver.A large properties storage location.We Supply Installation package including Solr and Postgres installer. Technologies Used SolrA PostgreSQL database Expertise Knowledge of your networking environment, including database port numbers if they differ from the default and IP address.Permission to access installation directories.Root or administrative access. Approximate Installation Time 1 to 4 hours. ", "metadata": "none"}
+{"text": "Requirements", "metadata": "none"}
+{"text": "The installation requires these items and expertise:", "metadata": "none"}
+{"text": "Computer with a supported operating system and hardware configuration.", "metadata": "none"}
+{"text": "Oracle Java Runtime Environment (JRE) or Oracle Java Development Kit (JDK).", "metadata": "none"}
+{"text": "PostgresSQL repository database and its JDBC driver.", "metadata": "none"}
+{"text": "A large properties storage location.", "metadata": "none"}
+{"text": "Installation package including Solr and Postgres installer.", "metadata": "none"}
+{"text": "Solr", "metadata": "none"}
+{"text": "A PostgreSQL database", "metadata": "none"}
+{"text": "Knowledge of your networking environment, including database port numbers if they differ from the default and IP address.", "metadata": "none"}
+{"text": "Permission to access installation directories.", "metadata": "none"}
+{"text": "Root or administrative access.", "metadata": "none"}
+{"text": "1 to 4 hours.", "metadata": "none"}
+{"text": "You can download the Lumada Data Catalog software from the Hitachi Vantara Lumada and Pentaho Support Portal.", "metadata": "none"}
+{"text": "The installation process consists of the following steps, depending on your specific environment.", "metadata": "none"}
+{"text": "Pre-installation steps. Before starting the installation process, you should perform several pre-installation steps, including the following:Review system requirementsVerify componentsConfigure the service userConfigure SolrInstall and configure Postgres", "metadata": "none"}
+{"text": "Review system requirements", "metadata": "none"}
+{"text": "Verify components", "metadata": "none"}
+{"text": "Configure the service user", "metadata": "none"}
+{"text": "Configure Solr", "metadata": "none"}
+{"text": "Install and configure Postgres", "metadata": "none"}
+{"text": "Installing the Data Catalog package. You can install and deploy the Lumada Data Catalog on the following environments:Installing Lumada Data Catalog on CDH, HDP, or CDPInstalling Lumada Data Catalog on MapRInstalling Lumada Data Catalog on Amazon EMRInstalling Lumada Data Catalog on Azure HDInsightInstalling Lumada Data Catalog on GCP DataprocContact support via the Hitachi Vantara Lumada and Pentaho Support Portal if you are interested in installing Data Catalog as a containerized agent or on Kubernetes with Helm.", "metadata": "none"}
+{"text": "Installing Lumada Data Catalog on CDH, HDP, or CDP", "metadata": "none"}
+{"text": "Installing Lumada Data Catalog on MapR", "metadata": "none"}
+{"text": "Installing Lumada Data Catalog on Amazon EMR", "metadata": "none"}
+{"text": "Installing Lumada Data Catalog on Azure HDInsight", "metadata": "none"}
+{"text": "Installing Lumada Data Catalog on GCP Dataproc", "metadata": "none"}
+{"text": "Contact support via the Hitachi Vantara Lumada and Pentaho Support Portal if you are interested in installing Data Catalog as a containerized agent or on Kubernetes with Helm.", "metadata": "none"}
+{"text": "Post-installation steps. After you install Lumada Data Catalog, you may need to perform system and security configuration tasks, and then change select configuration properties in the Data Catalog itself.Post-install system configurations.Security configuration includes the following:SSL configurationLDAP ConfigurationSingle sign-on with SAMLOIDC with OAuth supportData Catalog configuration. If you are assigned the Administrator role, you can perform these tasks in Managing configurations in Data Catalog.", "metadata": "none"}
+{"text": "Post-install system configurations.", "metadata": "none"}
+{"text": "Security configuration includes the following:SSL configurationLDAP ConfigurationSingle sign-on with SAMLOIDC with OAuth support", "metadata": "none"}
+{"text": "SSL configuration", "metadata": "none"}
+{"text": "LDAP Configuration", "metadata": "none"}
+{"text": "Single sign-on with SAML", "metadata": "none"}
+{"text": "OIDC with OAuth support", "metadata": "none"}
+{"text": "Data Catalog configuration. If you are assigned the Administrator role, you can perform these tasks in Managing configurations in Data Catalog.", "metadata": "none"}
+{"text": "To uninstall Lumada Data Catalog, see Uninstalling Lumada Data Catalog.", "metadata": "none"}
+{"text": "Pre-Installation steps", "metadata": "none"}
+{"text": "System requirements", "metadata": "none"}
+{"text": "Component validations", "metadata": "none"}
+{"text": "Configure the Data Catalog service user", "metadata": "none"}
+{"text": "Apache Solr™ configuration", "metadata": "none"}
+{"text": "Solr on CDH and CDP", "metadata": "none"}
+{"text": "Solr on HDP", "metadata": "none"}
+{"text": "Installing standalone Solr", "metadata": "none"}
+{"text": "Installing Lumada Data Catalog", "metadata": "none"}
+{"text": "Installing Lumada Data Catalog on CDH, HDP, or CDP", "metadata": "none"}
+{"text": "Installing Lumada Data Catalog on MapR", "metadata": "none"}
+{"text": "Installing Lumada Data Catalog on Amazon EMR", "metadata": "none"}
+{"text": "Installing Lumada Data Catalog on Azure HDInsight", "metadata": "none"}
+{"text": "Installing Lumada Data Catalog on GCP Dataproc", "metadata": "none"}
+{"text": "Post-Installation steps", "metadata": "none"}
+{"text": "Post-install system configurations", "metadata": "none"}
+{"text": "SSL configuration", "metadata": "none"}
+{"text": "LDAP Configuration", "metadata": "none"}
+{"text": "Single sign-on with SAML", "metadata": "none"}
+{"text": "OIDC with OAuth support", "metadata": "none"}
+{"text": "Uninstalling Lumada Data Catalog", "metadata": "none"}
+{"text": "Back to top", "metadata": "none"}
+{"text": " Product overview Apache Solr configuration ", "metadata": "none"}
+{"text": " Product overview ", "metadata": "none"}
+{"text": " Apache Solr configuration ", "metadata": "none"}
+{"text": " Article type Guide ", "metadata": "none"}
+{"text": " Tags pagetype:documentationarticle ", "metadata": "none"}
+{"text": " pagetype:documentationarticle", "metadata": "none"}
+{"text": "© Copyright 2021 Hitachi Vantara Lumada and Pentaho Documentation", "metadata": "none"}
+{"text": " Powered by CXone Expert ® ", "metadata": "none"}
+{"text": "© Hitachi Vantara Corporation LLC 2021. All Rights Reserved.", "metadata": "none"}
+{"text": "Terms of Use", "metadata": "none"}
+{"text": "Privacy Policy", "metadata": "none"}
+{"text": "Legal", "metadata": "none"}

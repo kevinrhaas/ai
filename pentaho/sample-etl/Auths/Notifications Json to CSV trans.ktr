@@ -1,0 +1,3480 @@
+<transformation>
+  <info>
+    <name>Notifications Json to CSV trans</name>
+    <description />
+    <extended_description />
+    <trans_version />
+    <trans_type>Normal</trans_type>
+    <directory>/public/BBM ETL - DEV/Auths</directory>
+    <parameters>
+    </parameters>
+    <log>
+      <trans-log-table>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+          <subject />
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
+    </log>
+    <maxdate>
+      <connection />
+      <table />
+      <field />
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file />
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+      <partitionschema>
+        <name>3-way-partition</name>
+        <partition>
+          <id>part1</id>
+        </partition>
+        <partition>
+          <id>part2</id>
+        </partition>
+        <partition>
+          <id>part3</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>Audit_id</name>
+        <partition>
+          <id>ID1</id>
+        </partition>
+        <partition>
+          <id>ID2</id>
+        </partition>
+        <partition>
+          <id>ID3</id>
+        </partition>
+        <partition>
+          <id>ID4</id>
+        </partition>
+        <partition>
+          <id>ID5</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>IDP_AUDIT_ID</name>
+        <partition>
+          <id>idp1</id>
+        </partition>
+        <partition>
+          <id>idp2</id>
+        </partition>
+        <partition>
+          <id>idp3</id>
+        </partition>
+        <partition>
+          <id>idp4</id>
+        </partition>
+        <partition>
+          <id>idp5</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>IDP_AUDIT_ID1</name>
+        <partition>
+          <id>IDP_AUDIT_ID</id>
+        </partition>
+        <dynamic>Y</dynamic>
+        <partitions_per_slave>${IDP_DATA_DATE}</partitions_per_slave>
+      </partitionschema>
+      <partitionschema>
+        <name>IDP_AUDIT_ID_test</name>
+        <partition>
+          <id>IDP_AUDIT_ID</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave>${IDP_DATA_DATE}</partitions_per_slave>
+      </partitionschema>
+      <partitionschema>
+        <name>L1_CUSIP</name>
+        <partition>
+          <id>CUSIP</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>Partions</name>
+        <partition>
+          <id>p1</id>
+        </partition>
+        <partition>
+          <id>p2</id>
+        </partition>
+        <partition>
+          <id>p3</id>
+        </partition>
+        <partition>
+          <id>p4</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave>4</partitions_per_slave>
+      </partitionschema>
+      <partitionschema>
+        <name>Partition_BY_ID</name>
+        <dynamic>Y</dynamic>
+        <partitions_per_slave>2</partitions_per_slave>
+      </partitionschema>
+      <partitionschema>
+        <name>WorkUnit</name>
+        <partition>
+          <id>One</id>
+        </partition>
+        <partition>
+          <id>Two</id>
+        </partition>
+        <partition>
+          <id>Three</id>
+        </partition>
+        <partition>
+          <id>Four</id>
+        </partition>
+        <partition>
+          <id>Five</id>
+        </partition>
+        <partition>
+          <id>Six</id>
+        </partition>
+        <partition>
+          <id>Seven</id>
+        </partition>
+        <partition>
+          <id>Eight</id>
+        </partition>
+        <partition>
+          <id>Nine</id>
+        </partition>
+        <partition>
+          <id>Ten</id>
+        </partition>
+        <dynamic>Y</dynamic>
+        <partitions_per_slave>20</partitions_per_slave>
+      </partitionschema>
+      <partitionschema>
+        <name>city</name>
+        <partition>
+          <id>P1</id>
+        </partition>
+        <partition>
+          <id>P2</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>cluster</name>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>dynamic</name>
+        <dynamic>Y</dynamic>
+        <partitions_per_slave>1</partitions_per_slave>
+      </partitionschema>
+      <partitionschema>
+        <name>fruits</name>
+        <partition>
+          <id>partition1</id>
+        </partition>
+        <partition>
+          <id>partition2</id>
+        </partition>
+        <partition>
+          <id>partition3</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>mtg</name>
+        <partition>
+          <id>Partition1</id>
+        </partition>
+        <partition>
+          <id>Partition2</id>
+        </partition>
+        <partition>
+          <id>Partition3</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>partition_schema_1</name>
+        <partition>
+          <id>P1</id>
+        </partition>
+        <partition>
+          <id>P2</id>
+        </partition>
+        <partition>
+          <id>P3</id>
+        </partition>
+        <partition>
+          <id>P4</id>
+        </partition>
+        <partition>
+          <id>P5</id>
+        </partition>
+        <dynamic>Y</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>statement_id</name>
+        <partition>
+          <id>P1</id>
+        </partition>
+        <partition>
+          <id>P2</id>
+        </partition>
+        <partition>
+          <id>P3</id>
+        </partition>
+        <partition>
+          <id>P4</id>
+        </partition>
+        <partition>
+          <id>P5</id>
+        </partition>
+        <dynamic>Y</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+    </partitionschemas>
+    <slaveservers>
+      <slaveserver>
+        <name>ClusterMaster</name>
+        <hostname>localhost</hostname>
+        <port>8080</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>DEV_8</name>
+        <hostname>pentaho-dev2.avercloud.com</hostname>
+        <port>8443</port>
+        <webAppName>pentaho</webAppName>
+        <username>remote_job_runner</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>Master</name>
+        <hostname>localhost</hostname>
+        <port>8081</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>NOPHI_8</name>
+        <hostname>pentaho-nophi.avercloud.com</hostname>
+        <port>8443</port>
+        <webAppName>pentaho</webAppName>
+        <username>remote_job_runner</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>PROD_8</name>
+        <hostname>pentaho-prod2.avercloud.com</hostname>
+        <port>8443</port>
+        <webAppName>pentaho</webAppName>
+        <username>remote_job_runner</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>Slave 2 (100.39)</name>
+        <hostname>192.168.100.39</hostname>
+        <port>9080</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>Slave 3 (100.40)</name>
+        <hostname>192.168.100.40</hostname>
+        <port>9080</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>Slave1</name>
+        <hostname>localhost</hostname>
+        <port>8082</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>Slave2</name>
+        <hostname>localhost</hostname>
+        <port>8083</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>Slave3</name>
+        <hostname>localhost</hostname>
+        <port>8084</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>cm-metricsapp01</name>
+        <hostname>cm-metricsapp01</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>cm-metricsdb01</name>
+        <hostname>cm-metricsdb01</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>cm-metricsdb02</name>
+        <hostname>cm-metricsdb02</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>cm-metricsdb03</name>
+        <hostname>cm-metricsdb03</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>cm-metricsetl01</name>
+        <hostname>cm-metricsetl01</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>etl01</name>
+        <hostname>cm-metricsetl01</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>local1</name>
+        <hostname>localhost</hostname>
+        <port>40001</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>local2</name>
+        <hostname>localhost</hostname>
+        <port>40002</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>tmp01</name>
+        <hostname>cm-metricstmp01</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>tmp02</name>
+        <hostname>cm-metricstmp02</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>tmp03</name>
+        <hostname>cm-metricstmp03</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>tmp04</name>
+        <hostname>cm-metricstmp04</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>vmDumas</name>
+        <hostname>vmDumas</hostname>
+        <port>9080</port>
+        <webAppName>pentaho-di</webAppName>
+        <username>csheen</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+    </slaveservers>
+    <clusterschemas>
+      <clusterschema>
+        <name>3 node</name>
+        <base_port>40010</base_port>
+        <sockets_buffer_size>262144</sockets_buffer_size>
+        <sockets_flush_interval>2000</sockets_flush_interval>
+        <sockets_compressed>N</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>cm-metricsapp01</name>
+          <name>cm-metricsdb01</name>
+          <name>cm-metricsdb02</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>4 node</name>
+        <base_port>40010</base_port>
+        <sockets_buffer_size>262144</sockets_buffer_size>
+        <sockets_flush_interval>2000</sockets_flush_interval>
+        <sockets_compressed>N</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>cm-metricsetl01</name>
+          <name>cm-metricsdb01</name>
+          <name>cm-metricsdb02</name>
+          <name>cm-metricsdb03</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>Cluster</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>Slave2</name>
+          <name>Slave1</name>
+          <name>ClusterMaster</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>ClusterSchema</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>Slave3</name>
+          <name>Slave2</name>
+          <name>Slave1</name>
+          <name>Master</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>ClusterSchema_dynamic</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>Y</dynamic>
+        <slaveservers>
+          <name>Master</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>ClusterTest</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>Y</dynamic>
+        <slaveservers>
+          <name>Slave1</name>
+          <name>ClusterMaster</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>ClusterTrial 1</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>Slave 2 (100.39)</name>
+          <name>Slave 3 (100.40)</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>UCP-Dev</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>WorkUnit</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>N</sockets_compressed>
+        <dynamic>Y</dynamic>
+        <slaveservers>
+          <name>vmDumas</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>YarnCluster</name>
+        <base_port>4000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>N</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>local</name>
+        <base_port>40010</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>local1</name>
+          <name>local2</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>tmp</name>
+        <base_port>40010</base_port>
+        <sockets_buffer_size>20000</sockets_buffer_size>
+        <sockets_flush_interval>10000</sockets_flush_interval>
+        <sockets_compressed>N</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>etl01</name>
+          <name>tmp01</name>
+          <name>tmp02</name>
+          <name>tmp03</name>
+          <name>tmp04</name>
+        </slaveservers>
+      </clusterschema>
+    </clusterschemas>
+    <created_user />
+    <created_date>2020/05/01 11:23:12.469</created_date>
+    <modified_user>devops_admin</modified_user>
+    <modified_date>2020/04/19 15:02:54.381</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <is_key_private>N</is_key_private>
+  </info>
+  <notepads>
+    <notepad>
+      <note>NEEDS  ERROR CONDITIONS
+handle case: if input file DNE</note>
+      <xloc>192</xloc>
+      <yloc>608</yloc>
+      <width>187</width>
+      <heigth>42</heigth>
+      <fontname>.SF NS Text</fontname>
+      <fontsize>13</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+  </notepads>
+  <order>
+    <hop>
+      <from>AIFS Output (Notifications Header)</from>
+      <to>Notifications Json Detail</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Notifications Json Detail</from>
+      <to>Select values (Notifications Detail)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values (Notifications Detail)</from>
+      <to>AIFS Output (Notifications Detail)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Notifications Json Header</from>
+      <to>Select values (Notifications Header)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values (Notifications Header)</from>
+      <to>AIFS Output (Notifications Header)</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <step>
+    <name>AIFS Output (Notifications Detail)</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>UNIX</format>
+    <compression>None</compression>
+    <encoding />
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${V_TMP_FOLDER_PATH}/detail_${short_filename}</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention />
+      <append>Y</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery />
+    </file>
+    <fields>
+      <field>
+        <name>Sequence</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Payer ID</name>
+        <type>None</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Health Service Tracking Number</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Authorization Date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Action Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Health Care Service Review Decision Reason Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Requesting Provider NPI</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Requesting Provider TIN</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Requesting Provider Payer Provider ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Requesting Provider Taxonomy Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Member ID Qualifier</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Member ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Member Last Name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Member First Name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Member Gender</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Member Date of Birth</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Line of Business</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Segment</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Program</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Product</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Coverage Type</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Health Plan State</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Health Plan Product Name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Division</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Group</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Employer Group ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Employer Group Name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DRG Type</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DRG Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Principal Procedure Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 3</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 4</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 5</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 6</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 7</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 8</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 9</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 10</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 11</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Principal Diagnosis Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 3</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 4</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 5</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 6</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 7</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 8</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 9</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 10</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 11</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Rendering Provider NPI</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Rendering Provider TIN</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Rendering Provider Payer Provider ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Rendering Provider Taxonomy Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Facility Type Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Place of Service Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Service Start Date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Service End Date</name>
+        <type>None</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CPT HCPCS Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Service Units</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1184</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>AIFS Output (Notifications Header)</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>UNIX</format>
+    <compression>None</compression>
+    <encoding />
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${V_TMP_FOLDER_PATH}/hdr_${V_short_filename}</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention />
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery />
+    </file>
+    <fields>
+      <field>
+        <name>File Type</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>File Sequence Number</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Interchange Date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Interchange Time</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Sender ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Receiver ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Transaction Count</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>544</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Notifications Json Detail</name>
+    <type>JsonInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <include>N</include>
+    <include_field />
+    <rownum>N</rownum>
+    <addresultfile>N</addresultfile>
+    <readurl>N</readurl>
+    <removeSourceField>N</removeSourceField>
+    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
+    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
+    <ignoreMissingPath>Y</ignoreMissingPath>
+    <defaultPathLeafToNull>Y</defaultPathLeafToNull>
+    <rownum_field />
+    <file>
+      <name>${filename}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>sequence</name>
+        <path>$..[*].sequence</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>payer_id</name>
+        <path>$..[*].payer_id</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>health_service_tracking_number</name>
+        <path>$..[*].health_service_tracking_number</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>authorization_date</name>
+        <path>$..[*].authorization_date</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>action_code</name>
+        <path>$..[*].action_code</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>health_care_service_review_decision_reason_code</name>
+        <path>$..[*].health_care_service_review_decision_reason_code</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>requesting_provider_npi</name>
+        <path>$..[*].requesting_provider_npi</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>requesting_provider_tin</name>
+        <path>$..[*].requesting_provider_tin</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>requesting_provider_payer_provider_id</name>
+        <path>$..[*].requesting_provider_payer_provider_id</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>requesting_provider_taxonomy_code</name>
+        <path>$..[*].requesting_provider_taxonomy_code</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>member_id_qualifier</name>
+        <path>$..[*].member_id_qualifier</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>member_id</name>
+        <path>$..[*].member_id</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>member_last_name</name>
+        <path>$..[*].member_last_name</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>member_first_name</name>
+        <path>$..[*].member_first_name</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>member_gender</name>
+        <path>$..[*].member_gender</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>member_date_of_birth</name>
+        <path>$..[*].member_date_of_birth</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>line_of_business</name>
+        <path>$..[*].line_of_business</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>segment</name>
+        <path>$..[*].segment</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>program</name>
+        <path>$..[*].program</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>product</name>
+        <path>$..[*].product</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>coverage_type</name>
+        <path>$..[*].coverage_type</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>health_plan_state</name>
+        <path>$..[*].health_plan_state</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>health_plan_product_name</name>
+        <path>$..[*].health_plan_product_name</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>division</name>
+        <path>$..[*].division</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>group</name>
+        <path>$..[*].group</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>employer_group_id</name>
+        <path>$..[*].employer_group_id</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>employer_group_name</name>
+        <path>$..[*].employer_group_name</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>drg_type</name>
+        <path>$..[*].drg_type</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>drg_code</name>
+        <path>$..[*].drg_code</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>principal_procedure_code</name>
+        <path>$..[*].principal_procedure_code</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_procedure_code_1</name>
+        <path>$..[*].secondary_procedure_code_1</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_procedure_code_2</name>
+        <path>$..[*].secondary_procedure_code_2</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_procedure_code_3</name>
+        <path>$..[*].secondary_procedure_code_3</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_procedure_code_4</name>
+        <path>$..[*].secondary_procedure_code_4</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_procedure_code_5</name>
+        <path>$..[*].secondary_procedure_code_5</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_procedure_code_6</name>
+        <path>$..[*].secondary_procedure_code_6</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_procedure_code_7</name>
+        <path>$..[*].secondary_procedure_code_7</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_procedure_code_8</name>
+        <path>$..[*].secondary_procedure_code_8</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_procedure_code_9</name>
+        <path>$..[*].secondary_procedure_code_9</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_procedure_code_10</name>
+        <path>$..[*].secondary_procedure_code_10</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_procedure_code_11</name>
+        <path>$..[*].secondary_procedure_code_11</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>principal_diagnosis_code</name>
+        <path>$..[*].principal_diagnosis_code</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_1</name>
+        <path>$..[*].secondary_diagnosis_code_1</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_2</name>
+        <path>$..[*].secondary_diagnosis_code_2</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_3</name>
+        <path>$..[*].secondary_diagnosis_code_3</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_4</name>
+        <path>$..[*].secondary_diagnosis_code_4</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_5</name>
+        <path>$..[*].secondary_diagnosis_code_5</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_6</name>
+        <path>$..[*].secondary_diagnosis_code_6</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_7</name>
+        <path>$..[*].secondary_diagnosis_code_7</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_8</name>
+        <path>$..[*].secondary_diagnosis_code_8</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_9</name>
+        <path>$..[*].secondary_diagnosis_code_9</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_10</name>
+        <path>$..[*].secondary_diagnosis_code_10</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_11</name>
+        <path>$..[*].secondary_diagnosis_code_11</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>rendering_provider_npi</name>
+        <path>$..[*].rendering_provider_npi</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>rendering_provider_tin</name>
+        <path>$..[*].rendering_provider_tin</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>rendering_provider_payer_provider_id</name>
+        <path>$..[*].rendering_provider_payer_provider_id</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>rendering_provider_taxonomy_code</name>
+        <path>$..[*].rendering_provider_taxonomy_code</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>facility_type_code</name>
+        <path>$..[*].facility_type_code</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>place_of_service_code</name>
+        <path>$..[*].place_of_service_code</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>service_start_date</name>
+        <path>$..[*].service_start_date</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>service_end_date</name>
+        <path>$..[*].service_end_date</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>cpt_hcpcs_code</name>
+        <path>$..[*].cpt_hcpcs_code</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>service_units</name>
+        <path>$..[*].service_units</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <IsInFields>N</IsInFields>
+    <IsAFile>N</IsAFile>
+    <valueField />
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Notifications Json Header</name>
+    <type>JsonInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <include>N</include>
+    <include_field />
+    <rownum>N</rownum>
+    <addresultfile>N</addresultfile>
+    <readurl>N</readurl>
+    <removeSourceField>N</removeSourceField>
+    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
+    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
+    <ignoreMissingPath>Y</ignoreMissingPath>
+    <defaultPathLeafToNull>Y</defaultPathLeafToNull>
+    <rownum_field />
+    <file>
+      <name>${filename}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>file_type</name>
+        <path>$.file_type</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>file_sequence_number</name>
+        <path>$.file_sequence_number</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>interchange_date</name>
+        <path>$.interchange_date</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>interchange_time</name>
+        <path>$.interchange_time</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>sender_id</name>
+        <path>$.sender_id</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>receiver_id</name>
+        <path>$.receiver_id</path>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>transaction_count</name>
+        <path>$.transaction_count</path>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <IsInFields>N</IsInFields>
+    <IsAFile>N</IsAFile>
+    <valueField />
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values (Notifications Detail)</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>sequence</name>
+        <rename>Sequence</rename>
+      </field>
+      <field>
+        <name>payer_id</name>
+        <rename>Payer ID</rename>
+      </field>
+      <field>
+        <name>health_service_tracking_number</name>
+        <rename>Health Service Tracking Number</rename>
+      </field>
+      <field>
+        <name>authorization_date</name>
+        <rename>Authorization Date</rename>
+      </field>
+      <field>
+        <name>action_code</name>
+        <rename>Action Code</rename>
+      </field>
+      <field>
+        <name>health_care_service_review_decision_reason_code</name>
+        <rename>Health Care Service Review Decision Reason Code</rename>
+      </field>
+      <field>
+        <name>requesting_provider_npi</name>
+        <rename>Requesting Provider NPI</rename>
+      </field>
+      <field>
+        <name>requesting_provider_tin</name>
+        <rename>Requesting Provider TIN</rename>
+      </field>
+      <field>
+        <name>requesting_provider_payer_provider_id</name>
+        <rename>Requesting Provider Payer Provider ID</rename>
+      </field>
+      <field>
+        <name>requesting_provider_taxonomy_code</name>
+        <rename>Requesting Provider Taxonomy Code</rename>
+      </field>
+      <field>
+        <name>member_id_qualifier</name>
+        <rename>Member ID Qualifier</rename>
+      </field>
+      <field>
+        <name>member_id</name>
+        <rename>Member ID</rename>
+      </field>
+      <field>
+        <name>member_last_name</name>
+        <rename>Member Last Name</rename>
+      </field>
+      <field>
+        <name>member_first_name</name>
+        <rename>Member First Name</rename>
+      </field>
+      <field>
+        <name>member_gender</name>
+        <rename>Member Gender</rename>
+      </field>
+      <field>
+        <name>member_date_of_birth</name>
+        <rename>Member Date of Birth</rename>
+      </field>
+      <field>
+        <name>line_of_business</name>
+        <rename>Line of Business</rename>
+      </field>
+      <field>
+        <name>segment</name>
+        <rename>Segment</rename>
+      </field>
+      <field>
+        <name>program</name>
+        <rename>Program</rename>
+      </field>
+      <field>
+        <name>product</name>
+        <rename>Product</rename>
+      </field>
+      <field>
+        <name>coverage_type</name>
+        <rename>Coverage Type</rename>
+      </field>
+      <field>
+        <name>health_plan_state</name>
+        <rename>Health Plan State</rename>
+      </field>
+      <field>
+        <name>health_plan_product_name</name>
+        <rename>Health Plan Product Name</rename>
+      </field>
+      <field>
+        <name>division</name>
+        <rename>Division</rename>
+      </field>
+      <field>
+        <name>group</name>
+        <rename>Group</rename>
+      </field>
+      <field>
+        <name>employer_group_id</name>
+        <rename>Employer Group ID</rename>
+      </field>
+      <field>
+        <name>employer_group_name</name>
+        <rename>Employer Group Name</rename>
+      </field>
+      <field>
+        <name>drg_type</name>
+        <rename>DRG Type</rename>
+      </field>
+      <field>
+        <name>drg_code</name>
+        <rename>DRG Code</rename>
+      </field>
+      <field>
+        <name>principal_procedure_code</name>
+        <rename>Principal Procedure Code</rename>
+      </field>
+      <field>
+        <name>secondary_procedure_code_1</name>
+        <rename>Secondary Procedure Code 1</rename>
+      </field>
+      <field>
+        <name>secondary_procedure_code_2</name>
+        <rename>Secondary Procedure Code 2</rename>
+      </field>
+      <field>
+        <name>secondary_procedure_code_3</name>
+        <rename>Secondary Procedure Code 3</rename>
+      </field>
+      <field>
+        <name>secondary_procedure_code_4</name>
+        <rename>Secondary Procedure Code 4</rename>
+      </field>
+      <field>
+        <name>secondary_procedure_code_5</name>
+        <rename>Secondary Procedure Code 5</rename>
+      </field>
+      <field>
+        <name>secondary_procedure_code_6</name>
+        <rename>Secondary Procedure Code 6</rename>
+      </field>
+      <field>
+        <name>secondary_procedure_code_7</name>
+        <rename>Secondary Procedure Code 7</rename>
+      </field>
+      <field>
+        <name>secondary_procedure_code_8</name>
+        <rename>Secondary Procedure Code 8</rename>
+      </field>
+      <field>
+        <name>secondary_procedure_code_9</name>
+        <rename>Secondary Procedure Code 9</rename>
+      </field>
+      <field>
+        <name>secondary_procedure_code_10</name>
+        <rename>Secondary Procedure Code 10</rename>
+      </field>
+      <field>
+        <name>secondary_procedure_code_11</name>
+        <rename>Secondary Procedure Code 11</rename>
+      </field>
+      <field>
+        <name>principal_diagnosis_code</name>
+        <rename>Principal Diagnosis Code</rename>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_1</name>
+        <rename>Secondary Diagnosis Code 1</rename>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_2</name>
+        <rename>Secondary Diagnosis Code 2</rename>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_3</name>
+        <rename>Secondary Diagnosis Code 3</rename>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_4</name>
+        <rename>Secondary Diagnosis Code 4</rename>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_5</name>
+        <rename>Secondary Diagnosis Code 5</rename>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_6</name>
+        <rename>Secondary Diagnosis Code 6</rename>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_7</name>
+        <rename>Secondary Diagnosis Code 7</rename>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_8</name>
+        <rename>Secondary Diagnosis Code 8</rename>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_9</name>
+        <rename>Secondary Diagnosis Code 9</rename>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_10</name>
+        <rename>Secondary Diagnosis Code 10</rename>
+      </field>
+      <field>
+        <name>secondary_diagnosis_code_11</name>
+        <rename>Secondary Diagnosis Code 11</rename>
+      </field>
+      <field>
+        <name>rendering_provider_npi</name>
+        <rename>Rendering Provider NPI</rename>
+      </field>
+      <field>
+        <name>rendering_provider_tin</name>
+        <rename>Rendering Provider TIN</rename>
+      </field>
+      <field>
+        <name>rendering_provider_payer_provider_id</name>
+        <rename>Rendering Provider Payer Provider ID</rename>
+      </field>
+      <field>
+        <name>rendering_provider_taxonomy_code</name>
+        <rename>Rendering Provider Taxonomy Code</rename>
+      </field>
+      <field>
+        <name>facility_type_code</name>
+        <rename>Facility Type Code</rename>
+      </field>
+      <field>
+        <name>place_of_service_code</name>
+        <rename>Place of Service Code</rename>
+      </field>
+      <field>
+        <name>service_start_date</name>
+        <rename>Service Start Date</rename>
+      </field>
+      <field>
+        <name>service_end_date</name>
+        <rename>Service End Date</rename>
+      </field>
+      <field>
+        <name>cpt_hcpcs_code</name>
+        <rename>CPT HCPCS Code</rename>
+      </field>
+      <field>
+        <name>service_units</name>
+        <rename>Service Units</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>960</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values (Notifications Header)</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>file_type</name>
+        <rename>File Type</rename>
+      </field>
+      <field>
+        <name>file_sequence_number</name>
+        <rename>File Sequence Number</rename>
+      </field>
+      <field>
+        <name>interchange_date</name>
+        <rename>Interchange Date</rename>
+      </field>
+      <field>
+        <name>interchange_time</name>
+        <rename>Interchange Time</rename>
+      </field>
+      <field>
+        <name>sender_id</name>
+        <rename>Sender ID</rename>
+      </field>
+      <field>
+        <name>receiver_id</name>
+        <rename>Receiver ID</rename>
+      </field>
+      <field>
+        <name>transaction_count</name>
+        <rename>Transaction Count</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step_error_handling>
+  </step_error_handling>
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
+  <attributes>
+    <group>
+      <name>explorerState</name>
+    </group>
+  </attributes>
+</transformation>

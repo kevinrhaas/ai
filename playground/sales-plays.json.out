@@ -1,0 +1,687 @@
+Upgrade CE to EE
+1. Description of the addressable and serviceable market by industry, personas (user, buyer)
+- Addressable Market: All industries with a need for data integration and analytics, especially those with large and complex data environments.
+- Serviceable Market: Mid to large size companies that have outgrown the Community Edition (CE) and need the advanced features of Enterprise Edition (EE).
+- User Personas: Data engineers, data architects, IT managers, business analysts, and data scientists.
+- Buyer Personas: CIOs, CTOs, and IT directors.
+
+2. The customer problem being solved?
+- Customer Problem: 
+  - Inability to handle the volume and complexity of data with the limited features of CE.
+  - Lack of scalability and flexibility in data integration and analytics.
+  - Inability to meet regulatory compliance requirements.
+  - Inability to integrate with other enterprise systems and applications.
+- Sample Use Case: A financial services company that needs to integrate data from multiple sources, including legacy systems, to comply with regulatory requirements.
+
+3. What's business outcome does the customer need to achieve?
+- Business Outcome: 
+  - Improved data quality, faster time to insights, and increased revenue and profitability.
+  - Compliance with regulatory requirements.
+  - Scalability and flexibility in data integration and analytics.
+  - Integration with other enterprise systems and applications.
+- Sample Use Case: The financial services company can quickly generate regulatory reports and reduce the risk of non-compliance.
+
+4. Why is the customer trying to solve this? What does success look like?
+- Customer Motivation: To improve business agility and competitiveness by leveraging data as a strategic asset.
+- Success Criteria: Improved data quality, faster time to insights, and increased revenue and profitability.
+
+5. How else can the customer solve this problem?
+- Alternative Solutions: Custom-built data integration and analytics solutions or point solutions from multiple vendors.
+- Disadvantages: Higher costs, longer implementation times, and increased complexity.
+
+6. How are competitors solving this for their customers?
+- Competitor Solutions: Similar data integration and analytics solutions, but with varying levels of functionality and scalability.
+- Differentiators: Pentaho's open-source architecture, flexible deployment options, and seamless integration with Hitachi's Lumada platform.
+
+7. Why are they unable to resolve this with the technology they have today?
+- Technology Limitations: The limitations of CE and other point solutions that are unable to handle the volume and variety of data or lack the necessary functionality to integrate and transform data across multiple sources.
+
+8. What is our offering? Is it platform, technology capabilities, product or solution?
+- Offering: Upgrade from CE to EE, which includes advanced features for data integration, data quality, and business analytics, and integration with Hitachi's Lumada platform.
+- Differentiators: Open-source architecture, flexibility, and scalability.
+
+9. What is the solution design (or solution blueprint) into which our product fits?
+- Solution Blueprint: An end-to-end data management and analytics solution that includes data integration, data quality, data cataloging, and business analytics.
+- The solution design includes:
+  - Data governance policies and procedures
+  - Automated data management and protection tools
+  - Lumada Data Catalog and analytics capabilities
+  - Integration with existing IT infrastructure
+- Sample Use Case: The financial services company can integrate data from multiple sources and generate regulatory reports in a timely and efficient manner.
+
+10. What is the sales execution process from first contact to sale 'won' to implementation?
+- Sales Process: Identify potential customers, schedule a meeting to understand their needs, demonstrate product capabilities, provide proof of concept, negotiate pricing and contract terms, and provide implementation and support.
+  - First contact: Identify potential customers and schedule a meeting to understand their needs.
+  - Needs analysis: Understand the customer's unique compliance requirements and data environment.
+  - Solution design: Develop a solution blueprint that meets the customer's needs.
+  - Proposal: Present the solution to the customer in a detailed proposal.
+  - Sale 'won': Agree on the terms of the sale.
+  - Implementation: Implement the solution and train the customer on its use.
+
+11. What are the expected business benefits?
+- Expected Benefits: Improved decision-making, operational efficiency, and revenue and profitability, as well as reduced costs and risks.
+  - Compliance with regulatory requirements.
+  - Improved data quality, faster time to insights, and increased revenue and profitability.
+  - Scalability and flexibility in data integration and analytics.
+  - Integration with other enterprise systems and applications.
+- Sample Use Case: The financial services company can generate regulatory reports in a timely and efficient manner, reducing the risk of non-compliance.
+
+12. What is our pricing? How does our pricing compare to our competitors?
+- Pricing: Flexible pricing options based on usage and deployment, with transparent and predictable costs.
+- Competitive Advantage: Lower costs and greater flexibility compared to competitors.
+
+13. What is our commercial model? XaaS? SaaS? Term based license?
+- Commercial Model: Subscription-based license with flexible deployment options, including on-premise, cloud, and hybrid.
+- Advantages: Lower up-front costs, greater flexibility, and easier scalability.
+
+14. What is the expected time to value?
+- Time to Value: Depending on the complexity of the solution and the size of the customer's data environment, time to value can range from several weeks to several months.
+- Sample Use Case: The financial services company can achieve time to value within a few weeks by integrating data from multiple sources and generating regulatory reports.
+
+15. What is the TCO for 1, 3, 5 years?
+- TCO: Depending on the size of the customer's data environment and the complexity of the solution, TCO can range from several hundred thousand to several million dollars over 1, 3, or 5 years.
+- Advantages: Lower TCO compared to custom-built solutions or point solutions from multiple vendors.
+
+Generated Sales Play: Data Discovery Observability & Reliability
+Sales Play Summary Prompt: Monitor data, content, assets, devices and processes for insights to build trust in ownership data quality, lineage and validate a single version of truth. Sales play leverages Lumada Data Catalog.
+
+Data Discovery Observability & Reliability
+1. Description of the addressable and serviceable market by industry, personas (user, buyer)
+- Addressable Market: All industries with a need for data discovery and cataloging, especially those with large and complex data environments.
+- Serviceable Market: Mid to large size companies that need to trust data quality, lineage and need to validate a single version of truth.
+- User Personas: Data engineers, data architects, IT managers, business analysts, and data scientists.
+- Buyer Personas: CIOs, CTOs, and IT directors.
+
+2. The customer problem being solved?
+- Customer Problem: 
+  - Inability to monitor data, content, assets, devices and processes for insights to build trust in ownership data quality, lineage and validate a single version of truth.
+  - Lack of insights into data usage and access patterns.
+  - Inability to ensure regulatory compliance.
+  - Inability to discover and leverage the full value of enterprise data.
+- Sample Use Case: A healthcare organization that needs to ensure compliance with HIPAA regulations and streamline data discovery and cataloging.
+
+3. What's business outcome does the customer need to achieve?
+- Business Outcome: 
+  - Improved data quality, faster time to insights, and increased revenue and profitability.
+  - Compliance with regulatory requirements.
+  - Trust in data quality and lineage.
+  - Improved data discoverability and utilization.
+- Sample Use Case: The healthcare organization can ensure compliance with HIPAA regulations, streamline data discovery and cataloging, and improve patient outcomes.
+
+4. Why is the customer trying to solve this? What does success look like?
+- Customer Motivation: To leverage data as a strategic asset, drive operational efficiency, and improve customer satisfaction.
+- Success Criteria: Improved data quality, faster time to insights, and increased revenue and profitability.
+
+5. How else can the customer solve this problem?
+- Alternative Solutions: Custom-built data observability and cataloging solutions or point solutions from multiple vendors.
+- Disadvantages: Higher costs, longer implementation times, and increased complexity.
+
+6. How are competitors solving this for their customers?
+- Competitor Solutions: Similar data observability and cataloging solutions, but with varying levels of functionality and scalability.
+- Differentiators: Pentaho's seamless integration with Hitachi's Lumada platform, as well as its open-source architecture and flexible deployment options.
+
+7. Why are they unable to resolve this with the technology they have today?
+- Technology Limitations: The limitations of existing data observability and cataloging solutions that are unable to monitor data, content, assets, devices and processes for insights to build trust in ownership data quality, lineage and validate a single version of truth.
+
+8. What is our offering? Is it platform, technology capabilities, product or solution?
+- Offering: Lumada Data Catalog, which provides end-to-end data observability and cataloging capabilities, including data lineage and quality monitoring, data discovery, and data utilization insights.
+- Differentiators: Seamless integration with Pentaho Data Integration (PDI) and Pentaho Business Analytics (PBA), as well as Hitachi's Lumada platform, open-source architecture, and flexible deployment options.
+
+9. What is the solution design (or solution blueprint) into which our product fits?
+- Solution Blueprint: An end-to-end data observability and cataloging solution that includes data lineage and quality monitoring, data discovery, and data utilization insights.
+- The solution design includes:
+  - Data governance policies and procedures
+  - Automated data management and protection tools
+  - Lumada Data Catalog and analytics capabilities
+  - Integration with existing IT infrastructure
+- Sample Use Case: The healthcare organization can monitor data quality and usage patterns, ensure compliance with HIPAA regulations, and streamline data discovery and cataloging.
+
+10. What is the sales execution process from first contact to sale 'won' to implementation?
+- Sales Process: Identify potential customers, schedule a meeting to understand their needs, demonstrate product capabilities, provide proof of concept, negotiate pricing and contract terms, and provide implementation and support.
+  - First contact: Identify potential customers and schedule a meeting to understand their needs.
+  - Needs analysis: Understand the customer's unique data observability and cataloging needs and regulatory compliance requirements.
+  - Solution design: Develop a solution blueprint that meets the customer's needs.
+  - Proposal: Present the solution to the customer in a detailed proposal.
+  - Sale 'won': Agree on the terms of the sale.
+  - Implementation: Implement the solution and train the customer on its use.
+
+11. What are the expected business benefits?
+- Expected Benefits: Improved decision-making, operational efficiency, and revenue and profitability, as well as reduced costs and risks.
+  - Compliance with regulatory requirements.
+  - Improved data quality, faster time to insights, and increased revenue and profitability.
+  - Trust in data quality and lineage.
+  - Improved data discoverability and utilization.
+- Sample Use Case: The healthcare organization can ensure compliance with HIPAA regulations, streamline data discovery and cataloging, and improve patient outcomes.
+
+12. What is our pricing? How does our pricing compare to our competitors?
+- Pricing: Flexible pricing options based on usage and deployment, with transparent and predictable costs.
+- Competitive Advantage: Lower costs and greater flexibility compared to competitors.
+
+13. What is our commercial model? XaaS? SaaS? Term based license?
+- Commercial Model: Subscription-based license with flexible deployment options, including on-premise, cloud, and hybrid.
+- Advantages: Lower up-front costs, greater flexibility, and easier scalability.
+
+14. What is the expected time to value?
+- Time to Value: Depending on the complexity of the solution and the size of the customer's data environment, time to value can range from several weeks to several months.
+- Sample Use Case: The healthcare organization can achieve time to value within a few weeks by monitoring data quality and usage patterns, ensuring compliance with HIPAA regulations, and improving patient outcomes.
+
+15. What is the TCO for 1, 3, 5 years?
+- TCO: Depending on the size of the customer's data environment and the complexity of the solution, TCO can range from several hundred thousand to several million dollars over 1, 3, or 5 years.
+- Advantages: Lower TCO compared to custom-built solutions or point solutions from multiple vendors.
+
+
+Generated Sales Play: Automation & Decisioning
+Sales Play Summary Prompt: Automated analytics for insights, predictions and recommendations across data content. assets, devices and processes. Sales play leverages analytics.
+
+Sales Play Name: Automation & Decisioning
+Sales Play Summary: Automated analytics for insights, predictions and recommendations across data content, assets, devices, and processes. Sales play leverages analytics.
+
+1. Description of the addressable and serviceable market by industry, personas (user, buyer)
+- Addressable Market: All industries that generate large amounts of data, including financial services, healthcare, and retail.
+- Serviceable Market: Mid to large size companies that need to automate data integration and analytics.
+- User Personas: Data engineers, data architects, IT managers, business analysts, and data scientists.
+- Buyer Personas: CIOs, CTOs, and IT directors.
+
+2. The customer problem being solved?
+- Customer Problem: 
+  - Inability to efficiently and effectively analyze large volumes of data.
+  - Lack of automation in data integration and analytics.
+  - Difficulty in making timely and informed decisions due to manual processes.
+  - Difficulty in predicting future outcomes and making recommendations.
+- Sample Use Case: A healthcare provider that needs to analyze patient data to identify potential health risks and provide personalized recommendations.
+
+3. What business outcome does the customer need to achieve?
+- Business Outcome: 
+  - Improved patient outcomes and satisfaction.
+  - Increased efficiency and productivity.
+  - Cost savings and improved revenue generation.
+  - Improved decision-making and predictive capabilities.
+- Sample Use Case: The healthcare provider can identify potential health risks and provide personalized recommendations to patients, resulting in improved patient outcomes and satisfaction.
+
+4. Why is the customer trying to solve this? What does success look like?
+- Customer Motivation: To improve patient outcomes, increase efficiency and productivity, and reduce costs.
+- Success Criteria: Improved patient outcomes and satisfaction, increased efficiency and productivity, and cost savings.
+
+5. How else can the customer solve this problem?
+- Alternative Solutions: Custom-built solutions or point solutions from multiple vendors.
+- Disadvantages: Higher costs, longer implementation times, and increased complexity.
+
+6. How are competitors solving this for their customers?
+- Competitor Solutions: Similar data integration and analytics solutions, but with varying levels of functionality and automation.
+- Differentiators: Pentaho's open-source architecture, flexible deployment options, and seamless integration with Hitachi's Lumada platform.
+
+7. Why are they unable to resolve this with the technology they have today?
+- Technology Limitations: The limitations of manual processes and point solutions that are unable to handle the volume and variety of data or lack the necessary functionality to automate data integration and analytics.
+
+8. What is our offering? Is it platform, technology capabilities, product, or solution?
+- Offering: Pentaho Data Integration (PDI) and Pentaho Business Analytics (PBA) products, which provide automated analytics for insights, predictions, and recommendations across data content, assets, devices, and processes.
+- Differentiators: Open-source architecture, flexibility, and scalability.
+
+9. What is the solution design (or solution blueprint) into which our product fits?
+- Solution Blueprint: An end-to-end data management and analytics solution that includes data integration, data quality, data cataloging, and business analytics.
+- The solution design includes:
+  - Data governance policies and procedures
+  - Automated data management and protection tools
+  - Lumada Data Catalog and analytics capabilities
+  - Integration with existing IT infrastructure
+- Sample Use Case: The healthcare provider can analyze patient data to identify potential health risks and provide personalized recommendations.
+
+10. What is the sales execution process from first contact to sale 'won' to implementation?
+- Sales Process: Identify potential customers, schedule a meeting to understand their needs, demonstrate product capabilities, provide proof of concept, negotiate pricing and contract terms, and provide implementation and support.
+  - First contact: Identify potential customers and schedule a meeting to understand their needs.
+  - Needs analysis: Understand the customer's unique data environment and requirements.
+  - Solution design: Develop a solution blueprint that meets the customer's needs.
+  - Proposal: Present the solution to the customer in a detailed proposal.
+  - Sale 'won': Agree on the terms of the sale.
+  - Implementation: Implement the solution and train the customer on its use.
+
+11. What are the expected business benefits?
+- Expected Benefits: Improved decision-making, operational efficiency, and revenue and profitability, as well as reduced costs and risks.
+  - Improved patient outcomes and satisfaction.
+  - Increased efficiency and productivity.
+  - Cost savings and improved revenue generation.
+  - Improved decision-making and predictive capabilities.
+- Sample Use Case: The healthcare provider can identify potential health risks and provide personalized recommendations to patients, resulting in improved patient outcomes and satisfaction.
+
+12. What is our pricing? How does our pricing compare to our competitors?
+- Pricing: Flexible pricing options based on usage and deployment, with transparent and predictable costs.
+- Competitive Advantage: Lower costs and greater flexibility compared to competitors.
+
+13. What is our commercial model? XaaS? SaaS? Term based license?
+- Commercial Model: Subscription-based license with flexible deployment options, including on-premise, cloud, and hybrid.
+- Advantages: Lower up-front costs, greater flexibility, and easier scalability.
+
+14. What is the expected time to value?
+- Time to Value: Depending on the complexity of the solution and the size of the customer's data environment, time to value can range from several weeks to several months.
+- Sample Use Case: The healthcare provider can achieve time to value within a few weeks by analyzing patient data and providing personalized recommendations.
+
+15. What is the TCO for 1, 3, 5 years?
+- TCO: Depending on the size of the customer's data environment and the complexity of the solution, TCO can range from several hundred thousand to several million dollars over 1, 3, or 5 years.
+- Advantages: Lower TCO compared to custom-built solutions or point solutions from multiple vendors.
+
+
+Generated Sales Play: Unified Data Integration
+Sales Play Summary Prompt: Connect, integrate, transform and enrich IT & OT data across structured, unstructured data - for data at rest and in motion. Sales play leverages Pentaho Data Integration and Pentaho Business Analytics.
+
+Unified Data Integration
+1. Description of the addressable and serviceable market by industry, personas (user, buyer)
+- Addressable Market: All industries, especially those with IT and OT data sources.
+- Serviceable Market: Mid to large size companies that need to integrate and transform data across structured and unstructured data sources.
+- User Personas: Data engineers, data architects, IT managers, business analysts, and data scientists.
+- Buyer Personas: CIOs, CTOs, and IT directors.
+
+2. The customer problem being solved?
+- Customer Problem: 
+  - Inability to connect and integrate data across IT and OT data sources.
+  - Lack of scalability and flexibility in data integration and analytics.
+  - Inability to transform and enrich data for better insights.
+  - Inability to meet regulatory compliance requirements.
+- Sample Use Case: An energy company that needs to integrate data from sensors, machines, and IT systems to optimize energy usage.
+
+3. What's business outcome does the customer need to achieve?
+- Business Outcome: 
+  - Improved operational efficiency, faster time to insights, and increased revenue and profitability.
+  - Compliance with regulatory requirements.
+  - Scalability and flexibility in data integration and analytics.
+  - Integration with other enterprise systems and applications.
+- Sample Use Case: The energy company can optimize energy usage and reduce costs by integrating data from sensors and machines.
+
+4. Why is the customer trying to solve this? What does success look like?
+- Customer Motivation: To improve business agility and competitiveness by leveraging data as a strategic asset.
+- Success Criteria: Improved operational efficiency, faster time to insights, and increased revenue and profitability.
+
+5. How else can the customer solve this problem?
+- Alternative Solutions: Custom-built data integration and analytics solutions or point solutions from multiple vendors.
+- Disadvantages: Higher costs, longer implementation times, and increased complexity.
+
+6. How are competitors solving this for their customers?
+- Competitor Solutions: Similar data integration and analytics solutions, but with varying levels of functionality and scalability.
+- Differentiators: Pentaho's open-source architecture, flexible deployment options, and seamless integration with Hitachi's Lumada platform.
+
+7. Why are they unable to resolve this with the technology they have today?
+- Technology Limitations: The limitations of legacy systems and point solutions that are unable to handle the volume and variety of data or lack the necessary functionality to integrate and transform data across multiple sources.
+
+8. What is our offering? Is it platform, technology capabilities, product or solution?
+- Offering: Pentaho Data Integration and Pentaho Business Analytics, which provide advanced features for data integration, data quality, and business analytics, and integration with Hitachi's Lumada platform.
+- Differentiators: Open-source architecture, flexibility, and scalability.
+
+9. What is the solution design (or solution blueprint) into which our product fits?
+- Solution Blueprint: An end-to-end data management and analytics solution that includes data integration, data quality, data cataloging, and business analytics.
+- The solution design includes:
+  - Data governance policies and procedures
+  - Automated data management and protection tools
+  - Lumada Data Catalog and analytics capabilities
+  - Integration with existing IT infrastructure
+- Sample Use Case: The energy company can optimize energy usage by integrating data from sensors and machines and analyzing the data with Pentaho Business Analytics.
+
+10. What is the sales execution process from first contact to sale 'won' to implementation?
+- Sales Process: Identify potential customers, schedule a meeting to understand their needs, demonstrate product capabilities, provide proof of concept, negotiate pricing and contract terms, and provide implementation and support.
+  - First contact: Identify potential customers and schedule a meeting to understand their needs.
+  - Needs analysis: Understand the customer's unique data environment and integration requirements.
+  - Solution design: Develop a solution blueprint that meets the customer's needs.
+  - Proposal: Present the solution to the customer in a detailed proposal.
+  - Sale 'won': Agree on the terms of the sale.
+  - Implementation: Implement the solution and train the customer on its use.
+
+11. What are the expected business benefits?
+- Expected Benefits: Improved decision-making, operational efficiency, and revenue and profitability, as well as reduced costs and risks.
+  - Compliance with regulatory requirements.
+  - Improved data quality, faster time to insights, and increased revenue and profitability.
+  - Scalability and flexibility in data integration and analytics.
+  - Integration with other enterprise systems and applications.
+- Sample Use Case: The energy company can optimize energy usage and reduce costs by integrating data from sensors and machines.
+
+12. What is our pricing? How does our pricing compare to our competitors?
+- Pricing: Flexible pricing options based on usage and deployment, with transparent and predictable costs.
+- Competitive Advantage: Lower costs and greater flexibility compared to competitors.
+
+13. What is our commercial model? XaaS? SaaS? Term based license?
+- Commercial Model: Subscription-based license with flexible deployment options, including on-premise, cloud, and hybrid.
+- Advantages: Lower up-front costs, greater flexibility, and easier scalability.
+
+14. What is the expected time to value?
+- Time to Value: Depending on the complexity of the solution and the size of the customer's data environment, time to value can range from several weeks to several months.
+- Sample Use Case: The energy company can achieve time to value within a few weeks by integrating data from sensors and machines.
+
+15. What is the TCO for 1, 3, 5 years?
+- TCO: Depending on the size of the customer's data environment and the complexity of the solution, TCO can range from several hundred thousand to several million dollars over 1, 3, or 5 years.
+- Advantages: Lower TCO compared to custom-built solutions or point solutions from multiple vendors.
+
+
+Generated Sales Play: Migration for Hybrid Cloud
+Sales Play Summary Prompt: Intelligent data migration and data tiering from edge-to-prem-to public and private cloud. Sales play leverages Pentaho Data Integration and Lumada Data Catalog.
+
+Migration for Hybrid Cloud
+1. Description of the addressable and serviceable market by industry, personas (user, buyer)
+- Addressable Market: All industries with a need for hybrid cloud data management and analytics, especially those with large and complex data environments.
+- Serviceable Market: Mid to large size companies that need to migrate their data from on-premises to hybrid cloud environments.
+- User Personas: Data engineers, data architects, IT managers, business analysts, and data scientists.
+- Buyer Personas: CIOs, CTOs, and IT directors.
+
+2. The customer problem being solved?
+- Customer Problem: 
+  - Inability to migrate data to the cloud due to the complexity and volume of data.
+  - Lack of visibility into data assets across on-premises and cloud environments.
+  - Inability to maintain data quality and compliance during migration.
+- Sample Use Case: A healthcare provider that needs to migrate its patient data to the cloud while maintaining HIPAA compliance.
+
+3. What's business outcome does the customer need to achieve?
+- Business Outcome: 
+  - Improved agility and scalability by leveraging the cloud for data management and analytics.
+  - Reduced costs and increased efficiency by eliminating the need for on-premises infrastructure.
+  - Compliance with regulatory requirements during and after migration.
+- Sample Use Case: The healthcare provider can reduce costs and improve patient care by leveraging cloud-based analytics and machine learning capabilities.
+
+4. Why is the customer trying to solve this? What does success look like?
+- Customer Motivation: To improve business agility and competitiveness by leveraging the cloud for data management and analytics.
+- Success Criteria: Successful migration of data to the cloud while maintaining data quality and compliance.
+
+5. How else can the customer solve this problem?
+- Alternative Solutions: Custom-built migration solutions or point solutions from multiple vendors.
+- Disadvantages: Higher costs, longer implementation times, and increased complexity.
+
+6. How are competitors solving this for their customers?
+- Competitor Solutions: Similar migration solutions, but with varying levels of functionality and scalability.
+- Differentiators: Pentaho's open-source architecture, flexible deployment options, and seamless integration with Hitachi's Lumada platform.
+
+7. Why are they unable to resolve this with the technology they have today?
+- Technology Limitations: The limitations of legacy data management and analytics solutions that are unable to handle the volume and variety of data or lack the necessary functionality to integrate and transform data across on-premises and cloud environments.
+
+8. What is our offering? Is it platform, technology capabilities, product or solution?
+- Offering: Intelligent data migration and data tiering from edge-to-prem-to public and private cloud, leveraging Pentaho Data Integration and Lumada Data Catalog.
+- Differentiators: Open-source architecture, flexibility, and scalability.
+
+9. What is the solution design (or solution blueprint) into which our product fits?
+- Solution Blueprint: An end-to-end hybrid cloud data management and analytics solution that includes data migration, data quality, data cataloging, and business analytics.
+- The solution design includes:
+  - Automated data migration and protection tools
+  - Lumada Data Catalog and analytics capabilities
+  - Integration with existing IT infrastructure
+- Sample Use Case: The healthcare provider can migrate patient data to the cloud while maintaining HIPAA compliance and leverage cloud-based analytics for better patient care.
+
+10. What is the sales execution process from first contact to sale 'won' to implementation?
+- Sales Process: Identify potential customers, schedule a meeting to understand their needs, demonstrate product capabilities, provide proof of concept, negotiate pricing and contract terms, and provide implementation and support.
+  - First contact: Identify potential customers and schedule a meeting to understand their needs.
+  - Needs analysis: Understand the customer's unique compliance requirements and data environment.
+  - Solution design: Develop a solution blueprint that meets the customer's needs.
+  - Proposal: Present the solution to the customer in a detailed proposal.
+  - Sale 'won': Agree on the terms of the sale.
+  - Implementation: Implement the solution and train the customer on its use.
+
+11. What are the expected business benefits?
+- Expected Benefits: Improved agility and scalability, reduced costs and increased efficiency, as well as compliance with regulatory requirements during and after migration.
+  - Successful migration of data to the cloud while maintaining data quality and compliance.
+  - Improved patient care and reduced costs for the healthcare provider.
+- Sample Use Case: The healthcare provider can reduce costs and improve patient care by leveraging cloud-based analytics and machine learning capabilities.
+
+12. What is our pricing? How does our pricing compare to our competitors?
+- Pricing: Flexible pricing options based on usage and deployment, with transparent and predictable costs.
+- Competitive Advantage: Lower costs and greater flexibility compared to competitors.
+
+13. What is our commercial model? XaaS? SaaS? Term based license?
+- Commercial Model: Subscription-based license with flexible deployment options, including on-premise, cloud, and hybrid.
+- Advantages: Lower up-front costs, greater flexibility, and easier scalability.
+
+14. What is the expected time to value?
+- Time to Value: Depending on the complexity of the solution and the size of the customer's data environment, time to value can range from several weeks to several months.
+- Sample Use Case: The healthcare provider can achieve time to value within a few weeks by migrating patient data to the cloud and leveraging cloud-based analytics.
+
+15. What is the TCO for 1, 3, 5 years?
+- TCO: Depending on the size of the customer's data environment and the complexity of the solution, TCO can range from several hundred thousand to several million dollars over 1, 3, or 5 years.
+- Advantages: Lower TCO compared to custom-built solutions or point solutions from multiple vendors.
+
+
+Generated Sales Play: Cost Optimization & Sustainability
+Sales Play Summary Prompt: Ensure Cost & Sustainability are optimized and attributable to data consumption across all data content, assets, devices and processes. Sales play leverages Pentaho Data Integration and analytics.
+
+Sales Play Name: Cost Optimization & Sustainability
+Sales Play Summary: Ensure Cost & Sustainability are optimized and attributable to data consumption across all data content, assets, devices and processes. Sales play leverages Pentaho Data Integration and analytics.
+
+1. Description of the addressable and serviceable market by industry, personas (user, buyer)
+- Addressable Market: All industries with a need for cost optimization and sustainability, including manufacturing, healthcare, and retail.
+- Serviceable Market: Mid to large size companies that have complex data environments with multiple data sources.
+- User Personas: Data engineers, data architects, IT managers, business analysts, and data scientists.
+- Buyer Personas: CFOs, COOs, and sustainability managers.
+
+2. The customer problem being solved?
+- Customer Problem: 
+  - Inability to track and attribute costs and sustainability metrics to data consumption across all data sources.
+  - Lack of visibility into resource utilization and waste.
+  - Difficulty in identifying areas for cost savings and sustainability improvements.
+- Sample Use Case: A manufacturing company that wants to reduce energy consumption and waste in its production processes.
+
+3. What's business outcome does the customer need to achieve?
+- Business Outcome: 
+  - Reduced costs and resource waste.
+  - Improved sustainability metrics and compliance.
+  - Increased operational efficiency and profitability.
+- Sample Use Case: The manufacturing company can reduce its energy consumption and waste, leading to a decrease in production costs and an increase in profitability.
+
+4. Why is the customer trying to solve this? What does success look like?
+- Customer Motivation: To improve business agility and competitiveness by reducing costs and improving sustainability.
+- Success Criteria: Reduced costs and waste, improved sustainability metrics, and increased profitability.
+
+5. How else can the customer solve this problem?
+- Alternative Solutions: Custom-built cost and sustainability tracking solutions or point solutions from multiple vendors.
+- Disadvantages: Higher costs, longer implementation times, and increased complexity.
+
+6. How are competitors solving this for their customers?
+- Competitor Solutions: Similar cost and sustainability tracking solutions, but with varying levels of functionality and scalability.
+- Differentiators: Pentaho's open-source architecture, flexible deployment options, and seamless integration with Hitachi's Lumada platform.
+
+7. Why are they unable to resolve this with the technology they have today?
+- Technology Limitations: The limitations of traditional data tracking and analysis solutions that are unable to handle the volume and variety of data or lack the necessary functionality to integrate and transform data across multiple sources.
+
+8. What is our offering? Is it platform, technology capabilities, product or solution?
+- Offering: A cost optimization and sustainability tracking solution that leverages Pentaho Data Integration and analytics capabilities.
+- Differentiators: Open-source architecture, flexibility, scalability, and integration with Hitachi's Lumada platform.
+
+9. What is the solution design (or solution blueprint) into which our product fits?
+- Solution Blueprint: An end-to-end cost and sustainability tracking solution that includes data integration, data quality, data cataloging, and business analytics.
+- The solution design includes:
+  - Cost allocation policies and procedures
+  - Sustainability metrics tracking tools
+  - Lumada Data Catalog and analytics capabilities
+  - Integration with existing IT infrastructure
+- Sample Use Case: The manufacturing company can track energy consumption and waste across its production processes and identify areas for improvement.
+
+10. What is the sales execution process from first contact to sale 'won' to implementation?
+- Sales Process: Identify potential customers, schedule a meeting to understand their needs, demonstrate product capabilities, provide proof of concept, negotiate pricing and contract terms, and provide implementation and support.
+  - First contact: Identify potential customers and schedule a meeting to understand their needs.
+  - Needs analysis: Understand the customer's unique cost and sustainability tracking requirements and data environment.
+  - Solution design: Develop a solution blueprint that meets the customer's needs.
+  - Proposal: Present the solution to the customer in a detailed proposal.
+  - Sale 'won': Agree on the terms of the sale.
+  - Implementation: Implement the solution and train the customer on its use.
+
+11. What are the expected business benefits?
+- Expected Benefits: Reduced costs and resource waste, improved sustainability metrics and compliance, and increased operational efficiency and profitability.
+  - Reduced energy consumption and waste.
+  - Improved visibility into resource utilization and waste.
+  - Identification of areas for cost savings and sustainability improvements.
+- Sample Use Case: The manufacturing company can reduce its energy consumption and waste, leading to a decrease in production costs and an increase in profitability.
+
+12. What is our pricing? How does our pricing compare to our competitors?
+- Pricing: Flexible pricing options based on usage and deployment, with transparent and predictable costs.
+- Competitive Advantage: Lower costs and greater flexibility compared to competitors.
+
+13. What is our commercial model? XaaS? SaaS? Term based license?
+- Commercial Model: Subscription-based license with flexible deployment options, including on-premise, cloud, and hybrid.
+- Advantages: Lower up-front costs, greater flexibility, and easier scalability.
+
+14. What is the expected time to value?
+- Time to Value: Depending on the complexity of the solution and the size of the customer's data environment, time to value can range from several weeks to several months.
+- Sample Use Case: The manufacturing company can achieve time to value within a few weeks by tracking energy consumption and waste across its production processes.
+
+15. What is the TCO for 1, 3, 5 years?
+- TCO: Depending on the size of the customer's data environment and the complexity of the solution, TCO can range from several hundred thousand to several million dollars over 1, 3, or 5 years.
+- Advantages: Lower TCO compared to custom-built solutions or point solutions from multiple vendors.
+
+
+Generated Sales Play: Data Availability, Search & Self-Service
+Sales Play Summary Prompt: Ensure copies of metadata, data and master data are available to automate operations and to run analvtical workload. Sales play leverages Pentaho Data Integration and Pentaho Business Analytics and Lumada Data Catalog and analytics.
+
+Data Availability, Search & Self-Service
+
+1. Description of the addressable and serviceable market by industry, personas (user, buyer)
+- Addressable Market: All industries that handle large amounts of data, especially those in finance, healthcare, and retail.
+- Serviceable Market: Mid to large size companies that need to automate operations and run analytical workloads.
+- User Personas: Data engineers, data scientists, IT managers, business analysts, and data stewards.
+- Buyer Personas: CIOs, CTOs, and IT directors.
+
+2. The customer problem being solved?
+- Customer Problem: 
+  - Inability to access and search metadata, data and master data in a timely and efficient manner.
+  - Lack of visibility into data lineage, versioning, and usage.
+  - Inability to automate data operations and analytics.
+- Sample Use Case: A healthcare provider that needs to quickly search and access patient data for treatment and research purposes.
+
+3. What's business outcome does the customer need to achieve?
+- Business Outcome: 
+  - Improved data quality, faster time to insights, and increased revenue and profitability.
+  - Automation of data operations and analytics.
+  - Compliance with regulatory requirements.
+- Sample Use Case: The healthcare provider can quickly search and access patient data to improve treatment outcomes and comply with regulatory requirements.
+
+4. Why is the customer trying to solve this? What does success look like?
+- Customer Motivation: To improve patient outcomes, reduce costs, and comply with regulatory requirements.
+- Success Criteria: Improved data quality, faster time to insights, and increased revenue and profitability.
+
+5. How else can the customer solve this problem?
+- Alternative Solutions: Custom-built data cataloging and management solutions or point solutions from multiple vendors.
+- Disadvantages: Higher costs, longer implementation times, and increased complexity.
+
+6. How are competitors solving this for their customers?
+- Competitor Solutions: Similar data cataloging and management solutions, but with varying levels of functionality and scalability.
+- Differentiators: Pentaho's open-source architecture, flexible deployment options, and seamless integration with Hitachi's Lumada platform.
+
+7. Why are they unable to resolve this with the technology they have today?
+- Technology Limitations: The limitations of legacy data management systems or point solutions that lack the necessary functionality to catalog and manage data across multiple sources.
+
+8. What is our offering? Is it platform, technology capabilities, product or solution?
+- Offering: Lumada Data Catalog, which includes data cataloging, metadata management, and data lineage capabilities, as well as integration with Pentaho Data Integration and Pentaho Business Analytics.
+- Differentiators: Open-source architecture, flexibility, and scalability.
+
+9. What is the solution design (or solution blueprint) into which our product fits?
+- Solution Blueprint: An end-to-end data cataloging and management solution that includes Lumada Data Catalog, Pentaho Data Integration, and Pentaho Business Analytics.
+- The solution design includes:
+  - Data governance policies and procedures
+  - Automated data management and protection tools
+  - Lumada Data Catalog and analytics capabilities
+  - Integration with existing IT infrastructure
+- Sample Use Case: The healthcare provider can quickly search and access patient data to improve treatment outcomes and comply with regulatory requirements.
+
+10. What is the sales execution process from first contact to sale 'won' to implementation?
+- Sales Process: Identify potential customers, schedule a meeting to understand their needs, demonstrate product capabilities, provide proof of concept, negotiate pricing and contract terms, and provide implementation and support.
+  - First contact: Identify potential customers and schedule a meeting to understand their needs.
+  - Needs analysis: Understand the customer's unique data environment and cataloging requirements.
+  - Solution design: Develop a solution blueprint that meets the customer's needs.
+  - Proposal: Present the solution to the customer in a detailed proposal.
+  - Sale 'won': Agree on the terms of the sale.
+  - Implementation: Implement the solution and train the customer on its use.
+
+11. What are the expected business benefits?
+- Expected Benefits: Improved decision-making, operational efficiency, and revenue and profitability, as well as reduced costs and risks.
+  - Compliance with regulatory requirements.
+  - Improved data quality, faster time to insights, and increased revenue and profitability.
+  - Automation of data operations and analytics.
+- Sample Use Case: The healthcare provider can quickly search and access patient data to improve treatment outcomes and comply with regulatory requirements.
+
+12. What is our pricing? How does our pricing compare to our competitors?
+- Pricing: Flexible pricing options based on usage and deployment, with transparent and predictable costs.
+- Competitive Advantage: Lower costs and greater flexibility compared to competitors.
+
+13. What is our commercial model? XaaS? SaaS? Term based license?
+- Commercial Model: Subscription-based license with flexible deployment options, including on-premise, cloud, and hybrid.
+- Advantages: Lower up-front costs, greater flexibility, and easier scalability.
+
+14. What is the expected time to value?
+- Time to Value: Depending on the complexity of the solution and the size of the customer's data environment, time to value can range from several weeks to several months.
+- Sample Use Case: The healthcare provider can achieve time to value within a few weeks by cataloging and searching patient data.
+
+15. What is the TCO for 1, 3, 5 years?
+- TCO: Depending on the size of the customer's data environment and the complexity of the solution, TCO can range from several hundred thousand to several million dollars over 1, 3, or 5 years.
+- Advantages: Lower TCO compared to custom-built solutions or point solutions from multiple vendors.
+
+
+Generated Sales Play: Stewardship & Resiliency
+Sales Play Summary Prompt: Apply policies to data to achieve compliance with privacy, retention, security, archive, protection, sustainability and data deletion. Sales play leverages Pentaho Data Integration and Pentaho Business Analytics and Lumada Data Catalog and analytics.
+
+Stewardship & Resiliency
+1. Description of the addressable and serviceable market by industry, personas (user, buyer)
+- Addressable Market: All industries with data privacy, retention, security, archive, protection, sustainability, and data deletion needs.
+- Serviceable Market: Mid to large-size companies that need to comply with regulatory requirements and manage their data effectively.
+- User Personas: Data engineers, data architects, IT managers, business analysts, and data scientists.
+- Buyer Personas: CIOs, CTOs, and IT directors.
+
+2. The customer problem being solved?
+- Customer Problem: 
+  - Inability to manage data effectively and comply with privacy and regulatory requirements.
+  - Lack of visibility into data assets and their lineage.
+  - Inefficient and manual data management processes.
+- Sample Use Case: A healthcare organization that needs to manage patient data while complying with HIPAA regulations.
+
+3. What's business outcome does the customer need to achieve?
+- Business Outcome: 
+  - Compliance with privacy and regulatory requirements.
+  - Increased efficiency and automation in data management processes.
+  - Improved visibility into data assets and their lineage.
+- Sample Use Case: The healthcare organization can efficiently manage patient data while ensuring compliance with HIPAA regulations.
+
+4. Why is the customer trying to solve this? What does success look like?
+- Customer Motivation: To manage data effectively, ensure compliance with privacy and regulatory requirements, and improve business agility.
+- Success Criteria: Efficient and automated data management processes, compliance with privacy and regulatory requirements, and improved business agility.
+
+5. How else can the customer solve this problem?
+- Alternative Solutions: Custom-built solutions or point solutions from multiple vendors.
+- Disadvantages: Higher costs, longer implementation times, and increased complexity.
+
+6. How are competitors solving this for their customers?
+- Competitor Solutions: Similar data management and compliance solutions, but with varying levels of functionality and scalability.
+- Differentiators: Pentaho's open-source architecture, flexible deployment options, and seamless integration with Hitachi's Lumada platform.
+
+7. Why are they unable to resolve this with the technology they have today?
+- Technology Limitations: The limitations of existing manual or point solutions that are unable to handle the volume and variety of data or lack the necessary functionality to manage data effectively and comply with privacy and regulatory requirements.
+
+8. What is our offering? Is it platform, technology capabilities, product or solution?
+- Offering: Pentaho Data Integration and Pentaho Business Analytics for data integration and data quality, Lumada Data Catalog for data lineage and governance, and analytics capabilities for data insights.
+- Differentiators: Open-source architecture, flexibility, and scalability.
+
+9. What is the solution design (or solution blueprint) into which our product fits?
+- Solution Blueprint: An end-to-end data management and compliance solution that includes data integration, data quality, data cataloging, and analytics.
+  - Data governance policies and procedures
+  - Automated data management and protection tools
+  - Lumada Data Catalog and analytics capabilities
+  - Integration with existing IT infrastructure
+- Sample Use Case: The healthcare organization can manage patient data while complying with HIPAA regulations and gain insights into patient care.
+
+10. What is the sales execution process from first contact to sale 'won' to implementation?
+- Sales Process: Identify potential customers, schedule a meeting to understand their needs, demonstrate product capabilities, provide proof of concept, negotiate pricing and contract terms, and provide implementation and support.
+  - First contact: Identify potential customers and schedule a meeting to understand their needs.
+  - Needs analysis: Understand the customer's unique compliance requirements and data environment.
+  - Solution design: Develop a solution blueprint that meets the customer's needs.
+  - Proposal: Present the solution to the customer in a detailed proposal.
+  - Sale 'won': Agree on the terms of the sale.
+  - Implementation: Implement the solution and train the customer on its use.
+
+11. What are the expected business benefits?
+- Expected Benefits: Improved compliance with privacy and regulatory requirements, increased efficiency and automation in data management processes, and improved visibility into data assets and their lineage.
+- Sample Use Case: The healthcare organization can efficiently manage patient data while ensuring compliance with HIPAA regulations, reducing the risk of non-compliance.
+
+12. What is our pricing? How does our pricing compare to our competitors?
+- Pricing: Flexible pricing options based on usage and deployment, with transparent and predictable costs.
+- Competitive Advantage: Lower costs and greater flexibility compared to competitors.
+
+13. What is our commercial model? XaaS? SaaS? Term based license?
+- Commercial Model: Subscription-based license with flexible deployment options, including on-premise, cloud, and hybrid.
+- Advantages: Lower up-front costs, greater flexibility, and easier scalability.
+
+14. What is the expected time to value?
+- Time to Value: Depending on the complexity of the solution and the size of the customer's data environment, time to value can range from several weeks to several months.
+- Sample Use Case: The healthcare organization can achieve time to value within a few weeks by managing patient data efficiently and ensuring compliance with HIPAA regulations.
+
+15. What is the TCO for 1, 3, 5 years?
+- TCO: Depending on the size of the customer's data environment and the complexity of the solution, TCO can range from several hundred thousand to several million dollars over 1, 3, or 5 years.
+- Advantages: Lower TCO compared to custom-built solutions or point solutions from multiple vendors.
+
+

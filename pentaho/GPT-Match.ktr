@@ -1,0 +1,1953 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>GPT-Match</name>
+    <description/>
+    <extended_description/>
+    <trans_version/>
+    <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
+    <directory>/</directory>
+    <parameters>
+      <parameter>
+        <name>MAXCHARS</name>
+        <default_value>16000</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>MODEL</name>
+        <default_value>gpt-3.5-turbo-16k</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>MODEL_ALT</name>
+        <default_value>gpt-4-0613</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>SYSTEM</name>
+        <default_value>You will receive a vendor from the user, and you will match the vendor, based on their products, to one and only one of the following standard subcategories. Do not return the vendor or any text other than the name of the subcategory:</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>TOKEN</name>
+        <default_value>CHANGEME</default_value>
+        <description/>
+      </parameter>
+    </parameters>
+    <log>
+      <trans-log-table>
+        <connection/>
+        <schema/>
+        <table/>
+        <size_limit_lines/>
+        <interval/>
+        <timeout_days/>
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+          <subject/>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject/>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+          <subject/>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+          <subject/>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject/>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+          <subject/>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection/>
+        <schema/>
+        <table/>
+        <interval/>
+        <timeout_days/>
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
+    </log>
+    <maxdate>
+      <connection/>
+      <table/>
+      <field/>
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file/>
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+    <created_user>-</created_user>
+    <created_date>2023/07/11 16:12:39.055</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2023/07/11 16:12:39.055</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <is_key_private>N</is_key_private>
+  </info>
+  <notepads>
+    <notepad>
+      <note>This transformation receives inbound data with unknown vendors, formats a GPT request to look up 
+the vendor in our known list based on their product portfolio.
+
+Parameters include:
+SYSTEM - Objectives/purpose of the system, how the files are used to generate content
+TOKEN - Your bearer token parameter as assigned by OpenAI. Change the default from CHANGEME.
+MODEL - Which model to use, for example gpt-3.5-turbo
+MAXCHARS - How many chars to cut files at to before sending to model
+</note>
+      <xloc>432</xloc>
+      <yloc>176</yloc>
+      <width>617</width>
+      <heigth>154</heigth>
+      <fontname>.AppleSystemUIFont</fontname>
+      <fontsize>13</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>234</backgroundcolorred>
+      <backgroundcolorgreen>234</backgroundcolorgreen>
+      <backgroundcolorblue>234</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+  </notepads>
+  <order>
+    <hop>
+      <from>Call GPT - Categorize Vendor</from>
+      <to>js: extract result</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>js: format request</from>
+      <to>Call GPT - Categorize Vendor</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group up to row</from>
+      <to>Get variables</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Vendor Category Dimension</from>
+      <to>Group up to row</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get variables</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Input Data</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join rows (cartesian product)</from>
+      <to>js: format request</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>js: extract result</from>
+      <to>Output result</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <step>
+    <name>Call GPT - Categorize Vendor</name>
+    <type>Rest</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>100</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <applicationType>JSON</applicationType>
+    <method>POST</method>
+    <url>https://api.openai.com/v1/chat/completions</url>
+    <urlInField>N</urlInField>
+    <dynamicMethod>N</dynamicMethod>
+    <methodFieldName/>
+    <urlField/>
+    <bodyField>data_string</bodyField>
+    <httpLogin/>
+    <httpPassword>Encrypted </httpPassword>
+    <proxyHost/>
+    <proxyPort/>
+    <preemptive>N</preemptive>
+    <trustStoreFile/>
+    <trustStorePassword>Encrypted </trustStorePassword>
+    <headers>
+      <header>
+        <field>bearer_token</field>
+        <name>Authorization</name>
+      </header>
+    </headers>
+    <parameters>
+      </parameters>
+    <matrixParameters>
+      </matrixParameters>
+    <result>
+      <name>result</name>
+      <code/>
+      <response_time/>
+      <response_header/>
+    </result>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get variables</name>
+    <type>GetVariable</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>bearer_token</name>
+        <variable>Bearer ${TOKEN}</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>content_system</name>
+        <variable>${SYSTEM}</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>model</name>
+        <variable>${MODEL}</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>temperature</name>
+        <variable>0.7</variable>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>maxchars</name>
+        <variable>${MAXCHARS}</variable>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Group up to row</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore/>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname/>
+    <give_back_row>N</give_back_row>
+    <group>
+      </group>
+    <fields>
+      <field>
+        <aggregate>content_system_custom</aggregate>
+        <subject>vendor_subcategory</subject>
+        <type>CONCAT_STRING</type>
+        <valuefield>	</valuefield>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Input Data</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>vendor</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <field_null_if/>
+      </field>
+    </fields>
+    <data>
+      <line>
+        <item>AT&amp;T
+</item>
+      </line>
+      <line>
+        <item>BOOKSAMILLION.COM
+</item>
+      </line>
+      <line>
+        <item>Home Decorators Collection
+</item>
+      </line>
+      <line>
+        <item>Dell Home &amp; Home Office
+</item>
+      </line>
+      <line>
+        <item>Home Depot
+</item>
+      </line>
+      <line>
+        <item>T-Mobile
+</item>
+      </line>
+      <line>
+        <item>Citi Credit Cards
+</item>
+      </line>
+      <line>
+        <item>Yves Rocher US
+</item>
+      </line>
+      <line>
+        <item>Sears
+</item>
+      </line>
+      <line>
+        <item>Ann Taylor
+</item>
+      </line>
+      <line>
+        <item>TD Ameritrade
+</item>
+      </line>
+      <line>
+        <item>MacMall Affiliate Advantage Network
+</item>
+      </line>
+      <line>
+        <item>Emirates US
+</item>
+      </line>
+      <line>
+        <item>west elm
+</item>
+      </line>
+      <line>
+        <item>Jos. A. Bank
+</item>
+      </line>
+      <line>
+        <item>SPANX
+</item>
+      </line>
+      <line>
+        <item>Urban Outfitters
+</item>
+      </line>
+      <line>
+        <item>JetBlue Partner Program
+</item>
+      </line>
+      <line>
+        <item>Direct Wines
+</item>
+      </line>
+      <line>
+        <item>thredUp.com
+</item>
+      </line>
+      <line>
+        <item>Shoebuy.com
+</item>
+      </line>
+      <line>
+        <item>Jared The Galleria of Jewelry
+</item>
+      </line>
+      <line>
+        <item>Overstock.com
+</item>
+      </line>
+      <line>
+        <item>Best Buy
+</item>
+      </line>
+      <line>
+        <item>REI
+</item>
+      </line>
+      <line>
+        <item>Tory Burch
+</item>
+      </line>
+      <line>
+        <item>Netaya.com
+</item>
+      </line>
+      <line>
+        <item>Vistaprint, USA
+</item>
+      </line>
+      <line>
+        <item>Under Armour
+</item>
+      </line>
+      <line>
+        <item>Angie's List
+</item>
+      </line>
+      <line>
+        <item>1-800 CONTACTS
+</item>
+      </line>
+      <line>
+        <item>Roaman's
+</item>
+      </line>
+      <line>
+        <item>Gilt Groupe
+</item>
+      </line>
+      <line>
+        <item>Joe's
+</item>
+      </line>
+      <line>
+        <item>Mikasa
+</item>
+      </line>
+      <line>
+        <item>SOLSTICEsunglasses.com
+</item>
+      </line>
+      <line>
+        <item>AnnasLinens.com
+</item>
+      </line>
+      <line>
+        <item>123Inkjets.com
+</item>
+      </line>
+      <line>
+        <item>Housewares Deals
+</item>
+      </line>
+      <line>
+        <item>Rent The Runway
+</item>
+      </line>
+      <line>
+        <item>Lowe's
+</item>
+      </line>
+      <line>
+        <item>ESET North America
+</item>
+      </line>
+      <line>
+        <item>Brookstone
+</item>
+      </line>
+      <line>
+        <item>Expedia, Inc
+</item>
+      </line>
+      <line>
+        <item>Free People
+</item>
+      </line>
+      <line>
+        <item>Jones New York
+</item>
+      </line>
+      <line>
+        <item>Air &amp; Water
+</item>
+      </line>
+      <line>
+        <item>Columbia Sportswear
+</item>
+      </line>
+      <line>
+        <item>6pm
+</item>
+      </line>
+      <line>
+        <item>Groupon
+</item>
+      </line>
+      <line>
+        <item>Gevalia
+</item>
+      </line>
+      <line>
+        <item>The Knot Wedding Shop
+</item>
+      </line>
+      <line>
+        <item>Canon
+</item>
+      </line>
+      <line>
+        <item>FootSmart
+</item>
+      </line>
+      <line>
+        <item>Kirkland's Home
+</item>
+      </line>
+      <line>
+        <item>eBags
+</item>
+      </line>
+      <line>
+        <item>1 Sale A Day
+</item>
+      </line>
+      <line>
+        <item>Pacific Sunwear Affiliate Program
+</item>
+      </line>
+      <line>
+        <item>Jomashop.com &amp; JomaDeals.com
+</item>
+      </line>
+      <line>
+        <item>Backcountry.com
+</item>
+      </line>
+      <line>
+        <item>FragranceX.com
+</item>
+      </line>
+      <line>
+        <item>Blair.com
+</item>
+      </line>
+      <line>
+        <item>Folica.com
+</item>
+      </line>
+      <line>
+        <item>Easy Spirit
+</item>
+      </line>
+      <line>
+        <item>Ancestry.com
+</item>
+      </line>
+      <line>
+        <item>Competitive Cyclist
+</item>
+      </line>
+      <line>
+        <item>Maidenform
+</item>
+      </line>
+      <line>
+        <item>Athleta
+</item>
+      </line>
+      <line>
+        <item>Jessica London
+</item>
+      </line>
+      <line>
+        <item>Kmart
+</item>
+      </line>
+      <line>
+        <item>WeightWatchers.com
+</item>
+      </line>
+      <line>
+        <item>Sony - Computers &amp; Electronics
+</item>
+      </line>
+      <line>
+        <item>MyJewelryBox.com
+</item>
+      </line>
+      <line>
+        <item>Body Central
+</item>
+      </line>
+      <line>
+        <item>CengageBrain
+</item>
+      </line>
+      <line>
+        <item>Tennis Express
+</item>
+      </line>
+      <line>
+        <item>Ashley Stewart
+</item>
+      </line>
+      <line>
+        <item>Teva Footwear
+</item>
+      </line>
+      <line>
+        <item>Lands' End
+</item>
+      </line>
+      <line>
+        <item>Swiss International Air Lines - US
+</item>
+      </line>
+      <line>
+        <item>A.T. Cross
+</item>
+      </line>
+      <line>
+        <item>New Balance
+</item>
+      </line>
+      <line>
+        <item>PBteen
+</item>
+      </line>
+      <line>
+        <item>Clarisonic
+</item>
+      </line>
+      <line>
+        <item>Tanga.com
+</item>
+      </line>
+      <line>
+        <item>Jewelry.com
+</item>
+      </line>
+      <line>
+        <item>Fossil
+</item>
+      </line>
+      <line>
+        <item>Life is good
+</item>
+      </line>
+      <line>
+        <item>Seamless Food Delivery
+</item>
+      </line>
+      <line>
+        <item>Fathead
+</item>
+      </line>
+      <line>
+        <item>Perfumania.com
+</item>
+      </line>
+      <line>
+        <item>Priceline - Flights, Hotels, Cars, Vacation Packages
+</item>
+      </line>
+      <line>
+        <item>Shindigz
+</item>
+      </line>
+      <line>
+        <item>ULTA Beauty
+</item>
+      </line>
+      <line>
+        <item>Stage Stores
+</item>
+      </line>
+      <line>
+        <item>Vitamin Shoppe
+</item>
+      </line>
+      <line>
+        <item>Cabela's
+</item>
+      </line>
+      <line>
+        <item>Carter's
+</item>
+      </line>
+      <line>
+        <item>Express
+</item>
+      </line>
+      <line>
+        <item>Beach Trading Co. (BeachCamera.com, BuyDig.com)
+</item>
+      </line>
+      <line>
+        <item>Pet360
+</item>
+      </line>
+      <line>
+        <item>Sorel
+</item>
+      </line>
+      <line>
+        <item>RockyMountainATVMC.com
+</item>
+      </line>
+      <line>
+        <item>GoDaddy.com
+</item>
+      </line>
+      <line>
+        <item>Walgreens
+</item>
+      </line>
+      <line>
+        <item>SkinStore.com
+</item>
+      </line>
+      <line>
+        <item>Advance Auto Parts
+</item>
+      </line>
+      <line>
+        <item>Roku
+</item>
+      </line>
+      <line>
+        <item>Altrec.com Outdoors
+</item>
+      </line>
+      <line>
+        <item>Boscov's Department Stores
+</item>
+      </line>
+      <line>
+        <item>Joann.com
+</item>
+      </line>
+      <line>
+        <item>Meijer
+</item>
+      </line>
+      <line>
+        <item>Coach USA
+</item>
+      </line>
+      <line>
+        <item>39dollarglasses.com
+</item>
+      </line>
+      <line>
+        <item>Crucial Technology
+</item>
+      </line>
+      <line>
+        <item>Office Depot
+</item>
+      </line>
+      <line>
+        <item>Credit Sesame
+</item>
+      </line>
+      <line>
+        <item>Gilt City
+</item>
+      </line>
+      <line>
+        <item>Restaurant.com
+</item>
+      </line>
+      <line>
+        <item>bebe.com
+</item>
+      </line>
+      <line>
+        <item>Nine West
+</item>
+      </line>
+      <line>
+        <item>Intuit-Quicken
+</item>
+      </line>
+      <line>
+        <item>Department of Goods
+</item>
+      </line>
+      <line>
+        <item>e.l.f. Cosmetics
+</item>
+      </line>
+      <line>
+        <item>Shoe Metro
+</item>
+      </line>
+      <line>
+        <item>SuperJeweler
+</item>
+      </line>
+      <line>
+        <item>QVC.com
+</item>
+      </line>
+      <line>
+        <item>OshKosh B'gosh
+</item>
+      </line>
+      <line>
+        <item>Piperlime
+</item>
+      </line>
+      <line>
+        <item>Kenneth Cole
+</item>
+      </line>
+      <line>
+        <item>Bed Bath &amp; Beyond
+</item>
+      </line>
+      <line>
+        <item>SHOEBACCA.com
+</item>
+      </line>
+      <line>
+        <item>MiniInTheBox.com
+</item>
+      </line>
+      <line>
+        <item>Hulu Plus
+</item>
+      </line>
+      <line>
+        <item>Roxio: Digital Media Software for both PC &amp; Mac
+</item>
+      </line>
+      <line>
+        <item>Jimmy Jazz
+</item>
+      </line>
+      <line>
+        <item>Adorama
+</item>
+      </line>
+      <line>
+        <item>ashford
+</item>
+      </line>
+      <line>
+        <item>Kay Jewelers
+</item>
+      </line>
+      <line>
+        <item>Banana Republic
+</item>
+      </line>
+      <line>
+        <item>The Pfaltzgraff Co.
+</item>
+      </line>
+      <line>
+        <item>OtterBox
+</item>
+      </line>
+      <line>
+        <item>Cardpool
+</item>
+      </line>
+      <line>
+        <item>CVS Pharmacy
+</item>
+      </line>
+      <line>
+        <item>Art.com
+</item>
+      </line>
+      <line>
+        <item>Harry &amp; David
+</item>
+      </line>
+      <line>
+        <item>Campus Book Rentals
+</item>
+      </line>
+      <line>
+        <item>FTD.com
+</item>
+      </line>
+      <line>
+        <item>New Era Cap Company, Inc.
+</item>
+      </line>
+      <line>
+        <item>Claire's
+</item>
+      </line>
+      <line>
+        <item>Magazine Outlet
+</item>
+      </line>
+      <line>
+        <item>Travelocity
+</item>
+      </line>
+      <line>
+        <item>HP Snapfish - The Best Value in Photography
+</item>
+      </line>
+      <line>
+        <item>Deb Shops
+</item>
+      </line>
+      <line>
+        <item>Shopbop.com
+</item>
+      </line>
+      <line>
+        <item>Williams-Sonoma
+</item>
+      </line>
+      <line>
+        <item>LivingSocial
+</item>
+      </line>
+      <line>
+        <item>Burt's Bees
+</item>
+      </line>
+      <line>
+        <item>Garage Clothing
+</item>
+      </line>
+      <line>
+        <item>Woman Within
+</item>
+      </line>
+      <line>
+        <item>Pottery Barn Kids
+</item>
+      </line>
+      <line>
+        <item>Oneida LTD - Flatware
+</item>
+      </line>
+      <line>
+        <item>Oakley Vault
+</item>
+      </line>
+      <line>
+        <item>AliExpress by Alibaba.com
+</item>
+      </line>
+      <line>
+        <item>Old Navy
+</item>
+      </line>
+      <line>
+        <item>SmoothMove by Bankers Box
+</item>
+      </line>
+      <line>
+        <item>Marbles: The Brain Store
+</item>
+      </line>
+      <line>
+        <item>Skinit
+</item>
+      </line>
+      <line>
+        <item>Paula Young
+</item>
+      </line>
+      <line>
+        <item>Newegg.com
+</item>
+      </line>
+      <line>
+        <item>BrickHouse Electronics LLC
+</item>
+      </line>
+      <line>
+        <item>OfficeMax
+</item>
+      </line>
+      <line>
+        <item>CourseSmart
+</item>
+      </line>
+      <line>
+        <item>Sanuk Footwear
+</item>
+      </line>
+      <line>
+        <item>Harbor Freight Tools Affiliate Program
+</item>
+      </line>
+      <line>
+        <item>One Stop Plus
+</item>
+      </line>
+      <line>
+        <item>Tilly's
+</item>
+      </line>
+      <line>
+        <item>LOFT
+</item>
+      </line>
+      <line>
+        <item>Boden US
+</item>
+      </line>
+      <line>
+        <item>Hat World / Lids
+</item>
+      </line>
+      <line>
+        <item>Monoprice.com
+</item>
+      </line>
+      <line>
+        <item>ThinkGeek
+</item>
+      </line>
+      <line>
+        <item>Buffalo David Bitton
+</item>
+      </line>
+      <line>
+        <item>Woot
+</item>
+      </line>
+      <line>
+        <item>Domain.com
+</item>
+      </line>
+      <line>
+        <item>Caché
+</item>
+      </line>
+      <line>
+        <item>Birthday Express
+</item>
+      </line>
+      <line>
+        <item>CowBoom
+</item>
+      </line>
+      <line>
+        <item>Hoover and Dirt Devil
+</item>
+      </line>
+      <line>
+        <item>Cardstore
+</item>
+      </line>
+      <line>
+        <item>AllPosters.com
+</item>
+      </line>
+      <line>
+        <item>HSN.com - Home Shopping Network
+</item>
+      </line>
+      <line>
+        <item>Fandango
+</item>
+      </line>
+      <line>
+        <item>Shopko
+</item>
+      </line>
+      <line>
+        <item>Dailysteals.com
+</item>
+      </line>
+      <line>
+        <item>Avis Rent A Car
+</item>
+      </line>
+      <line>
+        <item>InterContinental Hotels Group
+</item>
+      </line>
+      <line>
+        <item>Marriott International - US
+</item>
+      </line>
+      <line>
+        <item>Sprint
+</item>
+      </line>
+      <line>
+        <item>Motel 6 &amp; Studio 6
+</item>
+      </line>
+      <line>
+        <item>Starwood Hotels &amp; Resorts
+</item>
+      </line>
+      <line>
+        <item>Hotels.com
+</item>
+      </line>
+      <line>
+        <item>Hertz
+</item>
+      </line>
+      <line>
+        <item>Best Western
+</item>
+      </line>
+      <line>
+        <item>Budget Rent a Car
+</item>
+      </line>
+      <line>
+        <item>YorkPhoto.com
+</item>
+      </line>
+      <line>
+        <item>Chemistry.com
+</item>
+      </line>
+      <line>
+        <item>Choice Hotels
+</item>
+      </line>
+      <line>
+        <item>Verizon Wireless</item>
+      </line>
+    </data>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join rows (cartesian product)</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue/>
+        <function>=</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Output result</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>vendor</name>
+      </field>
+      <field>
+        <name>content</name>
+        <rename>vendor_subcategory</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1040</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Vendor Category Dimension</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>vendor_category</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <field_null_if/>
+      </field>
+      <field>
+        <name>vendor_subcategory</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <field_null_if/>
+      </field>
+    </fields>
+    <data>
+      <line>
+        <item>Retailers and E-commerce</item>
+        <item>Clothing and Fashion
+</item>
+      </line>
+      <line>
+        <item>Retailers and E-commerce</item>
+        <item>Home Decor and Furnishings
+</item>
+      </line>
+      <line>
+        <item>Retailers and E-commerce</item>
+        <item>Electronics and Technology
+</item>
+      </line>
+      <line>
+        <item>Retailers and E-commerce</item>
+        <item>Home Improvement and Appliances
+</item>
+      </line>
+      <line>
+        <item>Travel and Hospitality</item>
+        <item>Airlines
+</item>
+      </line>
+      <line>
+        <item>Travel and Hospitality</item>
+        <item>Hotels and Accommodation
+</item>
+      </line>
+      <line>
+        <item>Travel and Hospitality</item>
+        <item>Online Travel Services
+</item>
+      </line>
+      <line>
+        <item>Travel and Hospitality</item>
+        <item>Car Rental
+</item>
+      </line>
+      <line>
+        <item>Beauty, Health, and Wellness</item>
+        <item>Skincare and Cosmetics
+</item>
+      </line>
+      <line>
+        <item>Beauty, Health, and Wellness</item>
+        <item>Fitness and Apparel
+</item>
+      </line>
+      <line>
+        <item>Beauty, Health, and Wellness</item>
+        <item>Health and Personal Care
+</item>
+      </line>
+      <line>
+        <item>Beauty, Health, and Wellness</item>
+        <item>Fragrance and Perfumes
+</item>
+      </line>
+      <line>
+        <item>Technology and Electronics</item>
+        <item>Telecommunications
+</item>
+      </line>
+      <line>
+        <item>Technology and Electronics</item>
+        <item>Computers and Accessories
+</item>
+      </line>
+      <line>
+        <item>Technology and Electronics</item>
+        <item>Audio and Video
+</item>
+      </line>
+      <line>
+        <item>Technology and Electronics</item>
+        <item>Software and Services
+</item>
+      </line>
+      <line>
+        <item>Food and Beverage</item>
+        <item>Food Delivery
+</item>
+      </line>
+      <line>
+        <item>Food and Beverage</item>
+        <item>Specialty Foods
+</item>
+      </line>
+      <line>
+        <item>Food and Beverage</item>
+        <item>Wine and Spirits
+</item>
+      </line>
+      <line>
+        <item>Food and Beverage</item>
+        <item>Grocery and Essentials</item>
+      </line>
+    </data>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>js: extract result</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+
+var obj = JSON.parse(result);
+
+
+firstKey = Object.keys(obj)[0];
+
+    if (firstKey === "error") {
+        // The object starts with an "error" key
+        // Handle this case differently
+        var content = "Service Exception";
+    } else {
+        // Handle normal case
+        var content = obj.choices[0].message.content;
+    }
+
+
+
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>content</name>
+        <rename>content</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>848</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>js: format request</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+
+var data_string = {
+    "model": model,
+    "messages": [
+        {
+            "role": "system",
+            "content": content_system + content_system_custom
+        },
+        {
+            "role": "user",
+            "content": vendor
+        }
+    ],
+    "temperature": temperature
+}
+
+var data_string = JSON.stringify(data_string)
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>data_string</name>
+        <rename>data_string</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step_error_handling>
+  </step_error_handling>
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
+  <attributes/>
+</transformation>

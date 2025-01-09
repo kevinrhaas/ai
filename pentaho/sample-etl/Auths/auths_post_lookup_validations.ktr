@@ -1,0 +1,4020 @@
+<transformation>
+  <info>
+    <name>auths_post_lookup_validations</name>
+    <description />
+    <extended_description />
+    <trans_version />
+    <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
+    <directory>/public/BBM ETL - DEV/Auths</directory>
+    <parameters>
+    </parameters>
+    <log>
+      <trans-log-table>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+          <subject />
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
+    </log>
+    <maxdate>
+      <connection />
+      <table />
+      <field />
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>5000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file />
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+      <partitionschema>
+        <name>3-way-partition</name>
+        <partition>
+          <id>part1</id>
+        </partition>
+        <partition>
+          <id>part2</id>
+        </partition>
+        <partition>
+          <id>part3</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>Audit_id</name>
+        <partition>
+          <id>ID1</id>
+        </partition>
+        <partition>
+          <id>ID2</id>
+        </partition>
+        <partition>
+          <id>ID3</id>
+        </partition>
+        <partition>
+          <id>ID4</id>
+        </partition>
+        <partition>
+          <id>ID5</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>IDP_AUDIT_ID</name>
+        <partition>
+          <id>idp1</id>
+        </partition>
+        <partition>
+          <id>idp2</id>
+        </partition>
+        <partition>
+          <id>idp3</id>
+        </partition>
+        <partition>
+          <id>idp4</id>
+        </partition>
+        <partition>
+          <id>idp5</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>IDP_AUDIT_ID1</name>
+        <partition>
+          <id>IDP_AUDIT_ID</id>
+        </partition>
+        <dynamic>Y</dynamic>
+        <partitions_per_slave>${IDP_DATA_DATE}</partitions_per_slave>
+      </partitionschema>
+      <partitionschema>
+        <name>IDP_AUDIT_ID_test</name>
+        <partition>
+          <id>IDP_AUDIT_ID</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave>${IDP_DATA_DATE}</partitions_per_slave>
+      </partitionschema>
+      <partitionschema>
+        <name>L1_CUSIP</name>
+        <partition>
+          <id>CUSIP</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>Partions</name>
+        <partition>
+          <id>p1</id>
+        </partition>
+        <partition>
+          <id>p2</id>
+        </partition>
+        <partition>
+          <id>p3</id>
+        </partition>
+        <partition>
+          <id>p4</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave>4</partitions_per_slave>
+      </partitionschema>
+      <partitionschema>
+        <name>Partition_BY_ID</name>
+        <dynamic>Y</dynamic>
+        <partitions_per_slave>2</partitions_per_slave>
+      </partitionschema>
+      <partitionschema>
+        <name>WorkUnit</name>
+        <partition>
+          <id>One</id>
+        </partition>
+        <partition>
+          <id>Two</id>
+        </partition>
+        <partition>
+          <id>Three</id>
+        </partition>
+        <partition>
+          <id>Four</id>
+        </partition>
+        <partition>
+          <id>Five</id>
+        </partition>
+        <partition>
+          <id>Six</id>
+        </partition>
+        <partition>
+          <id>Seven</id>
+        </partition>
+        <partition>
+          <id>Eight</id>
+        </partition>
+        <partition>
+          <id>Nine</id>
+        </partition>
+        <partition>
+          <id>Ten</id>
+        </partition>
+        <dynamic>Y</dynamic>
+        <partitions_per_slave>20</partitions_per_slave>
+      </partitionschema>
+      <partitionschema>
+        <name>city</name>
+        <partition>
+          <id>P1</id>
+        </partition>
+        <partition>
+          <id>P2</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>cluster</name>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>dynamic</name>
+        <dynamic>Y</dynamic>
+        <partitions_per_slave>1</partitions_per_slave>
+      </partitionschema>
+      <partitionschema>
+        <name>fruits</name>
+        <partition>
+          <id>partition1</id>
+        </partition>
+        <partition>
+          <id>partition2</id>
+        </partition>
+        <partition>
+          <id>partition3</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>mtg</name>
+        <partition>
+          <id>Partition1</id>
+        </partition>
+        <partition>
+          <id>Partition2</id>
+        </partition>
+        <partition>
+          <id>Partition3</id>
+        </partition>
+        <dynamic>N</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>partition_schema_1</name>
+        <partition>
+          <id>P1</id>
+        </partition>
+        <partition>
+          <id>P2</id>
+        </partition>
+        <partition>
+          <id>P3</id>
+        </partition>
+        <partition>
+          <id>P4</id>
+        </partition>
+        <partition>
+          <id>P5</id>
+        </partition>
+        <dynamic>Y</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+      <partitionschema>
+        <name>statement_id</name>
+        <partition>
+          <id>P1</id>
+        </partition>
+        <partition>
+          <id>P2</id>
+        </partition>
+        <partition>
+          <id>P3</id>
+        </partition>
+        <partition>
+          <id>P4</id>
+        </partition>
+        <partition>
+          <id>P5</id>
+        </partition>
+        <dynamic>Y</dynamic>
+        <partitions_per_slave />
+      </partitionschema>
+    </partitionschemas>
+    <slaveservers>
+      <slaveserver>
+        <name>ClusterMaster</name>
+        <hostname>localhost</hostname>
+        <port>8080</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>DEV_8</name>
+        <hostname>pentaho-dev2.avercloud.com</hostname>
+        <port>8443</port>
+        <webAppName>pentaho</webAppName>
+        <username>remote_job_runner</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>Master</name>
+        <hostname>localhost</hostname>
+        <port>8081</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>NOPHI_8</name>
+        <hostname>pentaho-nophi.avercloud.com</hostname>
+        <port>8443</port>
+        <webAppName>pentaho</webAppName>
+        <username>remote_job_runner</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>PROD_8</name>
+        <hostname>pentaho-prod2.avercloud.com</hostname>
+        <port>8443</port>
+        <webAppName>pentaho</webAppName>
+        <username>remote_job_runner</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>Slave 2 (100.39)</name>
+        <hostname>192.168.100.39</hostname>
+        <port>9080</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>Slave 3 (100.40)</name>
+        <hostname>192.168.100.40</hostname>
+        <port>9080</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>Slave1</name>
+        <hostname>localhost</hostname>
+        <port>8082</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>Slave2</name>
+        <hostname>localhost</hostname>
+        <port>8083</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>Slave3</name>
+        <hostname>localhost</hostname>
+        <port>8084</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>cm-metricsapp01</name>
+        <hostname>cm-metricsapp01</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>cm-metricsdb01</name>
+        <hostname>cm-metricsdb01</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>cm-metricsdb02</name>
+        <hostname>cm-metricsdb02</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>cm-metricsdb03</name>
+        <hostname>cm-metricsdb03</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>cm-metricsetl01</name>
+        <hostname>cm-metricsetl01</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>etl01</name>
+        <hostname>cm-metricsetl01</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>local1</name>
+        <hostname>localhost</hostname>
+        <port>40001</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>local2</name>
+        <hostname>localhost</hostname>
+        <port>40002</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>tmp01</name>
+        <hostname>cm-metricstmp01</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>tmp02</name>
+        <hostname>cm-metricstmp02</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>tmp03</name>
+        <hostname>cm-metricstmp03</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>tmp04</name>
+        <hostname>cm-metricstmp04</hostname>
+        <port>40000</port>
+        <webAppName />
+        <username>cluster</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>N</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>vmDumas</name>
+        <hostname>vmDumas</hostname>
+        <port>9080</port>
+        <webAppName>pentaho-di</webAppName>
+        <username>csheen</username>
+        <password>Encrypted 544adbdcdaa507dea2b38c16ab63f697bddf</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+    </slaveservers>
+    <clusterschemas>
+      <clusterschema>
+        <name>3 node</name>
+        <base_port>40010</base_port>
+        <sockets_buffer_size>262144</sockets_buffer_size>
+        <sockets_flush_interval>2000</sockets_flush_interval>
+        <sockets_compressed>N</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>cm-metricsapp01</name>
+          <name>cm-metricsdb01</name>
+          <name>cm-metricsdb02</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>4 node</name>
+        <base_port>40010</base_port>
+        <sockets_buffer_size>262144</sockets_buffer_size>
+        <sockets_flush_interval>2000</sockets_flush_interval>
+        <sockets_compressed>N</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>cm-metricsetl01</name>
+          <name>cm-metricsdb01</name>
+          <name>cm-metricsdb02</name>
+          <name>cm-metricsdb03</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>Cluster</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>Slave2</name>
+          <name>Slave1</name>
+          <name>ClusterMaster</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>ClusterSchema</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>Slave3</name>
+          <name>Slave2</name>
+          <name>Slave1</name>
+          <name>Master</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>ClusterSchema_dynamic</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>Y</dynamic>
+        <slaveservers>
+          <name>Master</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>ClusterTest</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>Y</dynamic>
+        <slaveservers>
+          <name>Slave1</name>
+          <name>ClusterMaster</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>ClusterTrial 1</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>Slave 2 (100.39)</name>
+          <name>Slave 3 (100.40)</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>UCP-Dev</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>WorkUnit</name>
+        <base_port>40000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>N</sockets_compressed>
+        <dynamic>Y</dynamic>
+        <slaveservers>
+          <name>vmDumas</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>YarnCluster</name>
+        <base_port>4000</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>N</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>local</name>
+        <base_port>40010</base_port>
+        <sockets_buffer_size>2000</sockets_buffer_size>
+        <sockets_flush_interval>5000</sockets_flush_interval>
+        <sockets_compressed>Y</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>local1</name>
+          <name>local2</name>
+        </slaveservers>
+      </clusterschema>
+      <clusterschema>
+        <name>tmp</name>
+        <base_port>40010</base_port>
+        <sockets_buffer_size>20000</sockets_buffer_size>
+        <sockets_flush_interval>10000</sockets_flush_interval>
+        <sockets_compressed>N</sockets_compressed>
+        <dynamic>N</dynamic>
+        <slaveservers>
+          <name>etl01</name>
+          <name>tmp01</name>
+          <name>tmp02</name>
+          <name>tmp03</name>
+          <name>tmp04</name>
+        </slaveservers>
+      </clusterschema>
+    </clusterschemas>
+    <created_user>chris</created_user>
+    <created_date>2019/08/13 09:25:19.834</created_date>
+    <modified_user>devops_admin</modified_user>
+    <modified_date>2020/04/15 15:02:15.578</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <is_key_private>N</is_key_private>
+  </info>
+  <notepads>
+  </notepads>
+  <order>
+    <hop>
+      <from>Auth Post-Lookup Validations</from>
+      <to>Get variables</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Action Code &lt;&gt; A1</from>
+      <to>Health Care Service Review Decision Reason Code not NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Action Code &lt;&gt; A1</from>
+      <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get variables</from>
+      <to>Action Code &lt;&gt; A1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing)</from>
+      <to>DRG Type = MS</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get rows from result</from>
+      <to>Auth Post-Lookup Validations</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DRG Type = MS</from>
+      <to>Dummy (do nothing) 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DRG Type = MS</from>
+      <to>DRG Code not NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Principal Procedure Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DRG Code not NULL</from>
+      <to>Principal Procedure Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Principal Procedure Code is NULL</from>
+      <to>Dummy (do nothing) 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Principal Procedure Code is NULL</from>
+      <to>Principal Procedure Code validation</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 3</from>
+      <to>Principal Diagnosis Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Principal Procedure Code validation</from>
+      <to>Principal Diagnosis Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Principal Diagnosis Code is NULL</from>
+      <to>Dummy (do nothing) 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Principal Diagnosis Code is NULL</from>
+      <to>Principal Diagnosis Code validation</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Health Care Service Review Decision Reason Code not NULL</from>
+      <to>Health Care Service Review Decision Reason Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Health Care Service Review Decision Reason Code is NULL</from>
+      <to>DRG Type = MS</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Health Care Service Review Decision Reason Code is NULL</from>
+      <to>Health Care Service Review Decision Reason Code Validity Check</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Health Care Service Review Decision Reason Code Validity Check</from>
+      <to>DRG Type = MS</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 4</from>
+      <to>Requesting Provider Taxonomy Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Principal Diagnosis Code validation</from>
+      <to>Requesting Provider Taxonomy Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Requesting Provider Taxonomy Code is NULL</from>
+      <to>Dummy (do nothing) 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Requesting Provider Taxonomy Code is NULL</from>
+      <to>Requesting Provider Taxonomy Code Validity Check</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Health Plan State is NULL</from>
+      <to>Health Plan State Validity Check</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Health Plan State is NULL</from>
+      <to>Dummy (do nothing) 6</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 6</from>
+      <to>Requesting Provider NPI is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Health Plan State Validity Check</from>
+      <to>Requesting Provider NPI is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Requesting Provider NPI is NULL</from>
+      <to>Requesting Provider NPI Validity Check</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Requesting Provider NPI is NULL</from>
+      <to>Dummy (do nothing) 7</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 7</from>
+      <to>Rendering Provider NPI is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Requesting Provider NPI Validity Check</from>
+      <to>Rendering Provider NPI is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rendering Provider NPI is NULL</from>
+      <to>Rendering Provider NPI Validity Check</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rendering Provider NPI is NULL</from>
+      <to>Dummy (do nothing) 8</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 5</from>
+      <to>Rendering Provider Taxonomy Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Requesting Provider Taxonomy Code Validity Check</from>
+      <to>Rendering Provider Taxonomy Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rendering Provider Taxonomy Code is NULL</from>
+      <to>Rendering Provider Taxonomy Code Validity Check</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rendering Provider Taxonomy Code is NULL</from>
+      <to>Dummy (do nothing) 9</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 9</from>
+      <to>Health Plan State is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rendering Provider Taxonomy Code Validity Check</from>
+      <to>Health Plan State is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 8</from>
+      <to>Facility Type Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rendering Provider NPI Validity Check</from>
+      <to>Facility Type Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Facility Type Code is NULL</from>
+      <to>Dummy (do nothing) 10</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Facility Type Code is NULL</from>
+      <to>Facility Type Code Validity Check</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 10</from>
+      <to>Place of Service Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Facility Type Code Validity Check</from>
+      <to>Place of Service Code is NULL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Place of Service Code is NULL</from>
+      <to>Place of Service Code Validity Check</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Place of Service Code is NULL</from>
+      <to>Dummy (do nothing) 11</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Invalid Auth Service Dates</from>
+      <to>Copy rows to result</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Claim Dates Valid</from>
+      <to>Copy rows to result</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 11</from>
+      <to>auth service date range check</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Place of Service Code Validity Check</from>
+      <to>auth service date range check</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>auth service date range check</from>
+      <to>Claim Dates Valid</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>auth service date range check</from>
+      <to>Invalid Auth Service Dates</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>auth_detail_file</from>
+      <to>auth service date range check</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Auth Post-Lookup Validations</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Health Care Service Review Decision Reason Code not NULL</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Health Care Service Review Decision Reason Code Validity Check</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DRG Code not NULL</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Principal Procedure Code validation</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Principal Diagnosis Code validation</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Requesting Provider Taxonomy Code Validity Check</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rendering Provider Taxonomy Code Validity Check</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Health Plan State Validity Check</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Requesting Provider NPI Validity Check</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rendering Provider NPI Validity Check</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Facility Type Code Validity Check</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Place of Service Code Validity Check</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Invalid Auth Service Dates</from>
+      <to>Check for Errors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check for Errors</from>
+      <to>Abort</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <step>
+    <name>Abort</name>
+    <type>Abort</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <row_threshold>0</row_threshold>
+    <message />
+    <always_log_rows>Y</always_log_rows>
+    <abort_option>ABORT_WITH_ERROR</abort_option>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2912</xloc>
+      <yloc>896</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Action Code &lt;&gt; A1</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Health Care Service Review Decision Reason Code not NULL</send_true_to>
+    <send_false_to>Dummy (do nothing)</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>Action Code</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>A1</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>File Type</leftvalue>
+            <function>=</function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>AUTH</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Auth Post-Lookup Validations</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>100000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_POST_LOOKUP</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>Get variables</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Check for Errors</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Abort</send_true_to>
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>ExecutionNrErrors</leftvalue>
+        <function>&gt;</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>0</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2912</xloc>
+      <yloc>816</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Claim Dates Valid</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>4784</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Copy rows to result</name>
+    <type>RowsToResult</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>5008</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DRG Code not NULL</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>100000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_DRG_CODE_NOT_NULL</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>Principal Procedure Code is NULL</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1760</xloc>
+      <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DRG Type = MS</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>DRG Code not NULL</send_true_to>
+    <send_false_to>Dummy (do nothing) 2</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>DRG Type</leftvalue>
+        <function>=</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>MS</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1568</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 10</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>4224</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 11</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>4480</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 2</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1760</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 3</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2080</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 4</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2432</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 5</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2736</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 6</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3408</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 7</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3664</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 8</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3936</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 9</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3088</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Facility Type Code Validity Check</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>100000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_FACILITY_TYPE_CODE_NOT_VALID</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>Place of Service Code is NULL</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>4224</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Facility Type Code is NULL</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Dummy (do nothing) 10</send_true_to>
+    <send_false_to>Facility Type Code Validity Check</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Facility Type Code</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>4080</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get rows from result</name>
+    <type>RowsFromResult</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>      </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get variables</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>File Type</name>
+        <variable>${V_filetype}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Health Care Service Review Decision Reason Code Validity Check</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_HEALTH_CARE_SERVICE_REVIEW_DECISION_REASON_CODE_NOT_VALID</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>DRG Type = MS</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1312</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Health Care Service Review Decision Reason Code is NULL</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>DRG Type = MS</send_true_to>
+    <send_false_to>Health Care Service Review Decision Reason Code Validity Check</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Health Care Service Review Decision Reason Code</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Health Care Service Review Decision Reason Code not NULL</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>100000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_HEALTH_CARE_SERVICE_REVIEW_DECISION_REASON_CODE_NOT_NULL</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>Health Care Service Review Decision Reason Code is NULL</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Health Plan State Validity Check</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>100000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_HEALTH_PLAN_STATE_NOT_VALID</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>Requesting Provider NPI is NULL</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3408</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Health Plan State is NULL</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Dummy (do nothing) 6</send_true_to>
+    <send_false_to>Health Plan State Validity Check</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Health Plan State</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3248</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Invalid Auth Service Dates</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>50000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}__INVALID_SERVICE_START_DATE</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>Copy rows to result</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>4784</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Place of Service Code Validity Check</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>100000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_PLACE_OF_SERVICE_CODE_NOT_VALID</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>auth service date range check</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>4480</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Place of Service Code is NULL</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Dummy (do nothing) 11</send_true_to>
+    <send_false_to>Place of Service Code Validity Check</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Place of Service Code</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>4352</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Principal Diagnosis Code is NULL</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Dummy (do nothing) 4</send_true_to>
+    <send_false_to>Principal Diagnosis Code validation</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Principal Diagnosis Code </leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2256</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Principal Diagnosis Code validation</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>100000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_PRINCIPAL_DIAGNOSIS_CODE_NOT_NULL</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>Requesting Provider Taxonomy Code is NULL</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2432</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Principal Procedure Code is NULL</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Dummy (do nothing) 3</send_true_to>
+    <send_false_to>Principal Procedure Code validation</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Principal Procedure Code</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1920</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Principal Procedure Code validation</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>100000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_PRINCIPAL_PROCEDURE_CODE_NOT_NULL</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>Principal Diagnosis Code is NULL</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2080</xloc>
+      <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Rendering Provider NPI Validity Check</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>100000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_RENDERING_PROVIDER_NPI_NOT_VALID</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>Facility Type Code is NULL</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3936</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Rendering Provider NPI is NULL</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Dummy (do nothing) 8</send_true_to>
+    <send_false_to>Rendering Provider NPI Validity Check</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Rendering Provider NPI</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3792</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Rendering Provider Taxonomy Code Validity Check</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>100000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_RENDERING_PROVIDER_TAXONOMY_CODE_NOT_VALID</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>Health Plan State is NULL</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3088</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Rendering Provider Taxonomy Code is NULL</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Dummy (do nothing) 9</send_true_to>
+    <send_false_to>Rendering Provider Taxonomy Code Validity Check</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Rendering Provider Taxonomy Code</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2896</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Requesting Provider NPI Validity Check</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>100000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_REQUESTING_PROVIDER_NPI_NOT_VALID</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>Rendering Provider NPI is NULL</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3664</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Requesting Provider NPI is NULL</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Dummy (do nothing) 7</send_true_to>
+    <send_false_to>Requesting Provider NPI Validity Check</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Requesting Provider NPI</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3536</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Requesting Provider Taxonomy Code Validity Check</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>rep_name</specification_method>
+    <trans_object_id />
+    <trans_name>inject_validation_standard</trans_name>
+    <filename />
+    <directory_path>/public/standard_templates/validation</directory_path>
+    <group_size>100000</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>V_validation_qualifier</variable>
+        <field />
+        <input>${V_filetype}_REQUESTING_PROVIDER_TAXONOMY_CODE_NOT_VALID</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step>Check for Errors</execution_result_target_step>
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step>Rendering Provider Taxonomy Code is NULL</result_rows_target_step>
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2736</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Requesting Provider Taxonomy Code is NULL</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Dummy (do nothing) 5</send_true_to>
+    <send_false_to>Requesting Provider Taxonomy Code Validity Check</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Requesting Provider Taxonomy Code</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2560</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>auth service date range check</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Claim Dates Valid</send_true_to>
+    <send_false_to>Invalid Auth Service Dates</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>Service Start Date</leftvalue>
+            <function>&lt;=</function>
+            <rightvalue>Service End Date</rightvalue>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>Service Start Date</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>Service End Date</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>4608</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>auth_detail_file</name>
+    <type>CsvInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filename>/Users/marcie.hallan/Documents/BBM/pre_authorizations_20180711_error_29_5_detail.csv</filename>
+    <filename_field />
+    <rownum_field />
+    <include_filename>N</include_filename>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <header>N</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <format />
+    <encoding />
+    <fields>
+      <field>
+        <name>Sequence</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Payer ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Health Service Tracking Number</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Authorization Date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Action Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Health Care Service Review Decision Reason Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Requesting Provider NPI</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Requesting Provider TIN</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Requesting Provider Payer Provider ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Requesting Provider Taxonomy Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Member ID Qualifier</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Member ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Member Last Name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Member First Name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Member Gender</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Member Date of Birth</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Line of Business</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Segment</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Program</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Product</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Coverage Type</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Health Plan State</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Health Plan Product Name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Division</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Group</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Employer Group ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Employer Group Name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>DRG Type</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>DRG Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Principal Procedure Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 3</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 4</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 5</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 6</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 7</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 8</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 9</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 10</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Procedure Code 11</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Principal Diagnosis Code </name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 3</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 4</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 5</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 6</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 7</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 8</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 9</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 10</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Secondary Diagnosis Code 11</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Rendering Provider NPI</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Rendering Provider TIN</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Rendering Provider Payer Provider ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Rendering Provider Taxonomy Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Facility Type Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Place of Service Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Service Start Date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Service End Date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>CPT HCPCS Code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Service Units</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>256</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>4608</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step_error_handling>
+  </step_error_handling>
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
+  <attributes>
+    <group>
+      <name>explorerState</name>
+    </group>
+  </attributes>
+</transformation>

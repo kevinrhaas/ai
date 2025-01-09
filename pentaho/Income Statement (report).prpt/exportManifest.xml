@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:ExportManifest xmlns:ns2="http://www.pentaho.com/schema/">
+    <ExportManifestInformation exportDate="30-06-2023 03:12:31 UTC" exportBy="admin" rootFolder="/public/Steel Wheels/" manifestVersion="2"/>
+    <ExportManifestEntity path="Income Statement (report).prpt">
+        <ExportManifestProperty>
+            <EntityMetaData name="Income Statement (report).prpt" createdDate="2023-05-30T19:12:08.676Z" isFolder="false" path="Income Statement (report).prpt" isHidden="false" isSchedulable="true" locale="en_US" title="Income Statement"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityExtraMetaData/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+</ns2:ExportManifest>
