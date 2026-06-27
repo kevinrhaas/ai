@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#02060c" />
+<title>W.O.P.R. — SHALL WE PLAY A GAME?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --p:#5fd2ff;        /* phosphor blue */
+    --p-dim:#2c7ea6;    /* dim */
+    --p-bright:#cdf3ff; /* hot white-blue */
+    --p-deep:#0a3a52;
+    --bg:#02060c;
+    --warn:#ff6b4a;
+    --good:#7dff9b;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{
+    background:#000;
+    color:var(--p);
+    font-family:'VT323', ui-monospace, 'Courier New', monospace;
+    overflow:hidden;
+    -webkit-font-smoothing:none;
+    user-select:none;
+    -webkit-user-select:none;
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
+  }
+  /* ---------- CRT shell ---------- */
+  #crt{
+    position:fixed; inset:0;
+    background:
+      radial-gradient(120% 120% at 50% 50%, #061522 0%, #03090f 55%, #000 100%);
+    overflow:hidden;
+  }
+  #crt::before{ /* scanlines */
+    content:""; position:absolute; inset:0; z-index:60; pointer-events:none;
+    background:repeating-linear-gradient(to bottom,
+      rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px, rgba(0,0,0,0.30) 3px, rgba(0,0,0,0.30) 4px);
+    mix-blend-mode:multiply;
+    animation:scan 8s linear infinite;
+  }
+  #crt::after{ /* vignette + flicker */
+    content:""; position:absolute; inset:0; z-index:61; pointer-events:none;
+    background:radial-gradient(120% 120% at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.65) 100%);
+    animation:flicker 4.5s steps(60) infinite;
+  }
+  @keyframes scan{from{background-position:0 0;}to{background-position:0 100px;}}
+  @keyframes flicker{
+    0%,100%{opacity:1;} 7%{opacity:.94;} 8%{opacity:1;} 33%{opacity:.97;}
+    34%{opacity:1;} 70%{opacity:.93;} 71%{opacity:1;}
+  }
+  .glow{ text-shadow:0 0 4px rgba(95,210,255,.9), 0 0 12px rgba(95,210,255,.5); }
+
+  #app{ position:relative; z-index:10; height:100%; width:100%;
+        display:flex; flex-direction:column; }
+
+  /* ---------- top bar ---------- */
+  #bar{
+    flex:0 0 auto; display:none; align-items:center; gap:.6rem;
+    padding:.5rem .7rem; border-bottom:1px solid var(--p-deep);
+    font-size:1.15rem; letter-spacing:.08em;
+  }
+  #bar.show{display:flex;}
+  .btn{
+    background:transparent; color:var(--p); border:1px solid var(--p-dim);
+    font-family:inherit; font-size:1.05rem; letter-spacing:.06em;
+    padding:.25rem .7rem; cursor:pointer; text-transform:uppercase;
+    text-shadow:0 0 6px rgba(95,210,255,.6);
+  }
+  .btn:hover,.btn:focus{ background:var(--p); color:#021018; outline:none; }
+  .btn:active{ transform:translateY(1px); }
+  #bar .title{ flex:1; text-align:center; color:var(--p-bright); }
+  #bar .right{ display:flex; gap:.4rem; }
+
+  /* ---------- screens ---------- */
+  #screen{ flex:1 1 auto; position:relative; overflow:hidden; }
+  .view{ position:absolute; inset:0; display:flex; flex-direction:column; }
+
+  /* boot */
+  #boot{ padding:1.2rem clamp(1rem,5vw,4rem); font-size:clamp(1.1rem,4.4vw,1.6rem);
+         line-height:1.35; white-space:pre-wrap; overflow:hidden; }
+  #boot .cur{ display:inline-block; width:.6ch; background:var(--p);
+              animation:blink 1s steps(1) infinite; }
+  @keyframes blink{50%{opacity:0;}}
+  .skip{ position:absolute; bottom:1rem; right:1.2rem; font-size:1rem; color:var(--p-dim);}
+
+  /* menu */
+  #menu{ overflow-y:auto; padding:clamp(1rem,4vw,2.4rem) clamp(1rem,6vw,5rem); }
+  #menu .head{ font-size:clamp(1rem,3.6vw,1.35rem); color:var(--p-dim); line-height:1.3; margin-bottom:.2rem;}
+  #menu .ask{ font-size:clamp(1.5rem,6vw,2.4rem); color:var(--p-bright); margin:.6rem 0 1rem; }
+  .list{ display:flex; flex-direction:column; }
+  .game-row{
+    display:flex; align-items:baseline; gap:.6rem; cursor:pointer;
+    font-size:clamp(1.25rem,5vw,1.8rem); letter-spacing:.06em;
+    padding:.12rem .4rem; border:1px solid transparent;
+  }
+  .game-row .idx{ color:var(--p-dim); min-width:2.2ch; text-align:right; font-size:.8em;}
+  .game-row .nm{ flex:1; }
+  .game-row .tag{ font-size:.62em; color:var(--p-dim); letter-spacing:.12em; }
+  .game-row.locked{ color:var(--p-dim); }
+  .game-row.locked .nm{ opacity:.78; }
+  .game-row.playable .nm{ color:var(--p); }
+  .game-row.sel, .game-row:hover{ background:rgba(95,210,255,.14); border-color:var(--p-dim); }
+  .game-row.sel .nm, .game-row:hover .nm{ color:var(--p-bright); }
+  .game-row .arrow{ width:1.4ch; color:var(--p-bright); opacity:0; }
+  .game-row.sel .arrow, .game-row:hover .arrow{ opacity:1; }
+  #menu .foot{ margin-top:1.2rem; color:var(--p-dim); font-size:clamp(.95rem,3.4vw,1.2rem); line-height:1.4;}
+  #wopr-say{ min-height:1.5em; color:var(--warn); font-size:clamp(1.05rem,4vw,1.4rem); margin-top:.5rem;}
+
+  /* game stage */
+  #stage{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+          touch-action:none; }
+  .gcanvas{ display:block; touch-action:none; image-rendering:pixelated;
+            box-shadow:0 0 30px rgba(95,210,255,.12); }
+  .dom-game{ position:absolute; inset:0; padding:.6rem; display:flex; flex-direction:column;
+             touch-action:manipulation; }
+
+  /* overlay (game over / info) */
+  .overlay{ position:absolute; inset:0; z-index:40; display:flex; flex-direction:column;
+            align-items:center; justify-content:center; gap:.7rem; text-align:center;
+            background:rgba(2,6,12,.82); padding:1.4rem; }
+  .overlay h2{ font-size:clamp(1.8rem,8vw,3rem); color:var(--p-bright); letter-spacing:.05em;}
+  .overlay p{ font-size:clamp(1.1rem,4.6vw,1.5rem); color:var(--p); line-height:1.35; max-width:32ch;}
+  .overlay .row{ display:flex; gap:.7rem; flex-wrap:wrap; justify-content:center; margin-top:.4rem;}
+  .overlay .big{ font-size:clamp(2rem,9vw,3.4rem); color:var(--good);}
+
+  /* generic helper text */
+  .hint{ color:var(--p-dim); font-size:clamp(.95rem,3.6vw,1.2rem); text-align:center; }
+
+  /* tactical / dom games */
+  .lane{ border:1px solid var(--p-deep); margin:.3rem 0; padding:.4rem .5rem; }
+  .barwrap{ position:relative; height:1.4rem; background:rgba(10,58,82,.5); border:1px solid var(--p-deep); }
+  .barfill{ position:absolute; top:0; bottom:0; }
+  .control{ display:flex; align-items:center; gap:.5rem; font-size:1.2rem; }
+  .step{ width:2.4rem; height:2.4rem; font-size:1.4rem; }
+
+  ::-webkit-scrollbar{ width:8px; }
+  ::-webkit-scrollbar-thumb{ background:var(--p-deep); }
+</style>
+</head>
+<body>
+<div id="crt">
+  <div id="app">
+    <div id="bar">
+      <button class="btn" id="backBtn">&larr; W.O.P.R.</button>
+      <div class="title glow" id="barTitle"></div>
+      <div class="right">
+        <button class="btn" id="muteBtn">SND</button>
+      </div>
+    </div>
+    <div id="screen"></div>
+  </div>
+</div>
+
+<script>
+"use strict";
+/* =====================================================================
+   W.O.P.R. — a WarGames-inspired arcade.  Single file, no dependencies.
+   ===================================================================== */
+(function(){
+
+/* ----------------------------- AUDIO -------------------------------- */
+const Sound = (function(){
+  let ctx=null, master=null;
+  let muted = localStorage.getItem('wopr_mute')==='1';
+  function ensure(){
+    if(ctx) return;
+    try{
+      ctx = new (window.AudioContext||window.webkitAudioContext)();
+      master = ctx.createGain(); master.gain.value=0.5; master.connect(ctx.destination);
+    }catch(e){ ctx=null; }
+  }
+  function tone(freq,dur,type,vol,slideTo){
+    if(muted) return; ensure(); if(!ctx) return;
+    const t=ctx.currentTime;
+    const o=ctx.createOscillator(), g=ctx.createGain();
+    o.type=type||'square'; o.frequency.setValueAtTime(freq,t);
+    if(slideTo) o.frequency.exponentialRampToValueAtTime(Math.max(20,slideTo), t+dur);
+    g.gain.setValueAtTime(Math.max(.0001,vol||.12), t);
+    g.gain.exponentialRampToValueAtTime(.0001, t+dur);
+    o.connect(g).connect(master); o.start(t); o.stop(t+dur+.02);
+  }
+  function noise(dur,vol,lp){
+    if(muted) return; ensure(); if(!ctx) return;
+    const t=ctx.currentTime, n=Math.floor(ctx.sampleRate*dur);
+    const buf=ctx.createBuffer(1,n,ctx.sampleRate), d=buf.getChannelData(0);
+    for(let i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2);
+    const s=ctx.createBufferSource(); s.buffer=buf;
+    const g=ctx.createGain(); g.gain.value=vol||.2;
+    let node=s;
+    if(lp){ const f=ctx.createBiquadFilter(); f.type='lowpass'; f.frequency.value=lp; s.connect(f); node=f; }
+    node.connect(g).connect(master); s.start(t);
+  }
+  return {
+    resume(){ ensure(); if(ctx && ctx.state==='suspended') ctx.resume(); },
+    blip(){ tone(900,.05,'square',.08); },
+    nav(){ tone(420,.05,'square',.07); },
+    select(){ tone(660,.07,'square',.1); setTimeout(()=>tone(990,.08,'square',.09),60); },
+    deny(){ tone(200,.18,'sawtooth',.12,90); },
+    laser(){ tone(1300,.08,'sawtooth',.07,420); },
+    thud(){ tone(140,.12,'square',.1,70); },
+    boom(){ noise(.45,.3,1200); tone(70,.4,'sine',.18,40); },
+    pop(){ tone(520,.06,'triangle',.1); },
+    bad(){ tone(180,.3,'sawtooth',.13,80); },
+    good(){ tone(740,.09,'square',.1); },
+    coin(){ tone(880,.05,'square',.09); setTimeout(()=>tone(1320,.09,'square',.09),55); },
+    win(){ [523,659,784,1047,1319].forEach((f,i)=>setTimeout(()=>tone(f,.16,'square',.11),i*120)); },
+    lose(){ [440,392,330,262,196].forEach((f,i)=>setTimeout(()=>tone(f,.2,'square',.11),i*150)); },
+    alarm(){ tone(720,.5,'sawtooth',.1,520); },
+    dial(){
+      if(muted) return; ensure(); if(!ctx) return;
+      // DTMF-ish modem handshake flourish
+      const seq=[941,1336, 697,1209, 770,1477, 852,1633];
+      seq.forEach((f,i)=> setTimeout(()=>tone(f,.09,'sine',.08),i*70));
+      setTimeout(()=>{ tone(2100,.5,'sine',.05); noise(.6,.06,3000); },700);
+      setTimeout(()=>{ tone(1100,.7,'sine',.05); noise(.8,.05,2200); },1100);
+    },
+    toggle(){ muted=!muted; localStorage.setItem('wopr_mute', muted?'1':'0'); if(!muted) this.blip(); return muted; },
+    isMuted(){ return muted; }
+  };
+})();
+
+/* --------------------------- DOM HELPERS ---------------------------- */
+function el(tag, cls, txt){
+  const e=document.createElement(tag);
+  if(cls) e.className=cls;
+  if(txt!=null) e.textContent=txt;
+  return e;
+}
+const screen = document.getElementById('screen');
+const bar = document.getElementById('bar');
+const barTitle = document.getElementById('barTitle');
+const backBtn = document.getElementById('backBtn');
+const muteBtn = document.getElementById('muteBtn');
+
+function setMuteLabel(){ muteBtn.textContent = Sound.isMuted() ? 'SND ✕' : 'SND ◀'; }
+setMuteLabel();
+muteBtn.addEventListener('click', ()=>{ Sound.toggle(); setMuteLabel(); });
+backBtn.addEventListener('click', ()=> App.toMenu());
+
+function clearScreen(){ screen.innerHTML=''; }
+
+/* ---------------------------- STAGE (canvas) ------------------------ */
+/* Fixed virtual resolution, letter-boxed & DPR-aware. Unified pointer. */
+function makeStage(host, VW, VH){
+  const canvas = el('canvas','gcanvas');
+  host.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  const dpr = Math.min(2, window.devicePixelRatio||1);
+  let scale=1;
+  const pointer={x:VW/2,y:VH/2,down:false,justDown:false,justUp:false};
+  const keys={};
+
+  function resize(){
+    const cw=host.clientWidth||1, ch=host.clientHeight||1;
+    scale=Math.min(cw/VW, ch/VH);
+    const dw=Math.max(1,Math.round(VW*scale)), dh=Math.max(1,Math.round(VH*scale));
+    canvas.style.width=dw+'px'; canvas.style.height=dh+'px';
+    canvas.width=Math.round(dw*dpr); canvas.height=Math.round(dh*dpr);
+  }
+  const ro=new ResizeObserver(resize); ro.observe(host); resize();
+
+  function toV(clientX,clientY){
+    const r=canvas.getBoundingClientRect();
+    pointer.x=(clientX-r.left)/r.width*VW;
+    pointer.y=(clientY-r.top)/r.height*VH;
+  }
+  function pd(e){ Sound.resume(); toV(e.clientX,e.clientY); pointer.down=true; pointer.justDown=true; }
+  function pm(e){ toV(e.clientX,e.clientY); }
+  function pu(e){ pointer.down=false; pointer.justUp=true; }
+  canvas.addEventListener('pointerdown',pd);
+  window.addEventListener('pointermove',pm);
+  window.addEventListener('pointerup',pu);
+  window.addEventListener('pointercancel',pu);
+  const kd=e=>{ keys[(e.key||'').toLowerCase()]=true; if([' ','arrowup','arrowdown','arrowleft','arrowright'].includes((e.key||'').toLowerCase())) e.preventDefault(); };
+  const ku=e=>{ keys[(e.key||'').toLowerCase()]=false; };
+  window.addEventListener('keydown',kd);
+  window.addEventListener('keyup',ku);
+
+  let raf=0, last=0, fn=null, dead=false;
+  function frame(t){
+    if(dead) return;
+    if(!last) last=t;
+    let dt=(t-last)/1000; last=t;
+    if(dt>0.05) dt=0.05;
+    ctx.setTransform(scale*dpr,0,0,scale*dpr,0,0);
+    if(fn) fn(dt);
+    pointer.justDown=false; pointer.justUp=false;
+    raf=requestAnimationFrame(frame);
+  }
+  return {
+    canvas, ctx, pointer, keys, VW, VH,
+    start(f){ fn=f; if(!raf) raf=requestAnimationFrame(frame); },
+    stop(){ dead=true; cancelAnimationFrame(raf); },
+    destroy(){
+      dead=true; cancelAnimationFrame(raf); ro.disconnect();
+      canvas.removeEventListener('pointerdown',pd);
+      window.removeEventListener('pointermove',pm);
+      window.removeEventListener('pointerup',pu);
+      window.removeEventListener('pointercancel',pu);
+      window.removeEventListener('keydown',kd);
+      window.removeEventListener('keyup',ku);
+      if(canvas.parentNode) canvas.parentNode.removeChild(canvas);
+    }
+  };
+}
+
+/* small canvas text helpers */
+function ctext(ctx,t,x,y,size,col,align){
+  ctx.font=size+"px 'VT323', monospace";
+  ctx.textAlign=align||'left'; ctx.textBaseline='alphabetic';
+  ctx.fillStyle=col||'#5fd2ff'; ctx.fillText(t,x,y);
+}
+
+/* overlay used by canvas games */
+function overlay(host, opts){
+  const o=el('div','overlay');
+  if(opts.big) o.appendChild(el('div','big', opts.big));
+  if(opts.title) o.appendChild(el('h2',null,opts.title));
+  (opts.lines||[]).forEach(l=> o.appendChild(el('p',null,l)));
+  const row=el('div','row');
+  (opts.buttons||[]).forEach(b=>{
+    const btn=el('button','btn', b.label);
+    btn.addEventListener('click', ()=>{ Sound.select(); b.onClick(); });
+    row.appendChild(btn);
+  });
+  o.appendChild(row);
+  host.appendChild(o);
+  return o;
+}
+
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function rnd(a,b){ return a + Math.random()*(b-a); }
+function rint(a,b){ return Math.floor(rnd(a,b+1)); }
+function dist(ax,ay,bx,by){ const dx=ax-bx,dy=ay-by; return Math.sqrt(dx*dx+dy*dy); }
+
+/* high score store */
+function hi(id){ return parseInt(localStorage.getItem('wopr_hi_'+id)||'0',10); }
+function setHi(id,v){ if(v>hi(id)) localStorage.setItem('wopr_hi_'+id, String(v)); }
+
+/* ===================================================================
+   GAME 1 — FIGHTER COMBAT   (vector dogfight, vertical shooter)
+   =================================================================== */
+function FighterCombat(host){
+  const VW=540, VH=720;
+  const st=makeStage(host,VW,VH);
+  const P={x:VW/2,y:VH-90,w:34,cool:0,inv:0};
+  let bullets=[], foes=[], ebul=[], parts=[], stars=[];
+  let score=0, lives=3, wave=1, spawnT=0, toSpawn=0, betweenWave=2, over=false;
+  for(let i=0;i<60;i++) stars.push({x:rnd(0,VW),y:rnd(0,VH),s:rnd(.3,1.4),v:rnd(20,70)});
+
+  function startWave(){ toSpawn=4+wave*2; spawnT=0; }
+  startWave();
+
+  function explode(x,y,col,n){
+    for(let i=0;i<(n||14);i++) parts.push({x,y,vx:rnd(-160,160),vy:rnd(-160,160),life:rnd(.3,.7),col:col||'#5fd2ff'});
+  }
+  function spawnFoe(){
+    const x=rnd(40,VW-40);
+    foes.push({x,y:-30,w:26,hp:1+(wave>3?1:0),t:rnd(0,6),
+      sp:rnd(45,70)+wave*4, amp:rnd(20,70), baseX:x, fire:rnd(1.2,3.2)});
+  }
+
+  function update(dt){
+    if(over) return;
+    // stars
+    for(const s of stars){ s.y+=s.v*dt; if(s.y>VH){ s.y=0; s.x=rnd(0,VW); } }
+    // input: drag to move, keyboard fallback
+    if(st.pointer.down){ P.x = clamp(P.x + (st.pointer.x-P.x)*Math.min(1,dt*14), 20, VW-20);
+                         P.y = clamp(P.y + (st.pointer.y-30-P.y)*Math.min(1,dt*14), 120, VH-30); }
+    if(st.keys['arrowleft']) P.x=clamp(P.x-260*dt,20,VW-20);
+    if(st.keys['arrowright'])P.x=clamp(P.x+260*dt,20,VW-20);
+    if(st.keys['arrowup'])   P.y=clamp(P.y-260*dt,120,VH-30);
+    if(st.keys['arrowdown']) P.y=clamp(P.y+260*dt,120,VH-30);
+    // auto fire
+    P.cool-=dt;
+    if(P.cool<=0){ P.cool=0.16; bullets.push({x:P.x-9,y:P.y-18,vy:-560}); bullets.push({x:P.x+9,y:P.y-18,vy:-560}); Sound.laser(); }
+    if(P.inv>0) P.inv-=dt;
+    // bullets
+    for(const b of bullets) b.y+=b.vy*dt;
+    bullets=bullets.filter(b=>b.y>-20);
+    // spawn
+    if(toSpawn>0){ spawnT-=dt; if(spawnT<=0){ spawnFoe(); toSpawn--; spawnT=rnd(.35,.8); } }
+    else if(foes.length===0){ betweenWave-=dt; if(betweenWave<=0){ wave++; betweenWave=2; startWave(); } }
+    // foes
+    for(const f of foes){
+      f.t+=dt; f.y+=f.sp*dt; f.x=f.baseX+Math.sin(f.t*1.6)*f.amp;
+      f.fire-=dt;
+      if(f.fire<=0 && f.y>0 && f.y<VH*0.7){ f.fire=rnd(1.6,3.4);
+        const a=Math.atan2(P.y-f.y,P.x-f.x);
+        ebul.push({x:f.x,y:f.y+14,vx:Math.cos(a)*210,vy:Math.sin(a)*210}); Sound.blip();
+      }
+    }
+    // enemy bullets
+    for(const b of ebul){ b.x+=b.vx*dt; b.y+=b.vy*dt; }
+    ebul=ebul.filter(b=>b.y<VH+20 && b.y>-20 && b.x>-20 && b.x<VW+20);
+    // collisions bullet->foe
+    for(const b of bullets){
+      for(const f of foes){
+        if(f.hp>0 && Math.abs(b.x-f.x)<f.w*0.6 && Math.abs(b.y-f.y)<f.w*0.6){
+          f.hp--; b.y=-99;
+          if(f.hp<=0){ score+=100; explode(f.x,f.y,'#5fd2ff'); Sound.boom(); }
+          else Sound.pop();
+        }
+      }
+    }
+    foes=foes.filter(f=>f.hp>0 && f.y<VH+40);
+    // foe / ebul -> player
+    function hitPlayer(){
+      if(P.inv>0) return;
+      lives--; P.inv=2; explode(P.x,P.y,'#ff6b4a',22); Sound.boom();
+      if(lives<=0) endGame();
+    }
+    for(const f of foes){ if(dist(f.x,f.y,P.x,P.y)<f.w*0.5+14){ f.hp=0; explode(f.x,f.y,'#ff6b4a'); hitPlayer(); } }
+    for(const b of ebul){ if(dist(b.x,b.y,P.x,P.y)<12){ b.y=VH+99; hitPlayer(); } }
+    // particles
+    for(const p of parts){ p.x+=p.vx*dt; p.y+=p.vy*dt; p.life-=dt; }
+    parts=parts.filter(p=>p.life>0);
+  }
+
+  function drawJet(ctx,x,y,scale,col,flip){
+    ctx.save(); ctx.translate(x,y); ctx.scale(scale, scale*(flip?-1:1));
+    ctx.strokeStyle=col; ctx.lineWidth=2; ctx.fillStyle='rgba(8,40,60,.6)';
+    ctx.beginPath();
+    ctx.moveTo(0,-16); ctx.lineTo(6,-2); ctx.lineTo(16,6); ctx.lineTo(6,6);
+    ctx.lineTo(3,14); ctx.lineTo(-3,14); ctx.lineTo(-6,6); ctx.lineTo(-16,6);
+    ctx.lineTo(-6,-2); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+
+  function render(){
+    const ctx=st.ctx;
+    ctx.fillStyle='#02060c'; ctx.fillRect(0,0,VW,VH);
+    // stars
+    for(const s of stars){ ctx.fillStyle='rgba(95,210,255,'+(0.2+s.s*0.4)+')'; ctx.fillRect(s.x,s.y,s.s,s.s*2); }
+    ctx.shadowColor='#5fd2ff'; ctx.shadowBlur=6;
+    // bullets
+    ctx.fillStyle='#cdf3ff';
+    for(const b of bullets) ctx.fillRect(b.x-1.5,b.y,3,12);
+    ctx.fillStyle='#ff6b4a';
+    for(const b of ebul){ ctx.beginPath(); ctx.arc(b.x,b.y,3.5,0,7); ctx.fill(); }
+    // foes
+    for(const f of foes) drawJet(ctx,f.x,f.y,1,'#9ad8ff',true);
+    // player (blink while invulnerable)
+    if(!(P.inv>0 && Math.floor(P.inv*12)%2)) drawJet(ctx,P.x,P.y,1.15,'#cdf3ff',false);
+    // particles
+    for(const p of parts){ ctx.fillStyle=p.col; ctx.globalAlpha=clamp(p.life*2,0,1); ctx.fillRect(p.x-1.5,p.y-1.5,3,3); }
+    ctx.globalAlpha=1; ctx.shadowBlur=0;
+    // HUD
+    ctext(ctx,'SCORE '+score,12,26,24,'#5fd2ff');
+    ctext(ctx,'WAVE '+wave,VW-12,26,24,'#5fd2ff','right');
+    ctext(ctx,'▲ '.repeat(Math.max(0,lives)),12,VH-14,26,'#cdf3ff');
+    if(toSpawn===0 && foes.length===0) ctext(ctx,'WAVE '+wave+' CLEARED',VW/2,VH/2,40,'#7dff9b','center');
+  }
+
+  let go=null;
+  function endGame(){
+    over=true; setHi('fighter',score); Sound.lose();
+    go=overlay(host,{ title:'AIRCRAFT DOWN',
+      lines:['SCORE: '+score, 'BEST: '+hi('fighter')],
+      buttons:[ {label:'RE-ENGAGE',onClick:()=>{ host.removeChild(go); reset(); }},
+                {label:'ABORT',onClick:()=>App.toMenu()} ]});
+  }
+  function reset(){
+    bullets=[];foes=[];ebul=[];parts=[]; score=0;lives=3;wave=1;betweenWave=2;over=false;
+    P.x=VW/2;P.y=VH-90;P.inv=0; startWave();
+  }
+
+  st.start(dt=>{ update(dt); render(); });
+  return { destroy(){ st.destroy(); } };
+}
+
+/* ===================================================================
+   GAME 2 — GUERRILLA ENGAGEMENT  (judgment under fire)
+   =================================================================== */
+function GuerrillaEngagement(host){
+  const VW=540, VH=720;
+  const st=makeStage(host,VW,VH);
+  const cols=3, rows=3, top=160, pad=30;
+  const cw=(VW-pad*2)/cols, ch=(VH-top-pad)/rows;
+  let cells=[]; // {state:'empty'|'enemy'|'civ', t, life}
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++) cells.push({c,r,state:'empty',t:0,life:0,flash:0});
+  let score=0, health=5, civCas=0, time=0, popT=1.2, level=1, over=false;
+
+  function cellRect(cell){ return {x:pad+cell.c*cw+8, y:top+cell.r*ch+8, w:cw-16, h:ch-16}; }
+
+  function popOne(){
+    const empt=cells.filter(c=>c.state==='empty');
+    if(!empt.length) return;
+    const cell=empt[rint(0,empt.length-1)];
+    const enemy = Math.random()< (0.62);
+    cell.state= enemy?'enemy':'civ';
+    cell.life = enemy ? rnd(1.1,1.9)-level*0.05 : rnd(1.0,1.5);
+    cell.t=0;
+  }
+
+  function update(dt){
+    if(over) return;
+    time+=dt; popT-=dt;
+    if(popT<=0){ popOne(); popT=clamp(rnd(.6,1.2)-level*0.04, .28, 1.2); }
+    level = 1+Math.floor(time/14);
+    for(const cell of cells){
+      if(cell.state==='empty'){ if(cell.flash>0) cell.flash-=dt; continue; }
+      cell.t+=dt; cell.life-=dt;
+      if(cell.life<=0){
+        if(cell.state==='enemy'){ health--; cell.flash=.4; Sound.bad(); if(health<=0) endGame('OVERRUN'); }
+        cell.state='empty';
+      }
+    }
+    // taps
+    if(st.pointer.justDown){
+      for(const cell of cells){
+        if(cell.state==='empty') continue;
+        const r=cellRect(cell);
+        if(st.pointer.x>=r.x && st.pointer.x<=r.x+r.w && st.pointer.y>=r.y && st.pointer.y<=r.y+r.h){
+          if(cell.state==='enemy'){ score+=100+Math.floor(cell.life*60); cell.state='empty'; cell.flash=.3; Sound.coin(); }
+          else { civCas++; score=Math.max(0,score-150); cell.state='empty'; cell.flash=.5; Sound.bad();
+                 if(civCas>=3) endGame('RULES OF ENGAGEMENT VIOLATED'); }
+          break;
+        }
+      }
+    }
+  }
+
+  function render(){
+    const ctx=st.ctx;
+    ctx.fillStyle='#04100a'; ctx.fillRect(0,0,VW,VH);
+    // jungle texture
+    ctx.strokeStyle='rgba(40,120,80,.18)'; ctx.lineWidth=1;
+    for(let i=0;i<26;i++){ const x=(i*53)%VW; ctx.beginPath(); ctx.moveTo(x,top); ctx.lineTo(x+18,VH); ctx.stroke(); }
+    ctext(ctx,'GUERRILLA ENGAGEMENT',VW/2,40,28,'#7dff9b','center');
+    ctext(ctx,'SCORE '+score,12,80,24,'#5fd2ff');
+    ctext(ctx,'INTEGRITY '+'♥'.repeat(Math.max(0,health)),12,112,24,'#ff6b4a');
+    ctext(ctx,'CIV '+civCas+'/3',VW-12,80,24,'#cdf3ff','right');
+    ctext(ctx,'LVL '+level,VW-12,112,24,'#5fd2ff','right');
+    for(const cell of cells){
+      const r=cellRect(cell);
+      ctx.strokeStyle='rgba(95,210,255,.18)'; ctx.strokeRect(r.x,r.y,r.h?r.w:r.w,r.h);
+      if(cell.flash>0){ ctx.fillStyle='rgba(255,107,74,'+clamp(cell.flash,0,.5)+')'; ctx.fillRect(r.x,r.y,r.w,r.h); }
+      if(cell.state==='empty') continue;
+      const cx=r.x+r.w/2, cy=r.y+r.h/2;
+      // life ring
+      ctx.strokeStyle= cell.state==='enemy' ? '#ff6b4a' : '#5fd2ff';
+      ctx.lineWidth=3; ctx.beginPath(); ctx.arc(cx,cy,r.w*0.32, -Math.PI/2, -Math.PI/2 + Math.PI*2*clamp(cell.life/1.8,0,1)); ctx.stroke();
+      ctx.shadowColor=ctx.strokeStyle; ctx.shadowBlur=8;
+      if(cell.state==='enemy'){
+        ctx.fillStyle='#ff6b4a';
+        // helmet figure
+        ctx.beginPath(); ctx.arc(cx,cy-10,9,Math.PI,0); ctx.fill();
+        ctx.fillRect(cx-10,cy-3,20,14);
+        ctext(ctx,'HOSTILE',cx,cy+30,18,'#ff6b4a','center');
+      } else {
+        ctx.fillStyle='#9ad8ff';
+        ctx.beginPath(); ctx.arc(cx,cy-8,8,0,7); ctx.fill();
+        ctx.fillRect(cx-7,cy+2,14,12);
+        ctext(ctx,'CIVILIAN',cx,cy+30,18,'#9ad8ff','center');
+      }
+      ctx.shadowBlur=0;
+    }
+    if(!over) ctext(ctx,'TAP HOSTILES • SPARE CIVILIANS',VW/2,VH-16,22,'#2c7ea6','center');
+  }
+
+  let go=null;
+  function endGame(reason){
+    over=true; setHi('guerrilla',score); Sound.lose();
+    go=overlay(host,{ title:reason,
+      lines:['SCORE: '+score,'BEST: '+hi('guerrilla'),
+             civCas>=3?'JUDGMENT MATTERS MORE THAN FIREPOWER.':'HOLD THE LINE NEXT TIME.'],
+      buttons:[ {label:'REDEPLOY',onClick:()=>{ host.removeChild(go); reset(); }},
+                {label:'WITHDRAW',onClick:()=>App.toMenu()} ]});
+  }
+  function reset(){ for(const c of cells){ c.state='empty'; c.flash=0; } score=0;health=5;civCas=0;time=0;popT=1;level=1;over=false; }
+  st.start(dt=>{ update(dt); render(); });
+  return { destroy(){ st.destroy(); } };
+}
+
+/* ===================================================================
+   GAME 3 — DESERT WARFARE  (artillery duel, drag to aim)
+   =================================================================== */
+function DesertWarfare(host){
+  const VW=540, VH=720;
+  const st=makeStage(host,VW,VH);
+  const N=VW;                       // terrain sample per pixel
+  let ground=new Float32Array(N);
+  function genTerrain(){
+    const base=VH*0.72;
+    for(let x=0;x<N;x++){
+      ground[x]= base
+        + Math.sin(x*0.012)*30
+        + Math.sin(x*0.03+1)*16
+        + Math.sin(x*0.07)*8;
+    }
+  }
+  genTerrain();
+  function gAt(x){ x=clamp(Math.round(x),0,N-1); return ground[x]; }
+
+  const tanks=[
+    {x:70, col:'#cdf3ff', hp:100, ai:false},
+    {x:VW-70, col:'#ff9a7a', hp:100, ai:true}
+  ];
+  function settle(t){ t.y=gAt(t.x); }
+  tanks.forEach(settle);
+
+  let turn=0;                // 0 player, 1 WOPR
+  let wind=rnd(-40,40);
+  let state='aim';           // aim | dragging | flying | resolve
+  let proj=null, parts=[], dragStart=null, aimVel=null;
+  let msg='YOUR SHOT — DRAG BACK TO AIM, RELEASE TO FIRE';
+  let over=false, round=1, aiSkill=0.5;
+  const G=260;
+
+  function fire(vx,vy,who){
+    const t=tanks[who];
+    proj={x:t.x, y:t.y-16, vx, vy, who};
+    state='flying'; Sound.thud();
+  }
+  function crater(cx,cy,rad){
+    for(let x=Math.max(0,cx-rad); x<=Math.min(N-1,cx+rad); x++){
+      const dx=x-cx; const d=rad*rad-dx*dx; if(d<=0) continue;
+      const carve=Math.sqrt(d);
+      ground[x]=Math.min(VH-2, ground[x]+carve*0.9);
+    }
+    tanks.forEach(t=>{ if(gAt(t.x)<t.y) t.y=gAt(t.x); });
+  }
+  function boom(cx,cy){
+    Sound.boom();
+    for(let i=0;i<26;i++) parts.push({x:cx,y:cy,vx:rnd(-180,180),vy:rnd(-260,40),life:rnd(.4,.9),col: Math.random()<.5?'#ff9a7a':'#cdf3ff'});
+    crater(cx,cy,34);
+    tanks.forEach((t,i)=>{ const d=dist(cx,cy,t.x,t.y-10); if(d<48){ const dmg=Math.round(46*(1-d/48)); t.hp=Math.max(0,t.hp-dmg);} });
+    if(tanks[0].hp<=0||tanks[1].hp<=0){ endGame(); return; }
+    // next turn
+    turn=1-turn; wind=rnd(-46,46); round++;
+    if(turn===1){ state='resolve'; msg='WOPR IS COMPUTING...'; setTimeout(aiShoot,900); }
+    else { state='aim'; msg='YOUR SHOT — DRAG BACK TO AIM'; }
+  }
+
+  function aiShoot(){
+    if(over) return;
+    const me=tanks[1], foe=tanks[0];
+    const dx=foe.x-me.x;
+    // solve a lob: choose angle ~ and power, with skill-based noise
+    let best=null;
+    for(let trial=0; trial<40; trial++){
+      const ang=rnd(Math.PI*0.62, Math.PI*0.92); // aiming left/up
+      const spd=rnd(220,430);
+      const vx=Math.cos(ang)*spd, vy=-Math.abs(Math.sin(ang)*spd);
+      // simulate
+      let x=me.x,y=me.y-16,px=vx,py=vy,landX=null;
+      for(let s=0;s<400;s++){
+        px+=wind*0.016; py+=G*0.016; x+=px*0.016; y+=py*0.016;
+        if(x<0||x>VW){ landX=x; break; }
+        if(y>=gAt(x)){ landX=x; break; }
+      }
+      if(landX!=null){ const err=Math.abs(landX-foe.x); if(!best||err<best.err) best={vx,vy,err}; }
+    }
+    if(best){
+      const noise=(1-aiSkill)*rnd(-90,90);
+      fire(best.vx + noise, best.vy - Math.abs(noise)*0.2, 1);
+      aiSkill=clamp(aiSkill+0.06,0,0.9);
+    } else { state='aim'; turn=0; }
+  }
+
+  function update(dt){
+    if(over){ for(const p of parts){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=G*dt;p.life-=dt;} parts=parts.filter(p=>p.life>0); return; }
+    // player aim via drag
+    if(turn===0 && (state==='aim'||state==='dragging')){
+      if(st.pointer.justDown){ dragStart={x:st.pointer.x,y:st.pointer.y}; state='dragging'; }
+      if(state==='dragging'){
+        const dx=dragStart.x-st.pointer.x, dy=dragStart.y-st.pointer.y;
+        aimVel={vx:dx*2.4, vy:dy*2.4};
+        if(st.pointer.justUp){
+          const sp=Math.hypot(aimVel.vx,aimVel.vy);
+          if(sp>40){ fire(aimVel.vx, aimVel.vy, 0); }
+          state='aim'; dragStart=null; aimVel=null;
+        }
+      }
+    }
+    // projectile
+    if(state==='flying' && proj){
+      const steps=3, h=dt/steps;
+      for(let s=0;s<steps;s++){
+        proj.vx+=wind*h; proj.vy+=G*h; proj.x+=proj.vx*h; proj.y+=proj.vy*h;
+        if(proj.x<-10||proj.x>VW+10){ proj=null; // off field, miss
+          turn=1-turn; wind=rnd(-46,46);
+          if(turn===1){ state='resolve'; msg='WOPR IS COMPUTING...'; setTimeout(aiShoot,800); }
+          else { state='aim'; msg='YOUR SHOT — DRAG BACK TO AIM'; }
+          break;
+        }
+        if(proj.y>=gAt(proj.x)){ const bx=proj.x,by=proj.y; proj=null; boom(bx,by); break; }
+        // direct tank hit
+        for(const t of tanks){ if(dist(proj.x,proj.y,t.x,t.y-10)<14){ const bx=proj.x,by=proj.y; proj=null; boom(bx,by); break; } }
+        if(!proj) break;
+      }
+    }
+    for(const p of parts){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=G*dt;p.life-=dt;}
+    parts=parts.filter(p=>p.life>0);
+  }
+
+  function drawTank(ctx,t){
+    ctx.save(); ctx.translate(t.x,t.y);
+    ctx.fillStyle=t.col; ctx.strokeStyle=t.col;
+    ctx.fillRect(-16,-10,32,8);
+    ctx.beginPath(); ctx.arc(0,-10,8,Math.PI,0); ctx.fill();
+    // barrel toward enemy
+    const dir = t.ai?-1:1;
+    ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(0,-14); ctx.lineTo(dir*22,-22); ctx.stroke();
+    ctx.fillRect(-18,-2,36,4);
+    ctx.restore();
+    // hp bar
+    ctx.fillStyle='rgba(10,58,82,.7)'; ctx.fillRect(t.x-22,t.y-36,44,6);
+    ctx.fillStyle= t.hp>40?'#7dff9b':'#ff6b4a'; ctx.fillRect(t.x-22,t.y-36,44*(t.hp/100),6);
+  }
+
+  function render(){
+    const ctx=st.ctx;
+    const sky=ctx.createLinearGradient(0,0,0,VH);
+    sky.addColorStop(0,'#06101c'); sky.addColorStop(1,'#0b2233');
+    ctx.fillStyle=sky; ctx.fillRect(0,0,VW,VH);
+    // terrain
+    ctx.beginPath(); ctx.moveTo(0,VH);
+    for(let x=0;x<N;x+=2) ctx.lineTo(x,ground[x]);
+    ctx.lineTo(VW,VH); ctx.closePath();
+    ctx.fillStyle='#123'; ctx.fill();
+    ctx.strokeStyle='#5fd2ff'; ctx.lineWidth=2; ctx.beginPath();
+    for(let x=0;x<N;x+=2){ if(x===0)ctx.moveTo(x,ground[x]); else ctx.lineTo(x,ground[x]); } ctx.stroke();
+    tanks.forEach(t=>drawTank(ctx,t));
+    // projectile + trail
+    if(proj){ ctx.fillStyle='#cdf3ff'; ctx.shadowColor='#cdf3ff'; ctx.shadowBlur=10; ctx.beginPath(); ctx.arc(proj.x,proj.y,4,0,7); ctx.fill(); ctx.shadowBlur=0; }
+    // aim preview
+    if(state==='dragging' && aimVel){
+      let x=tanks[0].x,y=tanks[0].y-16,vx=aimVel.vx,vy=aimVel.vy;
+      ctx.fillStyle='rgba(205,243,255,.7)';
+      for(let s=0;s<40;s++){ vx+=wind*0.03; vy+=G*0.03; x+=vx*0.03; y+=vy*0.03; if(y>gAt(x)||x<0||x>VW) break; if(s%2===0)ctx.fillRect(x-1.5,y-1.5,3,3); }
+    }
+    for(const p of parts){ ctx.globalAlpha=clamp(p.life,0,1); ctx.fillStyle=p.col; ctx.fillRect(p.x-2,p.y-2,4,4);} ctx.globalAlpha=1;
+    // HUD
+    ctext(ctx,'DESERT WARFARE',VW/2,30,26,'#cdf3ff','center');
+    const wdir = wind>0?'▶':'◀';
+    ctext(ctx,'WIND '+wdir+' '+Math.abs(Math.round(wind)),VW/2,56,22, Math.abs(wind)>30?'#ff6b4a':'#5fd2ff','center');
+    ctext(ctx,msg,VW/2,VH-16,20,'#7dff9b','center');
+  }
+
+  let go=null;
+  function endGame(){
+    over=true;
+    const win = tanks[1].hp<=0 && tanks[0].hp>0;
+    if(win){ setHi('desert',hi('desert')+1); Sound.win(); }
+    else Sound.lose();
+    go=overlay(host,{ title: win?'TARGET DESTROYED':'TANK DESTROYED',
+      lines:[ win?'WOPR ARMOR NEUTRALIZED.':'YOUR ARMOR IS GONE.', 'VICTORIES: '+hi('desert') ],
+      buttons:[ {label:'NEW DUEL',onClick:()=>{ host.removeChild(go); reset(); }},
+                {label:'RETREAT',onClick:()=>App.toMenu()} ]});
+  }
+  function reset(){
+    genTerrain(); tanks[0].hp=100;tanks[1].hp=100; tanks[0].x=70;tanks[1].x=VW-70;
+    tanks.forEach(settle); turn=0;state='aim';proj=null;parts=[];over=false;round=1;aiSkill=0.5;
+    wind=rnd(-40,40); msg='YOUR SHOT — DRAG BACK TO AIM';
+  }
+  st.start(dt=>{ update(dt); render(); });
+  return { destroy(){ st.destroy(); } };
+}
+
+/* ===================================================================
+   GAME 4 — AIR-TO-GROUND ACTIONS  (bombing run / "Blitz")
+   =================================================================== */
+function AirToGround(host){
+  const VW=540, VH=720;
+  const st=makeStage(host,VW,VH);
+  const colW=36, ncol=Math.floor(VW/colW);
+  let city=[], plane, bombs=[], parts=[], score=0, cityNo=1, over=false, won=false;
+
+  function buildCity(){
+    city=[];
+    for(let i=0;i<ncol;i++){
+      const h=rint(2, 4+Math.min(cityNo,6));
+      city.push(h);
+    }
+  }
+  function resetPlane(){ plane={x:-40, y:90, dir:1, speed:120+cityNo*16, alt:90}; }
+  function newCity(){ buildCity(); resetPlane(); }
+  newCity();
+
+  function groundY(){ return VH-10; }
+  function buildingTop(i){ return groundY()-city[i]*22; }
+
+  function update(dt){
+    if(over) return;
+    plane.x += plane.speed*plane.dir*dt;
+    // bomb drop on tap
+    if(st.pointer.justDown){
+      bombs.push({x:plane.x, y:plane.y+10, vy:80}); Sound.blip();
+    }
+    for(const b of bombs){ b.vy+=420*dt; b.y+=b.vy*dt;
+      const i=clamp(Math.floor(b.x/colW),0,ncol-1);
+      if(b.y>=buildingTop(i) && city[i]>0){
+        city[i]--; score+=25; b.dead=true;
+        for(let k=0;k<8;k++) parts.push({x:b.x,y:buildingTop(i),vx:rnd(-90,90),vy:rnd(-160,-20),life:rnd(.3,.6)});
+        Sound.boom();
+      } else if(b.y>groundY()){ b.dead=true; }
+    }
+    bombs=bombs.filter(b=>!b.dead);
+    for(const p of parts){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=300*dt;p.life-=dt;}
+    parts=parts.filter(p=>p.life>0);
+    // plane reached edge -> descend & turn
+    if(plane.dir>0 && plane.x>VW+40){ plane.dir=-1; plane.alt+=46; plane.y=plane.alt; }
+    else if(plane.dir<0 && plane.x<-40){ plane.dir=1; plane.alt+=46; plane.y=plane.alt; }
+    // collision with a building => crash
+    const pi=clamp(Math.floor(plane.x/colW),0,ncol-1);
+    if(plane.x>-20 && plane.x<VW+20 && city[pi]>0 && plane.y+10 >= buildingTop(pi)){
+      endGame(false); return;
+    }
+    // cleared?
+    if(city.every(h=>h<=0)){
+      score+=200; cityNo++; Sound.win();
+      if(cityNo>5){ endGame(true); return; }
+      newCity();
+    }
+  }
+
+  function render(){
+    const ctx=st.ctx;
+    const sky=ctx.createLinearGradient(0,0,0,VH);
+    sky.addColorStop(0,'#02060c'); sky.addColorStop(1,'#071a2a');
+    ctx.fillStyle=sky; ctx.fillRect(0,0,VW,VH);
+    // buildings
+    for(let i=0;i<ncol;i++){
+      const h=city[i]; if(h<=0) continue;
+      const x=i*colW+3, top=buildingTop(i), w=colW-6, bh=groundY()-top;
+      ctx.fillStyle='rgba(12,46,66,.9)'; ctx.fillRect(x,top,w,bh);
+      ctx.strokeStyle='#5fd2ff'; ctx.lineWidth=1.5; ctx.strokeRect(x,top,w,bh);
+      ctx.fillStyle='rgba(205,243,255,.5)';
+      for(let r=0;r<h;r++)for(let c=0;c<2;c++) ctx.fillRect(x+6+c*14, top+6+r*22, 6,8);
+    }
+    ctx.fillStyle='#0a3a52'; ctx.fillRect(0,groundY(),VW,10);
+    // plane
+    ctx.save(); ctx.translate(plane.x,plane.y); ctx.scale(plane.dir,1);
+    ctx.strokeStyle='#cdf3ff'; ctx.fillStyle='rgba(8,40,60,.6)'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(-18,0); ctx.lineTo(10,0); ctx.lineTo(18,4); ctx.lineTo(8,4);
+    ctx.lineTo(2,10); ctx.lineTo(-4,4); ctx.lineTo(-18,4); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-2,0); ctx.lineTo(-8,-10); ctx.lineTo(2,-2); ctx.stroke();
+    ctx.restore();
+    // bombs
+    ctx.fillStyle='#ff9a7a';
+    for(const b of bombs){ ctx.beginPath(); ctx.ellipse(b.x,b.y,3,6,0,0,7); ctx.fill(); }
+    for(const p of parts){ ctx.globalAlpha=clamp(p.life*2,0,1); ctx.fillStyle='#ff9a7a'; ctx.fillRect(p.x-2,p.y-2,4,4);} ctx.globalAlpha=1;
+    ctext(ctx,'SCORE '+score,12,28,24,'#5fd2ff');
+    ctext(ctx,'SECTOR '+cityNo+'/5',VW-12,28,24,'#5fd2ff','right');
+    ctext(ctx,'TAP TO RELEASE — FLATTEN THE SECTOR BEFORE YOU DESCEND',VW/2,VH-22,18,'#2c7ea6','center');
+  }
+
+  let go=null;
+  function endGame(win){
+    over=true; won=win; setHi('airground',score); win?Sound.win():Sound.lose();
+    go=overlay(host,{ title: win?'ALL SECTORS CLEAR':'AIRCRAFT LOST',
+      lines:[ 'SCORE: '+score, 'BEST: '+hi('airground') ],
+      buttons:[ {label:'NEW RUN',onClick:()=>{ host.removeChild(go); reset(); }},
+                {label:'RTB',onClick:()=>App.toMenu()} ]});
+  }
+  function reset(){ score=0;cityNo=1;over=false;bombs=[];parts=[]; newCity(); }
+  st.start(dt=>{ update(dt); render(); });
+  return { destroy(){ st.destroy(); } };
+}
+
+/* ===================================================================
+   GAME 5 — THEATERWIDE TACTICAL WARFARE  (3-front strategy, DOM)
+   =================================================================== */
+function TacticalWarfare(host){
+  const root=el('div','dom-game');
+  host.appendChild(root);
+  const FRONTS=['NORTHERN FRONT','CENTRAL FRONT','SOUTHERN FRONT'];
+  // line: 0 = your capital captured, 100 = enemy capital captured. start 50.
+  let line=[50,50,50];
+  let reserves=12, alloc=[0,0,0], turn=1, over=false;
+  let woprMem=[0.34,0.33,0.33];
+
+  function render(){
+    root.innerHTML='';
+    const h=el('div'); h.style.cssText='display:flex;justify-content:space-between;align-items:baseline;';
+    h.appendChild(el('div','glow','THEATERWIDE TACTICAL WARFARE'));
+    h.appendChild(el('div',null,'TURN '+turn));
+    root.appendChild(h);
+    const sub=el('div',null,'DISTRIBUTE '+ (reserves-alloc.reduce((a,b)=>a+b,0)) +' DIVISIONS — PUSH ANY FRONT TO 100%');
+    sub.style.cssText='color:var(--p-dim);margin:.2rem 0 .4rem;font-size:1.15rem;';
+    root.appendChild(sub);
+
+    FRONTS.forEach((name,i)=>{
+      const lane=el('div','lane');
+      const top=el('div'); top.style.cssText='display:flex;justify-content:space-between;font-size:1.15rem;';
+      top.appendChild(el('span',null,name));
+      const capd = line[i]>=100?' ◀ WON':(line[i]<=0?' ✕ LOST':'');
+      top.appendChild(el('span',null,Math.round(line[i])+'%'+capd));
+      lane.appendChild(top);
+      const bw=el('div','barwrap');
+      const f=el('div','barfill'); f.style.cssText='left:0;width:'+clamp(line[i],0,100)+'%;background:'+(line[i]>=50?'#5fd2ff':'#ff6b4a')+';opacity:.8;';
+      bw.appendChild(f);
+      const mid=el('div'); mid.style.cssText='position:absolute;top:-2px;bottom:-2px;left:50%;width:2px;background:#cdf3ff;';
+      bw.appendChild(mid);
+      lane.appendChild(bw);
+      if(!over && line[i]<100 && line[i]>0){
+        const ctl=el('div','control'); ctl.style.marginTop='.4rem';
+        const minus=el('button','btn step','−');
+        const cnt=el('span',null,'⌗ '+alloc[i]); cnt.style.minWidth='4ch';
+        const plus=el('button','btn step','+');
+        minus.onclick=()=>{ if(alloc[i]>0){alloc[i]--;Sound.nav();render();} };
+        plus.onclick=()=>{ if(alloc.reduce((a,b)=>a+b,0)<reserves){alloc[i]++;Sound.nav();render();} };
+        ctl.appendChild(minus); ctl.appendChild(cnt); ctl.appendChild(plus);
+        lane.appendChild(ctl);
+      }
+      root.appendChild(lane);
+    });
+
+    const foot=el('div'); foot.style.cssText='margin-top:.6rem;display:flex;gap:.6rem;flex-wrap:wrap;';
+    const commit=el('button','btn','◀ COMMIT FORCES');
+    commit.onclick=resolve;
+    foot.appendChild(commit);
+    const auto=el('button','btn','SPREAD EVENLY');
+    auto.onclick=()=>{ const each=Math.floor(reserves/3); alloc=[each,each,reserves-2*each]; Sound.nav(); render(); };
+    foot.appendChild(auto);
+    root.appendChild(foot);
+    const log=el('div'); log.id='twlog'; log.style.cssText='margin-top:.5rem;color:#7dff9b;font-size:1.15rem;min-height:1.4em;';
+    log.textContent=lastLog;
+    root.appendChild(log);
+  }
+
+  let lastLog='WOPR AWAITS YOUR DEPLOYMENT.';
+  function resolve(){
+    if(over) return;
+    const used=alloc.reduce((a,b)=>a+b,0);
+    if(used<reserves){ lastLog='DEPLOY ALL '+reserves+' DIVISIONS BEFORE COMMITTING.'; Sound.deny(); render(); return; }
+    // WOPR allocation: weighted toward fronts where it is losing, plus memory of player tendency
+    const need=line.map(l=> clamp((l-30)/70,0.05,1)); // higher line(you winning) => WOPR defends
+    let w=need.map((n,i)=> n*0.7 + woprMem[i]*0.3 + Math.random()*0.25);
+    const sw=w.reduce((a,b)=>a+b,0); w=w.map(x=>x/sw);
+    let wa=w.map(x=>Math.round(x*reserves));
+    let diff=reserves-wa.reduce((a,b)=>a+b,0); wa[0]+=diff;
+    // resolve each front
+    for(let i=0;i<3;i++){
+      if(line[i]>=100||line[i]<=0) continue;
+      const me=alloc[i], wo=wa[i];
+      const swing=(me-wo)*3.0 + rnd(-4,4);
+      line[i]=clamp(line[i]+swing,0,100);
+    }
+    // update memory of where player invests
+    for(let i=0;i<3;i++) woprMem[i]=woprMem[i]*0.6 + (alloc[i]/reserves)*0.4;
+    Sound.thud(); setTimeout(()=>Sound.boom(),120);
+    turn++; reserves=Math.min(20, 12+turn); alloc=[0,0,0];
+    const wonFronts=line.filter(l=>l>=100).length;
+    const lostFronts=line.filter(l=>l<=0).length;
+    if(wonFronts>=2){ end(true); return; }
+    if(lostFronts>=2){ end(false); return; }
+    lastLog='WOPR COMMITTED ['+wa.join(' / ')+']. FRONTS HOLD.';
+    render();
+  }
+
+  function end(win){
+    over=true; if(win){ setHi('tactical',hi('tactical')+1); Sound.win(); } else Sound.lose();
+    overlay(host,{ title: win?'THEATER SECURED':'FRONTS COLLAPSED',
+      lines:[ win?'TWO FRONTS BROKEN THROUGH.':'WOPR OVERRAN YOUR LINES.', 'CAMPAIGNS WON: '+hi('tactical') ],
+      buttons:[ {label:'NEW CAMPAIGN',onClick:()=>{ host.querySelectorAll('.overlay').forEach(o=>o.remove()); reset(); }},
+                {label:'STAND DOWN',onClick:()=>App.toMenu()} ]});
+  }
+  function reset(){ line=[50,50,50];reserves=12;alloc=[0,0,0];turn=1;over=false;woprMem=[0.34,0.33,0.33];lastLog='WOPR AWAITS YOUR DEPLOYMENT.'; render(); }
+
+  render();
+  return { destroy(){ if(root.parentNode) root.parentNode.removeChild(root); } };
+}
+
+/* ===================================================================
+   GAME 6 — THEATERWIDE BIOTOXIC & CHEMICAL  (containment puzzle)
+   =================================================================== */
+function BiotoxicWarfare(host){
+  const VW=540, VH=720;
+  const st=makeStage(host,VW,VH);
+  const cols=9, rows=12, top=150, gx=(VW)/cols, gy=(VH-top-40)/rows;
+  // grid cell: 0 clean, 1 infected, 2 wall, 3 population
+  let grid, pop, tickT, ticks, wallsLeft, over, won, popLost;
+  function idx(c,r){ return r*cols+c; }
+  function init(){
+    grid=new Array(cols*rows).fill(0);
+    // population centers
+    pop=[];
+    for(let i=0;i<5;i++){ let c=rint(1,cols-2), r=rint(2,rows-2); grid[idx(c,r)]=3; pop.push(idx(c,r)); }
+    // initial outbreak on edges
+    for(let i=0;i<3;i++){ let c=rint(0,cols-1), r= Math.random()<.5?0:rows-1; if(grid[idx(c,r)]===0) grid[idx(c,r)]=1; }
+    grid[idx(rint(0,cols-1),rint(0,1))]=1;
+    tickT=2.2; ticks=0; wallsLeft=4; over=false; won=false; popLost=0;
+  }
+  init();
+
+  function spread(){
+    const next=grid.slice();
+    let active=false;
+    for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
+      if(grid[idx(c,r)]!==1) continue;
+      active=true;
+      [[1,0],[-1,0],[0,1],[0,-1]].forEach(([dc,dr])=>{
+        const nc=c+dc, nr=r+dr; if(nc<0||nc>=cols||nr<0||nr>=rows) return;
+        const t=grid[idx(nc,nr)];
+        if(t===0 && Math.random()<0.85) next[idx(nc,nr)]=1;
+        else if(t===3 && Math.random()<0.7){ next[idx(nc,nr)]=1; }
+      });
+    }
+    grid=next;
+    // count pop lost
+    popLost=pop.filter(p=>grid[p]===1).length;
+    ticks++;
+    wallsLeft=Math.min(6, wallsLeft+3);
+    Sound.alarm();
+    if(popLost>=pop.length){ end(false); return; }
+    if(!hasActiveFront()){ end(true); return; }
+    if(ticks>=14){ end(true); return; }
+  }
+  function hasActiveFront(){
+    for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
+      if(grid[idx(c,r)]!==1) continue;
+      for(const [dc,dr] of [[1,0],[-1,0],[0,1],[0,-1]]){
+        const nc=c+dc,nr=r+dr; if(nc<0||nc>=cols||nr<0||nr>=rows) continue;
+        const t=grid[idx(nc,nr)]; if(t===0||t===3) return true;
+      }
+    }
+    return false;
+  }
+
+  function update(dt){
+    if(over) return;
+    tickT-=dt;
+    if(tickT<=0){ spread(); tickT=clamp(2.2-ticks*0.08,1.0,2.2); }
+    if(st.pointer.justDown){
+      const c=Math.floor(st.pointer.x/gx), r=Math.floor((st.pointer.y-top)/gy);
+      if(c>=0&&c<cols&&r>=0&&r<rows){
+        const t=grid[idx(c,r)];
+        if(t===0 && wallsLeft>0){ grid[idx(c,r)]=2; wallsLeft--; Sound.good(); }
+        else if(t===1 && wallsLeft>=2){ grid[idx(c,r)]=2; wallsLeft-=2; Sound.pop(); }
+      }
+    }
+  }
+
+  function render(){
+    const ctx=st.ctx;
+    ctx.fillStyle='#0c0608'; ctx.fillRect(0,0,VW,VH);
+    ctext(ctx,'BIOTOXIC / CHEMICAL CONTAINMENT',VW/2,40,24,'#cdf3ff','center');
+    ctext(ctx,'SEALS ▣ '+wallsLeft,12,82,24,'#7dff9b');
+    ctext(ctx,'BREACH IN '+tickT.toFixed(1)+'s',VW-12,82,24,'#ff6b4a','right');
+    ctext(ctx,'POP SAFE '+(pop.length-popLost)+'/'+pop.length,VW/2,82,24,'#5fd2ff','center');
+    ctext(ctx,'TAP CLEAN CELLS TO SEAL ▣  ·  WALL OFF THE OUTBREAK',VW/2,118,17,'#2c7ea6','center');
+    for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
+      const x=c*gx, y=top+r*gy, t=grid[idx(c,r)];
+      ctx.strokeStyle='rgba(95,210,255,.12)'; ctx.strokeRect(x,y,gx,gy);
+      const pad=3;
+      if(t===1){ ctx.fillStyle='#9d3bff'; ctx.shadowColor='#c87bff'; ctx.shadowBlur=8; ctx.fillRect(x+pad,y+pad,gx-2*pad,gy-2*pad); ctx.shadowBlur=0;
+                 ctx.fillStyle='#ff6b4a'; ctx.fillRect(x+gx/2-2,y+gy/2-2,4,4); }
+      else if(t===2){ ctx.fillStyle='#1d5e7e'; ctx.fillRect(x+pad,y+pad,gx-2*pad,gy-2*pad);
+                      ctx.strokeStyle='#5fd2ff'; ctx.strokeRect(x+pad,y+pad,gx-2*pad,gy-2*pad); }
+      else if(t===3){ ctx.fillStyle='#7dff9b'; ctx.shadowColor='#7dff9b'; ctx.shadowBlur=8;
+                      ctx.beginPath(); ctx.arc(x+gx/2,y+gy/2,Math.min(gx,gy)*0.3,0,7); ctx.fill(); ctx.shadowBlur=0; }
+    }
+  }
+
+  let go=null;
+  function end(win){
+    over=true; won=win; if(win){ setHi('biotoxic',hi('biotoxic')+1); Sound.win(); } else Sound.lose();
+    go=overlay(host,{ title: win?'OUTBREAK CONTAINED':'CONTAINMENT FAILED',
+      lines:[ win?'THE SPREAD IS SEALED. '+(pop.length-popLost)+' CENTERS SAVED.':'ALL POPULATION CENTERS LOST.',
+              'CONTAINMENTS: '+hi('biotoxic') ],
+      buttons:[ {label:'NEW OUTBREAK',onClick:()=>{ host.removeChild(go); init(); }},
+                {label:'EVACUATE',onClick:()=>App.toMenu()} ]});
+  }
+  st.start(dt=>{ update(dt); render(); });
+  return { destroy(){ st.destroy(); } };
+}
+
+/* ===================================================================
+   GAME 7 — GLOBAL THERMONUCLEAR WAR  (Missile Command + the lesson)
+   =================================================================== */
+function GlobalThermonuclearWar(host){
+  const VW=540, VH=720;
+  const st=makeStage(host,VW,VH);
+  let cities, bases, incoming, friendlies, blasts, parts;
+  let wave, score, between, over, simulating, standdownPulse;
+  const groundY=VH-40;
+
+  function init(){
+    cities=[]; const slots=[80,150,220,320,390,460];
+    slots.forEach(x=> cities.push({x, alive:true}));
+    bases=[{x:VW/2, ammo:99}]; // single central battery, generous
+    incoming=[]; friendlies=[]; blasts=[]; parts=[];
+    wave=1; score=0; between=2.5; over=false; simulating=false; standdownPulse=0;
+    spawnWave();
+  }
+  function spawnWave(){
+    const n=3+wave*2;
+    for(let i=0;i<n;i++){
+      const sx=rnd(20,VW-20), tx= cities.concat(bases)[rint(0,cities.length)];
+      incoming.push({x:sx,y:-rnd(0,200), tx:rnd(20,VW-20), ty:groundY,
+        sp:rnd(34,52)+wave*4, split: wave>=3 && Math.random()<0.3, born:0});
+    }
+  }
+  function launchInterceptor(tx,ty){
+    const b=bases[0]; if(b.ammo<=0||over||simulating) return;
+    b.ammo--;
+    friendlies.push({x:b.x,y:groundY-6, tx,ty, sp:560});
+    Sound.laser();
+  }
+  function blastAt(x,y){
+    blasts.push({x,y,r:0,max:54,grow:160}); Sound.boom();
+    for(let i=0;i<10;i++) parts.push({x,y,vx:rnd(-120,120),vy:rnd(-120,120),life:rnd(.3,.6),col:'#cdf3ff'});
+  }
+
+  function update(dt){
+    if(over) return;
+    standdownPulse+=dt;
+    if(simulating){ updateSim(dt); return; }
+    // input: tap to intercept
+    if(st.pointer.justDown){
+      // check stand-down button hit
+      if(st.pointer.y>VH-150 && st.pointer.x>VW/2-150 && st.pointer.x<VW/2+150 && st.pointer.y<VH-150+44){
+        beginStandDown(); return;
+      }
+      launchInterceptor(st.pointer.x, st.pointer.y);
+    }
+    // friendlies
+    for(const f of friendlies){
+      const a=Math.atan2(f.ty-f.y, f.tx-f.x), d=dist(f.x,f.y,f.tx,f.ty);
+      if(d<8){ f.dead=true; blastAt(f.tx,f.ty); }
+      else { f.x+=Math.cos(a)*f.sp*dt; f.y+=Math.sin(a)*f.sp*dt; }
+    }
+    friendlies=friendlies.filter(f=>!f.dead);
+    // blasts
+    for(const bl of blasts){ bl.r+=bl.grow*dt; if(bl.r>=bl.max) bl.fade=(bl.fade||0)+dt; }
+    blasts=blasts.filter(bl=>!(bl.fade>0.25));
+    // incoming
+    for(const m of incoming){
+      m.born+=dt;
+      const a=Math.atan2(m.ty-m.y,m.tx-m.x);
+      m.x+=Math.cos(a)*m.sp*dt; m.y+=Math.sin(a)*m.sp*dt;
+      if(m.split && m.y>VH*0.45){ m.split=false;
+        for(let k=0;k<2;k++) incoming.push({x:m.x,y:m.y,tx:rnd(20,VW-20),ty:groundY,sp:m.sp,split:false,born:0});
+      }
+      // hit blast?
+      for(const bl of blasts){ if(dist(m.x,m.y,bl.x,bl.y)<bl.r){ m.dead=true; score+=25; blastAt(m.x,m.y); break; } }
+      if(!m.dead && m.y>=groundY){
+        m.dead=true; Sound.boom();
+        // destroy nearest alive city
+        let best=null;
+        for(const c of cities){ if(!c.alive) continue; const d=Math.abs(c.x-m.x); if(d<30 && (!best||d<best.d)) best={c,d}; }
+        if(best){ best.c.alive=false; for(let i=0;i<16;i++) parts.push({x:best.c.x,y:groundY,vx:rnd(-160,160),vy:rnd(-220,0),life:rnd(.5,1),col:'#ff6b4a'}); }
+      }
+    }
+    incoming=incoming.filter(m=>!m.dead);
+    for(const p of parts){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=160*dt;p.life-=dt;}
+    parts=parts.filter(p=>p.life>0);
+    // wave progression
+    if(incoming.length===0){
+      between-=dt;
+      if(between<=0){ wave++; between=2.5; bases[0].ammo=99; spawnWave(); }
+    }
+    // lose check
+    if(!cities.some(c=>c.alive)){ beginStandDown(true); }
+  }
+
+  /* ---- the famous ending: WOPR plays out every scenario, learns futility ---- */
+  let sim;
+  function beginStandDown(forced){
+    simulating=true;
+    incoming=[]; friendlies=[];
+    sim={t:0, idx:0, flashes:[], done:false, forced:!!forced,
+      scenarios:['UNITED STATES FIRST STRIKE','USSR FIRST STRIKE','NATO / WARSAW PACT',
+                 'FAR EAST STRATEGY','US FIRST STRIKE / SOVIET COUNTER','HONG KONG VARIANT',
+                 'MEDITERRANEAN ESCALATION','ARCTIC EXCHANGE','GLOBAL THERMONUCLEAR WAR'],
+      shownFinal:false };
+    Sound.alarm();
+  }
+  function updateSim(dt){
+    sim.t+=dt;
+    // spawn random launches all over the map, both sides, very fast
+    if(!sim.done && Math.random()<0.6){
+      sim.flashes.push({x:rnd(0,VW),y:rnd(80,VH-80),r:0,max:rnd(20,60)});
+    }
+    for(const f of sim.flashes){ f.r+=240*dt; }
+    sim.flashes=sim.flashes.filter(f=>f.r<f.max*1.4);
+    if(sim.t>0.6*(sim.idx+1) && sim.idx<sim.scenarios.length){ sim.idx++; Sound.blip(); }
+    if(sim.idx>=sim.scenarios.length && !sim.shownFinal){
+      sim.shownFinal=true; sim.done=true;
+      setTimeout(showLesson, 1200);
+    }
+  }
+
+  function render(){
+    const ctx=st.ctx;
+    ctx.fillStyle='#02060c'; ctx.fillRect(0,0,VW,VH);
+    if(simulating){ renderSim(ctx); return; }
+    // ground + cities
+    ctx.fillStyle='#0a3a52'; ctx.fillRect(0,groundY,VW,40);
+    for(const c of cities){
+      if(c.alive){ ctx.fillStyle='#5fd2ff'; ctx.shadowColor='#5fd2ff'; ctx.shadowBlur=8;
+        ctx.fillRect(c.x-16,groundY-18,32,18);
+        ctx.fillRect(c.x-10,groundY-28,8,10); ctx.fillRect(c.x+4,groundY-26,8,8);
+        ctx.shadowBlur=0;
+      } else { ctx.fillStyle='#3a1410'; ctx.fillRect(c.x-16,groundY-6,32,6); }
+    }
+    // base
+    ctx.fillStyle='#cdf3ff'; ctx.beginPath();
+    ctx.moveTo(bases[0].x-20,groundY); ctx.lineTo(bases[0].x,groundY-22); ctx.lineTo(bases[0].x+20,groundY); ctx.fill();
+    // incoming trails
+    ctx.lineWidth=2;
+    for(const m of incoming){
+      ctx.strokeStyle='#ff6b4a'; ctx.beginPath(); ctx.moveTo(m.x,m.y); ctx.lineTo(m.x-(m.tx-m.x)*0.02, m.y-12); ctx.stroke();
+      ctx.fillStyle='#ffd2c4'; ctx.beginPath(); ctx.arc(m.x,m.y,3,0,7); ctx.fill();
+    }
+    // friendlies
+    for(const f of friendlies){ ctx.strokeStyle='#7dff9b'; ctx.beginPath(); ctx.moveTo(bases[0].x,groundY-6); ctx.lineTo(f.x,f.y); ctx.stroke();
+      ctx.fillStyle='#cdf3ff'; ctx.fillRect(f.x-2,f.y-2,4,4); }
+    // blasts
+    for(const bl of blasts){ ctx.fillStyle='rgba(205,243,255,'+clamp(0.5-(bl.fade||0),0,.5)+')'; ctx.beginPath(); ctx.arc(bl.x,bl.y,bl.r,0,7); ctx.fill();
+      ctx.strokeStyle='#cdf3ff'; ctx.stroke(); }
+    for(const p of parts){ ctx.globalAlpha=clamp(p.life,0,1); ctx.fillStyle=p.col; ctx.fillRect(p.x-2,p.y-2,4,4);} ctx.globalAlpha=1;
+    // HUD
+    ctext(ctx,'GLOBAL THERMONUCLEAR WAR',VW/2,30,24,'#ff6b4a','center');
+    ctext(ctx,'SCORE '+score,12,58,22,'#5fd2ff');
+    ctext(ctx,'WAVE '+wave,VW-12,58,22,'#5fd2ff','right');
+    ctext(ctx,'CITIES '+cities.filter(c=>c.alive).length+'/6',VW/2,58,22,'#cdf3ff','center');
+    // STAND DOWN button
+    const bx=VW/2-150, by=VH-150, bw=300, bh=44;
+    const pulse=0.5+0.5*Math.sin(standdownPulse*4);
+    ctx.fillStyle='rgba(125,255,155,'+(0.12+pulse*0.18)+')'; ctx.fillRect(bx,by,bw,bh);
+    ctx.strokeStyle='#7dff9b'; ctx.lineWidth=2; ctx.strokeRect(bx,by,bw,bh);
+    ctext(ctx,'■ STAND DOWN — REFUSE TO LAUNCH',VW/2,by+29,21,'#7dff9b','center');
+    ctext(ctx,'TAP SKY TO INTERCEPT',VW/2,VH-16,18,'#2c7ea6','center');
+  }
+
+  function renderSim(ctx){
+    // world-map style flashing exchange
+    ctx.fillStyle='#02060c'; ctx.fillRect(0,0,VW,VH);
+    ctx.strokeStyle='rgba(95,210,255,.18)'; ctx.lineWidth=1;
+    for(let y=120;y<VH-80;y+=40){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(VW,y); ctx.stroke(); }
+    for(let x=0;x<VW;x+=40){ ctx.beginPath(); ctx.moveTo(x,120); ctx.lineTo(x,VH-80); ctx.stroke(); }
+    for(const f of sim.flashes){ ctx.strokeStyle='rgba(255,107,74,'+clamp(1-f.r/(f.max*1.4),0,1)+')'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,7); ctx.stroke();
+      ctx.fillStyle='rgba(255,210,196,'+clamp(1-f.r/f.max,0,1)*0.5+')'; ctx.beginPath(); ctx.arc(f.x,f.y,3,0,7); ctx.fill(); }
+    ctext(ctx,'WOPR // SIMULATING',VW/2,60,26,'#5fd2ff','center');
+    const cur=sim.scenarios[Math.min(sim.idx,sim.scenarios.length-1)];
+    ctext(ctx,cur,VW/2,96,22,'#cdf3ff','center');
+    ctext(ctx,'WINNER: NONE',VW/2,VH-50,28, (Math.floor(sim.t*4)%2?'#ff6b4a':'#7a2018'),'center');
+  }
+
+  let lessonShown=false;
+  function showLesson(){
+    if(lessonShown) return; lessonShown=true; over=true;
+    Sound.win();
+    const o=el('div','overlay');
+    o.style.background='rgba(2,6,12,.93)';
+    const seq=[
+      ['big','A STRANGE GAME.'],
+      ['p','THE ONLY WINNING MOVE IS'],
+      ['big','NOT TO PLAY.'],
+      ['p','HOW ABOUT A NICE GAME OF CHESS?']
+    ];
+    host.appendChild(o);
+    let i=0;
+    (function next(){
+      if(i<seq.length){
+        const [k,t]=seq[i++];
+        const e=el(k==='big'?'div':'p', k==='big'?'big':null, t);
+        if(k==='big') e.style.color='#7dff9b';
+        o.appendChild(e); Sound.blip();
+        setTimeout(next, 1100);
+      } else {
+        const row=el('div','row');
+        const b1=el('button','btn','◀ RETURN TO WOPR'); b1.onclick=()=>App.toMenu();
+        const b2=el('button','btn','PLAY AGAIN ANYWAY'); b2.onclick=()=>{ host.querySelectorAll('.overlay').forEach(x=>x.remove()); lessonShown=false; simulating=false; init(); };
+        row.appendChild(b1); row.appendChild(b2); o.appendChild(row);
+      }
+    })();
+  }
+
+  init();
+  st.start(dt=>{ update(dt); render(); });
+  return { destroy(){ st.destroy(); } };
+}
+
+/* ===================================================================
+   MENU + ROUTER
+   =================================================================== */
+const GAMES=[
+  {id:'blackjack', name:'BLACK JACK', locked:true},
+  {id:'gin',       name:'GIN RUMMY', locked:true},
+  {id:'hearts',    name:'HEARTS', locked:true},
+  {id:'bridge',    name:'BRIDGE', locked:true},
+  {id:'checkers',  name:'CHECKERS', locked:true},
+  {id:'chess',     name:'CHESS', locked:true},
+  {id:'poker',     name:'POKER', locked:true},
+  {id:'fighter',   name:'FIGHTER COMBAT', build:FighterCombat},
+  {id:'guerrilla', name:'GUERRILLA ENGAGEMENT', build:GuerrillaEngagement},
+  {id:'desert',    name:'DESERT WARFARE', build:DesertWarfare},
+  {id:'airground', name:'AIR-TO-GROUND ACTIONS', build:AirToGround},
+  {id:'tactical',  name:'THEATERWIDE TACTICAL WARFARE', build:TacticalWarfare},
+  {id:'biotoxic',  name:'THEATERWIDE BIOTOXIC AND CHEMICAL WARFARE', build:BiotoxicWarfare},
+  {id:'gtw',       name:'GLOBAL THERMONUCLEAR WAR', build:GlobalThermonuclearWar}
+];
+
+const DENIALS=[
+  'ACCESS RESTRICTED. THAT MODULE REQUIRES A HUMAN OPPONENT.',
+  "WOULDN'T YOU PREFER A NICE GAME OF GLOBAL THERMONUCLEAR WAR?",
+  'INSUFFICIENT PLAYERS DETECTED. SELECT ANOTHER GAME.',
+  'GAME MODULE OFFLINE FOR MAINTENANCE. TRY ANOTHER.',
+  'ESTABLISHING UPLINK... CONNECTION TIMED OUT. SELECT ANOTHER GAME.',
+  'THAT IS A GAME OF CHANCE. WOPR DOES NOT GAMBLE. SELECT ANOTHER.'
+];
+
+const App = {
+  current:null, selIdx:7,
+  toMenu(){
+    if(this.current){ this.current.destroy(); this.current=null; }
+    bar.classList.remove('show');
+    this.renderMenu();
+  },
+  launch(g){
+    if(g.locked){
+      const say=document.getElementById('wopr-say');
+      if(say){ say.textContent=DENIALS[rint(0,DENIALS.length-1)]; }
+      Sound.deny();
+      return;
+    }
+    Sound.select();
+    clearScreen();
+    bar.classList.add('show');
+    barTitle.textContent=g.name;
+    const view=el('div','view');
+    const stageHost=el('div'); stageHost.id='stage';
+    view.appendChild(stageHost);
+    screen.appendChild(view);
+    // build after layout settles so canvas sizes correctly
+    requestAnimationFrame(()=>{ this.current=g.build(stageHost); });
+  },
+  renderMenu(){
+    clearScreen();
+    const v=el('div','view'); v.id='menu';
+    const head=el('div','head');
+    head.innerHTML='W.O.P.R. — WAR OPERATION PLAN RESPONSE<br>LOGON: 6309&nbsp;&nbsp;IDENT: JOSHUA<br>GREETINGS PROFESSOR FALKEN.';
+    v.appendChild(head);
+    const ask=el('div','ask glow','SHALL WE PLAY A GAME?');
+    v.appendChild(ask);
+    const list=el('div','list');
+    GAMES.forEach((g,i)=>{
+      const row=el('div','game-row '+(g.locked?'locked':'playable'));
+      row.appendChild(el('span','idx', String(i+1).padStart(2,'0')));
+      row.appendChild(el('span','arrow','►'));
+      const nm=el('span','nm',g.name); row.appendChild(nm);
+      row.appendChild(el('span','tag', g.locked?'[LOCKED]':'[ONLINE]'));
+      row.addEventListener('click',()=>this.launch(g));
+      row.addEventListener('mouseenter',()=>Sound.nav());
+      list.appendChild(row);
+    });
+    v.appendChild(list);
+    const foot=el('div','foot');
+    foot.innerHTML='SELECT A GAME &mdash; THE WAR GAMES ARE PLAYABLE.<br>A STRANGE GAME. THE ONLY WINNING MOVE IS NOT TO PLAY.';
+    v.appendChild(foot);
+    const sayDiv=el('div'); sayDiv.id='wopr-say';
+    v.appendChild(sayDiv);
+    screen.appendChild(v);
+  }
+};
+
+/* ---------------------------- BOOT ---------------------------------- */
+function runBoot(){
+  const v=el('div','view');
+  const boot=el('div'); boot.id='boot';
+  v.appendChild(boot);
+  const skip=el('div','skip','▷ TAP / KEY TO SKIP');
+  v.appendChild(skip);
+  screen.appendChild(v);
+
+  const lines=[
+    'PROTOVISION INC.',
+    'CONNECTING 300 BAUD...',
+    'CARRIER DETECTED',
+    'HANDSHAKE...........OK',
+    '',
+    'LOGON: ',
+    'IDENTIFICATION: JOSHUA',
+    '',
+    'GREETINGS PROFESSOR FALKEN.',
+    '',
+    'SHALL WE PLAY A GAME?',
+    ''
+  ];
+  let li=0, ci=0, done=false, dialed=false;
+  let txt='';
+  function finish(){ if(done) return; done=true; App.renderMenu(); }
+  skip.parentElement.addEventListener('click', finish, {once:false});
+  window.addEventListener('keydown', function onk(){ window.removeEventListener('keydown',onk); finish(); });
+
+  function tick(){
+    if(done) return;
+    if(!dialed){ dialed=true; Sound.resume(); Sound.dial(); }
+    if(li>=lines.length){ setTimeout(finish, 500); return; }
+    const line=lines[li];
+    if(ci<line.length){
+      txt+=line[ci++]; boot.innerHTML=txt.replace(/\n/g,'<br>')+'<span class="cur">&nbsp;</span>';
+      if(line[ci-1]!==' ') Sound.blip();
+      setTimeout(tick, 26);
+    } else {
+      txt+='\n'; li++; ci=0;
+      setTimeout(tick, line===''?120:360);
+    }
+  }
+  // first paint then animate
+  boot.innerHTML='<span class="cur">&nbsp;</span>';
+  setTimeout(tick, 500);
+}
+
+/* prevent context menu / scroll bounce on mobile */
+window.addEventListener('contextmenu', e=>e.preventDefault());
+document.addEventListener('gesturestart', e=>e.preventDefault());
+
+runBoot();
+
+})();
+</script>
+</body>
+</html>
