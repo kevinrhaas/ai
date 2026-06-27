@@ -628,7 +628,10 @@ function DesertWarfare(host){
 
   function fire(vx,vy,who){
     const t=tanks[who];
-    proj={x:t.x, y:t.y-16, vx, vy, who};
+    const mag=Math.hypot(vx,vy)||1, nx=vx/mag, ny=vy/mag;
+    // Spawn at the muzzle, pushed out along the firing direction so the round
+    // clears the firing tank instead of detonating on it at launch.
+    proj={ x:t.x+nx*26, y:(t.y-18)+ny*26, vx, vy, who, armed:false };
     state='flying'; Sound.thud();
   }
   function crater(cx,cy,rad){
@@ -704,9 +707,16 @@ function DesertWarfare(host){
           else { state='aim'; msg='YOUR SHOT — DRAG BACK TO AIM'; }
           break;
         }
+        // arm the round once it has cleared the muzzle, so it can no longer
+        // blow up on the tank that fired it.
+        if(!proj.armed && dist(proj.x,proj.y, tanks[proj.who].x, tanks[proj.who].y-10) > 24) proj.armed=true;
         if(proj.y>=gAt(proj.x)){ const bx=proj.x,by=proj.y; proj=null; boom(bx,by); break; }
-        // direct tank hit
-        for(const t of tanks){ if(dist(proj.x,proj.y,t.x,t.y-10)<14){ const bx=proj.x,by=proj.y; proj=null; boom(bx,by); break; } }
+        // direct tank hit (never the firer until the round has armed)
+        for(let ti=0; ti<tanks.length; ti++){
+          if(ti===proj.who && !proj.armed) continue;
+          const t=tanks[ti];
+          if(dist(proj.x,proj.y,t.x,t.y-10)<14){ const bx=proj.x,by=proj.y; proj=null; boom(bx,by); break; }
+        }
         if(!proj) break;
       }
     }
