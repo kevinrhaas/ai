@@ -271,10 +271,18 @@ function makeStage(host, VW, VH){
     pointer.x=(clientX-r.left)/r.width*VW;
     pointer.y=(clientY-r.top)/r.height*VH;
   }
-  function pd(e){ Sound.resume(); toV(e.clientX,e.clientY); pointer.down=true; pointer.justDown=true; }
+  function pd(e){ Sound.resume(); toV(e.clientX,e.clientY); pointer.down=true; pointer.justDown=true;
+                  try{ canvas.setPointerCapture(e.pointerId); }catch(_){}
+                  if(e.cancelable) e.preventDefault(); }
   function pm(e){ toV(e.clientX,e.clientY); }
   function pu(e){ pointer.down=false; pointer.justUp=true; }
+  // Listen on the canvas itself (reliable for captured touch pointers, where
+  // move/up are retargeted to the capture element) AND on the window (covers a
+  // mouse released outside the canvas). Duplicate fires are idempotent.
   canvas.addEventListener('pointerdown',pd);
+  canvas.addEventListener('pointermove',pm);
+  canvas.addEventListener('pointerup',pu);
+  canvas.addEventListener('pointercancel',pu);
   window.addEventListener('pointermove',pm);
   window.addEventListener('pointerup',pu);
   window.addEventListener('pointercancel',pu);
@@ -301,6 +309,9 @@ function makeStage(host, VW, VH){
     destroy(){
       dead=true; cancelAnimationFrame(raf); ro.disconnect();
       canvas.removeEventListener('pointerdown',pd);
+      canvas.removeEventListener('pointermove',pm);
+      canvas.removeEventListener('pointerup',pu);
+      canvas.removeEventListener('pointercancel',pu);
       window.removeEventListener('pointermove',pm);
       window.removeEventListener('pointerup',pu);
       window.removeEventListener('pointercancel',pu);
@@ -668,17 +679,18 @@ function DesertWarfare(host){
 
   function update(dt){
     if(over){ for(const p of parts){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=G*dt;p.life-=dt;} parts=parts.filter(p=>p.life>0); return; }
-    // player aim via drag
+    // player aim via drag — fire on the release edge (down -> up), which is
+    // robust to the exact frame a pointerup lands on (important on touch).
     if(turn===0 && (state==='aim'||state==='dragging')){
-      if(st.pointer.justDown){ dragStart={x:st.pointer.x,y:st.pointer.y}; state='dragging'; }
-      if(state==='dragging'){
+      if(st.pointer.down){
+        if(state!=='dragging'){ dragStart={x:st.pointer.x,y:st.pointer.y}; state='dragging'; }
         const dx=dragStart.x-st.pointer.x, dy=dragStart.y-st.pointer.y;
         aimVel={vx:dx*2.4, vy:dy*2.4};
-        if(st.pointer.justUp){
-          const sp=Math.hypot(aimVel.vx,aimVel.vy);
-          if(sp>40){ fire(aimVel.vx, aimVel.vy, 0); }
-          state='aim'; dragStart=null; aimVel=null;
-        }
+      } else if(state==='dragging'){
+        const sp=aimVel?Math.hypot(aimVel.vx,aimVel.vy):0;
+        if(sp>30){ fire(aimVel.vx, aimVel.vy, 0); }
+        else { state='aim'; }              // too small a pull — just cancel
+        dragStart=null; aimVel=null;
       }
     }
     // projectile
